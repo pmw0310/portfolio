@@ -3,6 +3,7 @@ import type { MajorProject, SideProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import BorderGlow from '@/components/BorderGlow';
+import SplitText from '@/components/SplitText';
 
 import steamGif from '@/assets/images/03_grid/steam_01.gif';
 import algoPng from '@/assets/images/05_nc/algo_01.png';
@@ -47,32 +48,41 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
           description="업무 밖에서도 사용자의 불편함을 발굴하여 실제 서비스로 구현하고 운영하는 7+ 사이드 프로젝트입니다."
         />
 
-        {/* GF2 메인 사이드 프로젝트 - BorderGlow 적용 */}
+        {/* GF2 메인 사이드 프로젝트 - ReactBits BorderGlow 적용 */}
         {gf2Project && (
           <BorderGlow
             animated={true}
             borderRadius={24}
-            glowColor="185 80 50"
-            colors={['#38bdf8', '#34d399', '#818cf8']}
-            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl dark:shadow-2xl"
+            glowColor="200 85 65"
+            colors={['#38bdf8', '#34d399', '#a78bfa']}
+            backgroundColor="var(--card-bg)"
+            className="bg-white dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-xl dark:shadow-2xl [--card-bg:#ffffff] dark:[--card-bg:#0f172a]"
             contentClassName="space-y-8"
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
               <div>
                 <span className="text-xs font-bold text-emerald-700 dark:text-cyan-brand tracking-widest uppercase bg-emerald-100 dark:bg-cyan-brand/10 border border-emerald-300 dark:border-cyan-brand/30 px-3 py-1 rounded-full">
                   {gf2Project.badge}
                 </span>
-                <h3 className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white mt-3">
-                  {gf2Project.title}
-                </h3>
+                <SplitText
+                  tag="h3"
+                  text={gf2Project.title}
+                  className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white mt-3"
+                  delay={25}
+                  duration={0.5}
+                  splitType="words"
+                  from={{ opacity: 0, y: 15 }}
+                  to={{ opacity: 1, y: 0 }}
+                />
               </div>
               <a
                 href="https://gf2.blackolf.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-emerald-600 dark:text-cyan-brand font-semibold hover:underline text-base"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 dark:bg-cyan-brand text-white dark:text-slate-950 font-bold hover:bg-emerald-700 dark:hover:bg-cyan-400 shadow-md hover:shadow-lg transition-all text-sm group"
               >
-                gf2.blackolf.dev ↗
+                <span>🔗 서비스 바로가기</span>
+                <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
               </a>
             </div>
 
@@ -81,7 +91,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 {gf2Project.features.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 space-y-1"
+                    className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-xs"
                   >
                     <div className="font-bold text-slate-900 dark:text-white text-base">
                       {feature.title}
@@ -145,12 +155,26 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                     </span>
                     <span>{project.period}</span>
                   </div>
-                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                    {project.title}
-                  </h4>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
+                  <SplitText
+                    tag="h4"
+                    text={project.title}
+                    className="text-xl font-bold text-slate-900 dark:text-white mb-2"
+                    delay={20}
+                    duration={0.4}
+                    splitType="words"
+                    from={{ opacity: 0, y: 15 }}
+                    to={{ opacity: 1, y: 0 }}
+                  />
+                  <SplitText
+                    tag="p"
+                    text={project.description}
+                    className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"
+                    delay={15}
+                    duration={0.3}
+                    splitType="words"
+                    from={{ opacity: 0, y: 10 }}
+                    to={{ opacity: 1, y: 0 }}
+                  />
                 </div>
 
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">

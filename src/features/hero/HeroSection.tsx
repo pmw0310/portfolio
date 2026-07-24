@@ -1,6 +1,7 @@
 import React from 'react';
 import type { PersonalInfo } from '@/types/portfolio';
 import { SmartCountUp } from '@/components/CountUp';
+import SplitText from '@/components/SplitText';
 
 export type HeroSectionProps = {
   profile: PersonalInfo;
@@ -26,19 +27,43 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
         </p>
 
         <div className="space-y-4">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black font-display tracking-tight text-slate-900 dark:text-white">
-            {profile.englishName}
-          </h1>
-          <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-emerald-600 dark:text-cyan-brand">
-            {profile.role}
-          </p>
+          <SplitText
+            tag="h1"
+            text={profile.englishName}
+            className="text-4xl sm:text-6xl md:text-8xl font-black font-display tracking-tight text-slate-900 dark:text-white"
+            delay={40}
+            duration={0.6}
+            splitType="chars"
+            from={{ opacity: 0, y: 40, scale: 0.9 }}
+            to={{ opacity: 1, y: 0, scale: 1 }}
+            textAlign="center"
+          />
+          <SplitText
+            tag="p"
+            text={profile.role}
+            className="text-xl sm:text-2xl md:text-3xl font-semibold text-emerald-600 dark:text-cyan-brand"
+            delay={30}
+            duration={0.5}
+            splitType="words"
+            from={{ opacity: 0, y: 20 }}
+            to={{ opacity: 1, y: 0 }}
+            textAlign="center"
+          />
         </div>
 
         <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 via-amber-500 to-green-500 dark:from-cyan-brand dark:via-amber-brand dark:to-green-brand mx-auto rounded-full" />
 
-        <p className="max-w-2xl mx-auto text-slate-700 dark:text-slate-300 text-base md:text-xl leading-relaxed font-light">
-          {profile.summary}
-        </p>
+        <SplitText
+          tag="p"
+          text={profile.summary}
+          className="max-w-2xl mx-auto text-slate-700 dark:text-slate-300 text-base md:text-xl leading-relaxed font-light"
+          delay={20}
+          duration={0.4}
+          splitType="words"
+          from={{ opacity: 0, y: 15 }}
+          to={{ opacity: 1, y: 0 }}
+          textAlign="center"
+        />
 
         {/* 주요 핵심 통계 지표 */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto pt-8">

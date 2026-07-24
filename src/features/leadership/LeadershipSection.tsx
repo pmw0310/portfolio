@@ -3,6 +3,7 @@ import type { LeadershipCard } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { SmartCountUp } from '@/components/CountUp';
 import { SpotlightCard } from '@/components/SpotlightCard';
+import SplitText from '@/components/SplitText';
 
 export type LeadershipSectionProps = {
   leadership: LeadershipCard[];
@@ -37,12 +38,26 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
                 <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-emerald-600 dark:text-cyan-brand font-bold text-lg shadow-xs">
                   ⚡
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                  {item.description}
-                </p>
+                <SplitText
+                  tag="h3"
+                  text={item.title}
+                  className="text-xl font-bold text-slate-900 dark:text-white"
+                  delay={20}
+                  duration={0.4}
+                  splitType="words"
+                  from={{ opacity: 0, y: 15 }}
+                  to={{ opacity: 1, y: 0 }}
+                />
+                <SplitText
+                  tag="p"
+                  text={item.description}
+                  className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"
+                  delay={15}
+                  duration={0.3}
+                  splitType="words"
+                  from={{ opacity: 0, y: 10 }}
+                  to={{ opacity: 1, y: 0 }}
+                />
 
                 <ul className="space-y-2 pt-2 text-xs text-slate-500 dark:text-slate-400">
                   {item.details.map((detail, idx) => (

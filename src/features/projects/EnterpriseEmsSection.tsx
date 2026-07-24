@@ -4,6 +4,7 @@ import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import { SmartCountUp } from '@/components/CountUp';
 import BorderGlow from '@/components/BorderGlow';
+import SplitText from '@/components/SplitText';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';
 import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 
@@ -41,29 +42,49 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             borderRadius={24}
             glowColor="160 80 50"
             colors={['#10b981', '#06b6d4', '#6366f1']}
-            className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl"
+            backgroundColor="var(--card-bg)"
+            className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl [--card-bg:#f8fafc] dark:[--card-bg:#0f172a]"
             contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
             <div className="lg:col-span-6 space-y-6">
               <span className="text-xs font-bold text-emerald-700 dark:text-cyan-brand tracking-widest uppercase bg-emerald-100 dark:bg-cyan-brand/10 border border-emerald-300 dark:border-cyan-brand/30 px-3 py-1 rounded-full">
                 {migrationProject.badge}
               </span>
-              <h3 className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white">
-                {migrationProject.title}
-              </h3>
-              <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-                {migrationProject.summary}
-              </p>
+              <SplitText
+                tag="h3"
+                text={migrationProject.title}
+                className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white"
+                delay={25}
+                duration={0.5}
+                splitType="words"
+                from={{ opacity: 0, y: 20 }}
+                to={{ opacity: 1, y: 0 }}
+              />
+              <SplitText
+                tag="p"
+                text={migrationProject.summary}
+                className="text-slate-700 dark:text-slate-300 text-base leading-relaxed"
+                delay={15}
+                duration={0.4}
+                splitType="words"
+                from={{ opacity: 0, y: 10 }}
+                to={{ opacity: 1, y: 0 }}
+              />
 
               <div className="space-y-3">
                 {migrationProject.features.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800/80 text-sm space-y-1"
+                    className="p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-sm space-y-1 shadow-xs"
                   >
-                    <div className="font-bold text-slate-900 dark:text-slate-200">
-                      {feature.title}
-                    </div>
+                    <SplitText
+                      tag="div"
+                      text={feature.title}
+                      className="font-bold text-slate-900 dark:text-slate-200"
+                      delay={20}
+                      duration={0.4}
+                      splitType="words"
+                    />
                     <div className="text-slate-600 dark:text-slate-400 leading-snug">
                       {feature.description}
                     </div>
@@ -100,19 +121,34 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             borderRadius={24}
             glowColor="40 90 60"
             colors={['#f59e0b', '#ec4899', '#3b82f6']}
-            className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl"
+            backgroundColor="var(--card-bg)"
+            className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl [--card-bg:#f8fafc] dark:[--card-bg:#0f172a]"
             contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
             <div className="lg:col-span-6 lg:order-2 space-y-6">
               <span className="text-xs font-bold text-amber-700 dark:text-amber-brand tracking-widest uppercase bg-amber-100 dark:bg-amber-brand/10 border border-amber-300 dark:border-amber-brand/30 px-3 py-1 rounded-full">
                 {cmsProject.badge}
               </span>
-              <h3 className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white">
-                {cmsProject.title}
-              </h3>
-              <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-                {cmsProject.summary}
-              </p>
+              <SplitText
+                tag="h3"
+                text={cmsProject.title}
+                className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white"
+                delay={25}
+                duration={0.5}
+                splitType="words"
+                from={{ opacity: 0, y: 20 }}
+                to={{ opacity: 1, y: 0 }}
+              />
+              <SplitText
+                tag="p"
+                text={cmsProject.summary}
+                className="text-slate-700 dark:text-slate-300 text-base leading-relaxed"
+                delay={15}
+                duration={0.4}
+                splitType="words"
+                from={{ opacity: 0, y: 10 }}
+                to={{ opacity: 1, y: 0 }}
+              />
 
               <div className="grid grid-cols-3 gap-4">
                 {cmsProject.features.map((kpi, idx) => (

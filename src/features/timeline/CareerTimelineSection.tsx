@@ -3,6 +3,7 @@ import type { TimelineNode } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import BorderGlow from '@/components/BorderGlow';
 import { TechTag } from '@/components/TechTag';
+import SplitText from '@/components/SplitText';
 import { motion, AnimatePresence } from 'motion/react';
 
 export type CareerTimelineSectionProps = {
@@ -242,12 +243,22 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                             {activeNode.year}
                           </span>
                           <div>
-                            <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white">
-                              {activeNode.role}
-                            </h3>
-                            <p className="text-xs text-slate-500 dark:text-slate-400">
-                              {activeNode.description}
-                            </p>
+                            <SplitText
+                              tag="h3"
+                              text={activeNode.role}
+                              className="text-base md:text-lg font-bold text-slate-900 dark:text-white"
+                              delay={20}
+                              duration={0.4}
+                              splitType="words"
+                            />
+                            <SplitText
+                              tag="p"
+                              text={activeNode.description}
+                              className="text-xs text-slate-500 dark:text-slate-400"
+                              delay={15}
+                              duration={0.3}
+                              splitType="words"
+                            />
                           </div>
                         </div>
 

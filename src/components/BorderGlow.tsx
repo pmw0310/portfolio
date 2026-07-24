@@ -119,7 +119,7 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
   contentClassName = '',
   edgeSensitivity = 30,
   glowColor = '40 80 80',
-  backgroundColor = '#120F17',
+  backgroundColor,
   borderRadius = 28,
   glowRadius = 40,
   glowIntensity = 1.0,
@@ -242,13 +242,13 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
       onPointerMove={handlePointerMove}
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
-      className={`relative grid isolate border border-white/15 ${className}`}
+      className={`relative grid isolate ${className}`}
       style={{
-        background: backgroundColor,
+        ...(backgroundColor ? { background: backgroundColor } : {}),
         borderRadius: `${borderRadius}px`,
         transform: 'translate3d(0, 0, 0.01px)',
         boxShadow:
-          'rgba(0,0,0,0.1) 0 1px 2px, rgba(0,0,0,0.1) 0 2px 4px, rgba(0,0,0,0.1) 0 4px 8px, rgba(0,0,0,0.1) 0 8px 16px, rgba(0,0,0,0.1) 0 16px 32px, rgba(0,0,0,0.1) 0 32px 64px',
+          'rgba(0,0,0,0.05) 0 2px 4px, rgba(0,0,0,0.05) 0 4px 8px, rgba(0,0,0,0.05) 0 8px 16px',
       }}
     >
       {/* mesh gradient border */}
@@ -257,7 +257,7 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
         style={{
           border: '1px solid transparent',
           background: [
-            `linear-gradient(${backgroundColor || '#0f172a'} 0 100%) padding-box`,
+            `linear-gradient(${backgroundColor || 'var(--card-bg, #0f172a)'} 0 100%) padding-box`,
             'linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box',
             ...borderBg,
           ].join(', '),

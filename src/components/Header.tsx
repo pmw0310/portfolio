@@ -9,8 +9,8 @@ const navItems: NavItem[] = [
   { label: '소개', targetId: 'about' },
   { label: '경력', targetId: 'timeline' },
   { label: '주요 프로젝트', targetId: 'projects' },
-  { label: '사이드 프로젝트', targetId: 'side-projects' },
   { label: '리더십', targetId: 'leadership' },
+  { label: '사이드 프로젝트', targetId: 'side-projects' },
   { label: '연락처', targetId: 'contact' },
 ];
 
@@ -27,13 +27,40 @@ export type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // IntersectionObserver를 이용한 ScrollSpy 감지
+  useEffect(() => {
+    const sectionIds = navItems.map((item) => item.targetId);
+    const observerCallback: IntersectionObserverCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0,
+    });
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const handleNavClick = (targetId: string) => {
@@ -65,16 +92,26 @@ export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
         {/* 데스크탑 네비게이션 & 테마 토글 */}
         <div className="hidden md:flex items-center gap-6">
           <nav className="flex items-center gap-6">
-            {navItems.map((item) => (
-              <button
-                key={item.targetId}
-                type="button"
-                onClick={() => handleNavClick(item.targetId)}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-cyan-brand transition-colors cursor-pointer"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.targetId;
+              return (
+                <button
+                  key={item.targetId}
+                  type="button"
+                  onClick={() => handleNavClick(item.targetId)}
+                  className={`text-sm font-medium transition-colors cursor-pointer relative py-1 ${
+                    isActive
+                      ? 'text-emerald-600 dark:text-cyan-brand font-bold'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-cyan-brand'
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-emerald-600 dark:bg-cyan-brand rounded-full transition-all" />
+                  )}
+                </button>
+              );
+            })}
           </nav>
 
           {/* 테마 토글 버튼 */}
@@ -135,16 +172,23 @@ export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
       {/* 모바일 드롭다운 메뉴 */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-3 shadow-lg">
-          {navItems.map((item) => (
-            <button
-              key={item.targetId}
-              type="button"
-              onClick={() => handleNavClick(item.targetId)}
-              className="block w-full text-left py-2 text-base font-medium text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-cyan-brand transition-colors"
-            >
-              {item.label}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isActive = activeSection === item.targetId;
+            return (
+              <button
+                key={item.targetId}
+                type="button"
+                onClick={() => handleNavClick(item.targetId)}
+                className={`block w-full text-left py-2 text-base font-medium transition-colors ${
+                  isActive
+                    ? 'text-emerald-600 dark:text-cyan-brand font-bold pl-2 border-l-2 border-emerald-600 dark:border-cyan-brand'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-cyan-brand'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
       )}
     </header>

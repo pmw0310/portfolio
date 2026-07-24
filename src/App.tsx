@@ -45,14 +45,14 @@ export const App: React.FC = () => {
       {/* 7. Flutter 모바일 앱 섹션 */}
       <MobileAppSection project={flutterProject} />
 
-      {/* 8. 사이드 프로젝트 컬렉션 & GF2 커뮤니티 플랫폼 섹션 */}
+      {/* 8. 리더십 & 프로세스 개선 섹션 */}
+      <LeadershipSection leadership={portfolioData.leadership} />
+
+      {/* 9. 사이드 프로젝트 컬렉션 & GF2 커뮤니티 플랫폼 섹션 */}
       <SideProjectsSection
         gf2Project={gf2Project}
         sideProjects={portfolioData.sideProjects}
       />
-
-      {/* 9. 리더십 & 프로세스 개선 섹션 */}
-      <LeadershipSection leadership={portfolioData.leadership} />
 
       {/* 10. 연락처 & 푸터 섹션 */}
       <ContactSection profile={portfolioData.profile} />

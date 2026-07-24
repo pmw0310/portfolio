@@ -7,6 +7,7 @@
 - **기술 스택**: 
   - **Framework**: React + Vite + TypeScript (Next.js는 사용하지 않음)
   - **Styling**: Tailwind CSS v4 (`@tailwindcss/vite`)
+  - **UI Library**: **shadcn/ui** (재사용 가능한 기본 UI 컴포넌트 구축 및 적극 활용)
 - **언어 및 문서화**: 모든 주석, JSDoc, 문서, 에이전트 대화 설명은 **한국어**로 작성합니다.
 
 ## 2. 코딩 표준 및 컨벤션 (Absolute Rules)
@@ -27,7 +28,7 @@
   ```text
   src/
   ├── assets/          # 기존 html/images/ 등 이미지 및 미디어 자원
-  ├── components/      # 재사용 가능한 UI 단위 컴포넌트 (Tag, Button, Card, Badge 등)
+  ├── components/      # 재사용 가능한 UI 단위 컴포넌트 (shadcn/ui 및 커스텀 컴포넌트)
   ├── features/        # 포트폴리오 섹션/슬라이드 컴포넌트 (HeroSection, ExperienceSection, ProjectSection 등)
   ├── data/            # 기존 index.html의 텍스트/경력/프로젝트 데이터 TS 모듈 (src/data/portfolioData.ts)
   ├── types/           # TS 타입 정의 (src/types/portfolio.ts)
@@ -35,4 +36,5 @@
   └── App.tsx
   ```
 - **데이터 분리**: 기존 `index.html` 내의 모든 텍스트, 경력, 프로젝트 정보는 `src/data/` 디렉토리 내의 TypeScript 객체 파일로 분리하여 관리합니다.
-- **Tailwind CSS 적용**: 기존 `index.html`에서 정의된 Custom Properties(`--navy`, `--cyan`, `--amber` 등)를 Tailwind CSS의 색상 테마 및 유틸리티 클래스로 매핑하여 개발합니다.
+- **Tailwind CSS 및 UI 디자인**: 기존 `index.html`에서 정의된 Custom Properties(`--navy`, `--cyan`, `--amber` 등)를 Tailwind CSS의 색상 테마 및 유틸리티 클래스로 매핑합니다.
+- **shadcn/ui 활용**: Button, Card, Badge, Dialog, Tooltip 등 UI 요소 및 재사용 컴포넌트 구성 시 **shadcn/ui** 기반 컴포넌트 패턴 및 라이브러리를 적극 도입·활용합니다.

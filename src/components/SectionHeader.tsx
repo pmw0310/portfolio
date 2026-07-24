@@ -1,4 +1,5 @@
 import React from 'react';
+import SplitText from '@/components/SplitText';
 
 export type SectionHeaderProps = {
   /** 소제목 카테고리 태그 (예: ABOUT ME, CAREER PATH) */
@@ -29,13 +30,29 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
       <p className="text-xs md:text-sm font-semibold tracking-wider uppercase mb-2 text-emerald-600 dark:text-cyan-brand">
         {category}
       </p>
-      <h2 className="text-2xl md:text-4xl font-bold font-display tracking-tight leading-tight mb-4 text-slate-900 dark:text-white">
-        {title}
-      </h2>
+      <SplitText
+        tag="h2"
+        text={title}
+        className="text-2xl md:text-4xl font-bold font-display tracking-tight leading-tight mb-4 text-slate-900 dark:text-white"
+        delay={30}
+        duration={0.5}
+        splitType="words"
+        from={{ opacity: 0, y: 20 }}
+        to={{ opacity: 1, y: 0 }}
+        textAlign={align}
+      />
       {description && (
-        <p className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400">
-          {description}
-        </p>
+        <SplitText
+          tag="p"
+          text={description}
+          className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400 mt-2"
+          delay={15}
+          duration={0.4}
+          splitType="words"
+          from={{ opacity: 0, y: 15 }}
+          to={{ opacity: 1, y: 0 }}
+          textAlign={align}
+        />
       )}
     </div>
   );

@@ -3,6 +3,7 @@ import type { PersonalInfo, SkillGroup } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import { SpotlightCard } from '@/components/SpotlightCard';
+import SplitText from '@/components/SplitText';
 
 export type ProfileSectionProps = {
   profile: PersonalInfo;
@@ -29,9 +30,17 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* 좌측 프로필 본문 및 하이라이트 */}
           <div className="lg:col-span-5 space-y-6">
-            <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-              {profile.summary}
-            </p>
+            <SplitText
+              tag="p"
+              text={profile.summary}
+              className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed"
+              delay={15}
+              duration={0.4}
+              splitType="words"
+              from={{ opacity: 0, y: 15 }}
+              to={{ opacity: 1, y: 0 }}
+              textAlign="left"
+            />
 
             <div className="space-y-4 pt-2">
               {profile.highlights.map((highlight, idx) => (
