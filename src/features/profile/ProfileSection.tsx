@@ -98,13 +98,15 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
                   </CardHeader>
                   <CardContent className="p-5 pt-0">
                     <div className="flex flex-wrap gap-2">
-                      {group.skills.map((skill, sIdx) => (
-                        <TechTag
-                          key={sIdx}
-                          name={skill.name}
-                          isPrimary={skill.isPrimary}
-                        />
-                      ))}
+                      {[...group.skills]
+                        .sort((a, b) => Number(b.isPrimary) - Number(a.isPrimary))
+                        .map((skill, sIdx) => (
+                          <TechTag
+                            key={sIdx}
+                            name={skill.name}
+                            isPrimary={skill.isPrimary}
+                          />
+                        ))}
                     </div>
                   </CardContent>
                 </SpotlightCard>

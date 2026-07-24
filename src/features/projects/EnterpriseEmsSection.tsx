@@ -35,7 +35,6 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
         <SectionHeader
           category="Featured Major Projects"
           title="B2B IoT SaaS 플랫폼 핵심 아키텍처 구축"
-          description="레거시 마이그레이션부터 실시간 대용량 모니터링 시스템 설계까지 단독 주도한 주요 성과입니다."
         />
 
         {/* 1. 무중단 레거시 마이그레이션 */}
@@ -57,50 +56,61 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="lg:col-span-6 space-y-6"
             >
-              <div className="space-y-4">
-                <Badge variant="glow" className="text-xs px-3 py-1 font-bold">
-                  {migrationProject.badge}
-                </Badge>
-                <SplitText
-                  tag="h3"
-                  text={migrationProject.title}
-                  className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white pt-2"
-                  delay={25}
-                  duration={0.5}
-                  splitType="words"
-                  from={{ opacity: 0, y: 20 }}
-                  to={{ opacity: 1, y: 0 }}
-                />
+              <div className="space-y-2">
+                <div className="text-xs md:text-sm font-bold text-emerald-600 dark:text-emerald-400 tracking-widest uppercase">
+                  {migrationProject.badge || 'LEGACY MIGRATION'}
+                </div>
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight font-display tracking-tight pt-1">
+                  서비스 무중단 <br className="hidden sm:inline" />
+                  레거시 마이그레이션
+                </h3>
               </div>
 
-              <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-                {migrationProject.summary}
-              </p>
-
-              <div className="space-y-3">
-                {migrationProject.features.map((feature, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: idx * 0.1,
-                      ease: 'easeOut',
-                    }}
-                    className="p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-sm space-y-1 shadow-xs"
-                  >
-                    <div className="font-bold text-slate-900 dark:text-slate-200">
-                      {feature.title}
-                    </div>
-                    <div className="text-slate-600 dark:text-slate-400 leading-snug">
-                      {feature.description}
-                    </div>
-                  </motion.div>
-                ))}
+              {/* 불릿 아이콘 및 항목 리스트 */}
+              <div className="space-y-3.5 pt-1">
+                {migrationProject.features.map((feature, idx) => {
+                  const isAmber = feature.bulletColor === 'amber';
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -15 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: idx * 0.08 }}
+                      className="flex items-start gap-2.5 text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"
+                    >
+                      <span
+                        className={`inline-block shrink-0 w-2.5 h-2.5 rounded-full mt-2 ${
+                          isAmber
+                            ? 'bg-amber-600 dark:bg-amber-500'
+                            : 'bg-emerald-600 dark:bg-emerald-400'
+                        }`}
+                      />
+                      <div>
+                        <span className="font-bold text-slate-900 dark:text-slate-100 mr-1.5">
+                          {feature.title}:
+                        </span>
+                        <span>{feature.description}</span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
 
+              {/* 하단 성과 요약 카드 */}
+              {migrationProject.highlightText && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.25 }}
+                  className="p-4 md:p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/90 dark:border-slate-800/90 text-sm md:text-base font-bold text-slate-800 dark:text-slate-200 leading-relaxed shadow-xs"
+                >
+                  {migrationProject.highlightText}
+                </motion.div>
+              )}
+
+              {/* 기술 스택 태그 (TechTag를 통한 아이콘 및 통일된 뱃지 스타일) */}
               <div className="flex flex-wrap gap-2 pt-2">
                 {migrationProject.techStack.map((tech, idx) => (
                   <TechTag key={idx} name={tech} isPrimary />
@@ -145,7 +155,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl [--card-bg:#f8fafc] dark:[--card-bg:#0f172a]"
             contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
-            {/* 오른쪽 text 영역 */}
+            {/* 오른쪽 text 영역 및 KPI 스탯, 3가지 성과 카드 */}
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -153,54 +163,66 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="lg:col-span-6 lg:order-2 space-y-6"
             >
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <Badge variant="amber" className="text-xs px-3 py-1 font-bold">
-                  {cmsProject.badge}
+                  {cmsProject.badge || 'Real-Time Monitoring'}
                 </Badge>
-                <SplitText
-                  tag="h3"
-                  text={cmsProject.title}
-                  className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white pt-2"
-                  delay={25}
-                  duration={0.5}
-                  splitType="words"
-                  from={{ opacity: 0, y: 20 }}
-                  to={{ opacity: 1, y: 0 }}
-                />
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold font-display text-slate-900 dark:text-white tracking-tight pt-1">
+                  {cmsProject.title}
+                </h3>
               </div>
 
-              <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed">
-                {cmsProject.summary}
-              </p>
+              {/* KPI 수치 스탯 영역 (30+, WS, PDF) */}
+              {cmsProject.stats && cmsProject.stats.length > 0 && (
+                <div className="grid grid-cols-3 gap-3 md:gap-4 pt-1">
+                  {cmsProject.stats.map((stat, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      className="p-3.5 md:p-4 rounded-2xl bg-white dark:bg-slate-950/80 border border-slate-200/80 dark:border-slate-800/80 text-center shadow-xs"
+                    >
+                      <div className={`text-2xl md:text-3xl font-black font-display ${stat.colorClass || 'text-emerald-500'}`}>
+                        <SmartCountUp value={stat.statNumber} />
+                      </div>
+                      <div className="text-xs text-slate-600 dark:text-slate-400 mt-1 font-medium">
+                        {stat.statLabel}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
 
-              <div className="grid grid-cols-3 gap-4">
-                {cmsProject.features.map((kpi, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: idx * 0.1,
-                      ease: 'easeOut',
-                    }}
-                    className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center shadow-xs"
-                  >
-                    <div className="text-2xl md:text-3xl font-black font-display text-emerald-600 dark:text-cyan-brand">
-                      <SmartCountUp value={kpi.statNumber || '30+'} />
-                    </div>
-                    <div className="text-xs text-slate-600 dark:text-slate-400 mt-1 font-medium">
-                      {kpi.statLabel || kpi.title}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-2 pt-2">
-                {cmsProject.techStack.map((tech, idx) => (
-                  <TechTag key={idx} name={tech} isPrimary />
-                ))}
+              {/* 3가지 성과 카드 세로 배치 (원본 사진 1:1 스타일) */}
+              <div className="space-y-3 pt-1">
+                {cmsProject.features.map((feature, idx) => {
+                  const isAmber = feature.bulletColor === 'amber';
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      className="p-4 md:p-5 rounded-2xl bg-white dark:bg-slate-950/90 border border-slate-200/90 dark:border-slate-800/90 shadow-xs space-y-1.5"
+                    >
+                      <h4
+                        className={`text-base md:text-lg font-bold font-display ${
+                          isAmber
+                            ? 'text-amber-600 dark:text-amber-400'
+                            : 'text-emerald-600 dark:text-emerald-400'
+                        }`}
+                      >
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
 

@@ -51,7 +51,6 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
         <SectionHeader
           category="Side Projects"
           title="문제를 발견하면, 만들어 해결합니다"
-          description="업무 밖에서도 사용자의 불편함을 발굴하여 실제 서비스로 구현하고 운영하는 7+ 사이드 프로젝트입니다."
         />
 
         {/* GF2 메인 사이드 프로젝트 (Community Platform) */}

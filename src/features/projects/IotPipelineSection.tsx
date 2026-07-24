@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
+import { SectionHeader } from '@/components/SectionHeader';
 import { SpotlightCard } from '@/components/SpotlightCard';
 import { Zap, ShieldCheck, Sliders, FileText, Sun, Factory } from 'lucide-react';
 import skHynixLogoImg from '@/assets/images/sk_hynix_logo.png';
@@ -163,21 +164,11 @@ export const IotPipelineSection: React.FC = () => {
       className="py-20 bg-slate-50 dark:bg-slate-950 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden"
     >
       <div className="max-w-6xl mx-auto space-y-12">
-        {/* 헤더 타이틀 */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="space-y-2"
-        >
-          <span className="text-xs md:text-sm font-bold tracking-wider text-emerald-600 dark:text-cyan-brand uppercase">
-            DATA PIPELINE
-          </span>
-          <h2 className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white tracking-tight">
-            현장에서 클라우드까지, 데이터 파이프라인
-          </h2>
-        </motion.div>
+        {/* 공통 헤더 타이틀 적용 (인터랙티브 애니메이션) */}
+        <SectionHeader
+          category="DATA PIPELINE"
+          title="현장에서 클라우드까지, 데이터 파이프라인"
+        />
 
         {/* 1. 상단 3-Tier 데이터 파이프라인 흐름 다이어그램 (데스크탑 & 모바일 반응형) */}
         <motion.div

@@ -69,11 +69,18 @@ export type MajorProject = {
   role: string;
   techStack: string[];
   summary: string;
+  highlightText?: string;
+  stats?: {
+    statNumber: string;
+    statLabel: string;
+    colorClass?: string;
+  }[];
   features: {
     title: string;
     description: string;
     statNumber?: string;
     statLabel?: string;
+    bulletColor?: 'emerald' | 'amber' | 'cyan';
   }[];
   architecturePoints?: string[];
   outcomes?: string[];

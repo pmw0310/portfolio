@@ -70,7 +70,6 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
         <SectionHeader
           category="Cross-Platform Mobile"
           title="EnergyWatch 모바일 앱"
-          description="현장 엔지니어의 접근성 향상을 위해 Flutter로 iOS/Android 크로스플랫폼 앱을 단독 주도하여 출시했습니다."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">

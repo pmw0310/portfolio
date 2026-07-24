@@ -60,7 +60,7 @@ export type PortfolioData = {
 export const portfolioData: PortfolioData = {
   profile: {
     name: '박민우',
-    englishName: 'Park Minwoo',
+    englishName: 'PARK MINWOO',
     role: '시니어 프론트엔드 개발자',
     experienceYears: '14년',
     summary:
@@ -88,7 +88,7 @@ export const portfolioData: PortfolioData = {
       },
     ],
     highlights: [
-      'AngularJS 기반 레거시를 무중단(iframe+postMessage)으로 Next.js 최신 아키텍처로 안전하게 마이그레이션',
+      'AngularJS 레거시와 Next.js를 무중단(iframe+postMessage) 하이브리드 방식으로 병행 통합 구축',
       'WebSocket 실시간 모니터링 + ECharts 데이터 시각화 시스템 설계',
       'Flutter 크로스플랫폼 앱 단독 개발, 양대 앱스토어 배포',
     ],
@@ -97,48 +97,48 @@ export const portfolioData: PortfolioData = {
   timeline: [
     {
       id: 't-2011',
-      year: '2011 ~ 2013',
-      role: '게임 클라이언트 개발',
-      description: '온라인 게임 엔진 및 UI 개발',
+      year: '2011',
+      role: '게임 개발자',
+      description: '모바일 게임 개발',
       colorType: 'cyan',
       isTop: true,
-      techStack: ['C++', 'MFC', 'Win32', 'DirectX'],
+      techStack: ['C#', 'Unity'],
       achievements: [
-        'C++ 기반 게임 엔진 UI 시스템 및 모듈 인터페이스 구축',
-        '메모리 및 프레임 최적화 경험 축적',
+        'C# 및 Unity 엔진 기반 모바일 게임 개발',
+        '게임 제작 및 파이프라인 효율화를 위한 전용 제작 툴 개발',
       ],
     },
     {
       id: 't-2014',
-      year: '2014 ~ 2017',
-      role: '임베디드 HMI 개발',
-      description: '산업용 장비 펌웨어 및 GUI',
+      year: '2015',
+      role: '전자회로, MCU',
+      description: '직업훈련학교',
       colorType: 'amber',
       isTop: false,
-      techStack: ['C', 'C++', 'Qt', 'Embedded Linux'],
+      techStack: ['C', 'ATmega', 'STM32', 'Arduino'],
       achievements: [
-        '하드웨어 직접 연동 임베디드 펌웨어 및 HMI 화면 개발',
-        '실시간 데이터 시리얼 통신 처리 및 무결성 검증',
+        '직업훈련학교에서 ATmega, 전자회로, C 언어 기술 습득',
+        'STM32 및 아두이노(Arduino) MCU 펌웨어 독학 학습',
+      ],
+    },
+    {
+      id: 't-2016',
+      year: '2016',
+      role: '레티그리드 입사',
+      description: '프론트엔드 전향',
+      colorType: 'cyan',
+      isTop: true,
+      techStack: ['AngularJS', 'JavaScript', 'ECharts', 'jQuery'],
+      achievements: [
+        '기존 프로토타입 웹 프로젝트를 이어받아 본격적인 개발 시작',
+        '장비 설정 및 하드웨어 연동 웹 제어 페이지 개발',
       ],
     },
     {
       id: 't-2018',
-      year: '2018 ~ 2020',
-      role: '웹 프론트엔드 전환',
-      description: 'SPA 개발 및 현대 웹 기술 내재화',
-      colorType: 'cyan',
-      isTop: true,
-      techStack: ['JavaScript', 'HTML5', 'CSS3', 'React'],
-      achievements: [
-        '임베디드에서 현대 웹 프론트엔드 분야로 성공적 전향',
-        'React 기반 SPA 컴포넌트 아키텍처 설계',
-      ],
-    },
-    {
-      id: 't-2021',
-      year: '2021 ~ 2024',
-      role: 'EnergyWatch SaaS 개발 (레티그리드)',
-      description: 'IoT B2B 웹/모바일 리드 개발자',
+      year: '2018',
+      role: 'EnergyWatch FE 리드',
+      description: 'B2B SaaS 플랫폼 FE 전체 책임',
       colorType: 'cyan',
       isTop: true,
       techStack: [
@@ -146,28 +146,26 @@ export const portfolioData: PortfolioData = {
         'React',
         'TypeScript',
         'AngularJS',
-        'Flutter',
         'ECharts',
         'WebSocket',
         'MUI',
       ],
       achievements: [
-        'AngularJS → Next.js 무중단 아키텍처 마이그레이션 주도',
-        'WebSocket 30+ 차트 실시간 전력 모니터링 SaaS 구축',
-        'Flutter 모바일 앱 단독 개발 및 양대 마켓 배포',
+        'AngularJS & Next.js 무중단 하이브리드 병행 아키텍처 구축 주도',
+        'WebSocket 차트 실시간 전력 모니터링 SaaS 구축',
       ],
     },
     {
-      id: 't-2022',
-      year: '2022',
-      role: '사이드 프로젝트 생태계',
-      description: '실사용자 중심 유용한 서비스 개발',
+      id: 't-2020',
+      year: '2020',
+      role: '사이드 프로젝트',
+      description: '실사용자 중심 웹 서비스 개발',
       colorType: 'green',
       isTop: false,
       techStack: ['React', 'Next.js', 'Vercel', 'Tailwind CSS'],
       achievements: [
-        '실사용자 유지 사이드 서비스 7건 런칭 및 CI/CD 전개',
-        '반응형 UI/UX 및 웹 성능 지표 극대화',
+        '사용자 니즈에 맞춘 유용한 웹 서비스 및 웹 툴 지속 런칭',
+        'Vercel 기반 자동 배포(CI/CD) 및 반응형 웹 UI 구현',
       ],
     },
     {
@@ -180,28 +178,28 @@ export const portfolioData: PortfolioData = {
       techStack: ['Flutter', 'Dart', 'Firebase'],
       achievements: [
         'iOS 및 Android App Store 심사 통과 및 정식 배포',
-        '모바일 푸시 알림 및 로컬 상태 관리 패러다임 내재화',
+        '실시간 푸시 알림(FCM) 및 모바일 앱 상태 관리 구현',
       ],
     },
     {
       id: 't-2024',
       year: '2024',
       role: '새로운 도전',
-      description: '레티그리드 퇴사 · 다음 단계를 향해',
+      description: '레티그리드 퇴사 다음 단계를 향해',
       colorType: 'amber',
       isTop: false,
       techStack: [
-        'Next.js 15',
-        'React 19',
-        'NestJS 11',
+        'Next.js',
+        'React',
+        'NestJS',
         'MongoDB',
         'Zustand',
         'Vercel',
         'pnpm Monorepo',
       ],
       achievements: [
-        'Next.js 15 + NestJS 11 pnpm 모노레포 아키텍처 수립',
-        '사이드 프로젝트 프로덕션 운영으로 월간 방문자(MAU) 5,000+ 명 달성',
+        'Next.js 15 + NestJS 11 기반 사이드 프로젝트 pnpm 모노레포 아키텍처 수립',
+        '독립 프로덕션 운영을 통해 월간 활성 사용자(MAU) 5,000명 달성',
       ],
     },
   ],
@@ -213,7 +211,6 @@ export const portfolioData: PortfolioData = {
         { name: 'React', isPrimary: true },
         { name: 'Next.js', isPrimary: true },
         { name: 'TypeScript', isPrimary: true },
-        { name: 'JavaScript', isPrimary: true },
         { name: 'AngularJS', isPrimary: false },
         { name: 'Vue 2', isPrimary: false },
       ],
@@ -221,23 +218,21 @@ export const portfolioData: PortfolioData = {
     {
       category: 'State & Styling',
       skills: [
-        { name: 'Zustand', isPrimary: true },
         { name: 'Redux', isPrimary: true },
-        { name: 'Tailwind CSS', isPrimary: true },
         { name: 'MUI', isPrimary: true },
-        { name: 'Emotion', isPrimary: true },
-        { name: 'SCSS', isPrimary: false },
-        { name: 'Styled Components', isPrimary: false },
+        { name: 'SCSS', isPrimary: true },
+        { name: 'Styled Components', isPrimary: true },
+        { name: 'Tailwind CSS', isPrimary: false },
+        { name: 'Zustand', isPrimary: false },
+        { name: 'Emotion', isPrimary: false },
       ],
     },
     {
       category: 'Data Visualization & Libs',
       skills: [
         { name: 'ECharts', isPrimary: true },
-        { name: 'Motion', isPrimary: true },
-        { name: 'Swiper', isPrimary: true },
+        { name: 'Motion', isPrimary: false },
         { name: 'Recharts', isPrimary: false },
-        { name: 'Canvas API', isPrimary: false },
       ],
     },
     {
@@ -253,20 +248,19 @@ export const portfolioData: PortfolioData = {
     {
       category: 'Backend & Database',
       skills: [
-        { name: 'NestJS', isPrimary: true },
-        { name: 'Node.js', isPrimary: true },
-        { name: 'MongoDB', isPrimary: true },
-        { name: 'Google Sheets API', isPrimary: false },
-        { name: 'Swagger API', isPrimary: false },
+        { name: 'NestJS', isPrimary: false },
+        { name: 'Node.js', isPrimary: false },
+        { name: 'MongoDB', isPrimary: false },
+        { name: 'GraphQL', isPrimary: false },
+        { name: 'Redis', isPrimary: false },
       ],
     },
     {
       category: 'Deployment & Tools',
       skills: [
-        { name: 'Vercel', isPrimary: true },
         { name: 'Vite', isPrimary: true },
-        { name: 'pnpm Workspace', isPrimary: true },
-        { name: 'Vercel Analytics', isPrimary: false },
+        { name: 'Vercel', isPrimary: false },
+        { name: 'pnpm Workspace', isPrimary: false },
         { name: 'Doppler', isPrimary: false },
         { name: 'Git', isPrimary: false },
         { name: 'Figma', isPrimary: false },
@@ -278,47 +272,79 @@ export const portfolioData: PortfolioData = {
     {
       id: 'legacy-migration',
       title: '서비스 무중단 레거시 마이그레이션',
-      subtitle: 'AngularJS → Next.js 마이그레이션',
-      badge: 'Architecture Renewal',
+      subtitle: 'AngularJS & Next.js 하이브리드 아키텍처',
+      badge: 'LEGACY MIGRATION',
       period: 'EnergyWatch 서비스 고도화',
-      role: 'Next.js 마이그레이션 단독 설계 및 핵심 분석 컴포넌트 개발',
-      techStack: ['Next.js', 'TypeScript', 'MUI', 'React', 'iframe + postMessage'],
+      role: 'Next.js 병행 연동 아키텍처 단독 설계 및 핵심 분석 컴포넌트 개발',
+      techStack: ['Next.js', 'AngularJS', 'postMessage', 'MUI'],
       summary:
-        '전체 재작성의 리스크 대신 가장 복잡한 데이터 분석 페이지를 우선 전환하여 iframe + postMessage 기반 공존 아키텍처로 무중단 마이그레이션을 성사시켰습니다.',
+        '전체 재작성의 리스크 대신 가장 복잡한 데이터 분석 페이지를 Next.js로 개발하여, iframe + postMessage 기반 공존 아키텍처로 무중단 병행 운용 시스템을 구축했습니다.',
+      highlightText:
+        '서비스 중단 없이 핵심 페이지부터 점진적 전환 성공. 신기술 도입의 안전한 경로를 확보',
       features: [
         {
-          title: '유지보수 병목 해결',
-          description:
-            'AngularJS 기반 레거시 시스템의 유지보수 한계와 신기능 개발 병목을 마이그레이션으로 완전 해소.',
+          title: '문제',
+          bulletColor: 'emerald',
+          description: 'AngularJS 기반 레거시 시스템의 유지보수 한계와 신기능 개발 병목',
         },
         {
-          title: '핵심 분석 페이지선 전환',
+          title: '판단',
+          bulletColor: 'amber',
           description:
-            '전체 재작성 대신 데이터 분석 페이지를 우선 전환하여 핵심 컴포넌트와 아키텍처 안전성 확보.',
+            '전체 재작성 대신 가장 복잡한 데이터 분석 페이지를 우선 전환하여 핵심 컴포넌트와 아키텍처를 먼저 확보',
         },
         {
-          title: 'iframe + postMessage 통신',
+          title: '변화',
+          bulletColor: 'emerald',
           description:
-            'MUI 테마 통일, origin 검증 보안 체계 및 동적 리사이징으로 사용자가 인지할 수 없는 자연스러운 UX 확보.',
+            'iframe + postMessage 기반 공존 아키텍처 구현. MUI 테마 통일, origin 검증 보안 체계, 동적 리사이징으로 끊김 없는 UX 확보',
         },
       ],
       outcomes: [
-        '서비스 중단 없이 핵심 데이터 분석 페이지 점진적 전환 성공',
-        '신기술 도입 및 안정성 확보 아키텍처 검증',
+        '서비스 중단 없이 핵심 데이터 분석 페이지 하이브리드 연동 성공',
+        '레거시와 신규 기술 스택 간의 무중단 공존 아키텍처 검증',
       ],
       galleryImages: [
-        { url: ew14, title: '전력 분석 및 예측 대시보드', caption: '서비스의 핵심 데이터인 전력 사용량 분석 및 예측 대시보드 화면' },
-        { url: ew05, title: '메인 대시보드', caption: '전체 사업장의 에너지 상태를 한눈에 파악하는 메인 대시보드 화면' },
-        { url: ew06, title: '알람 목록 및 이력', caption: '전력 피크 및 설비 이상 알람 이력 관리 화면' },
-        { url: ew15, title: '전력 분석 보고서', caption: '전력 사용 패턴 분석 및 종합 보고서 화면' },
-        { url: ew13, title: '계통 전력 차트', caption: '각 사이트별 전력 흐름 및 계통 시각화 차트' },
-        { url: ew16, title: '개별 장비 전력 부하 페이지', caption: '각 장비 단위의 전력 부하 모니터링 화면' },
-        { url: ew17, title: '전력 데이터 종합 분석', caption: '일반적인 전력 분석 시 사용되는 종합 데이터 분석 페이지' },
+        {
+          url: ew14,
+          title: '전력 분석 및 예측 대시보드',
+          caption: '서비스의 핵심 데이터인 전력 사용량 분석 및 예측 대시보드 화면',
+        },
+        {
+          url: ew05,
+          title: '메인 대시보드',
+          caption: '전체 사업장의 에너지 상태를 한눈에 파악하는 메인 대시보드 화면',
+        },
+        {
+          url: ew06,
+          title: '알람 목록 및 이력',
+          caption: '전력 피크 및 설비 이상 알람 이력 관리 화면',
+        },
+        {
+          url: ew15,
+          title: '전력 분석 보고서',
+          caption: '전력 사용 패턴 분석 및 종합 보고서 화면',
+        },
+        {
+          url: ew13,
+          title: '계통 전력 차트',
+          caption: '각 사이트별 전력 흐름 및 계통 시각화 차트',
+        },
+        {
+          url: ew16,
+          title: '개별 장비 전력 부하 페이지',
+          caption: '각 장비 단위의 전력 부하 모니터링 화면',
+        },
+        {
+          url: ew17,
+          title: '전력 데이터 종합 분석',
+          caption: '일반적인 전력 분석 시 사용되는 종합 데이터 분석 페이지',
+        },
       ],
     },
     {
       id: 'realtime-cms',
-      title: '실시간 전력 모니터링 & CMS 대시보드',
+      title: '실시간 전력 모니터링 시스템',
       subtitle: 'WebSocket & ECharts 기반 시각화 시스템',
       badge: 'Real-Time Monitoring',
       period: 'EnergyWatch 핵심 서비스 모듈',
@@ -326,34 +352,59 @@ export const portfolioData: PortfolioData = {
       techStack: ['React', 'WebSocket', 'ECharts', 'Recharts', 'HTML5 Canvas'],
       summary:
         '초기 1회 API 연동 후 WebSocket 기반 실시간 스트리밍으로 전환하는 고성능 모니터링 대시보드와 자동 보고서 PDF 출력 시스템을 구현했습니다.',
-      features: [
+      stats: [
         {
-          title: '30+ 차트 대시보드',
-          description:
-            '데이터 로딩, 에러 처리, 렌더링 최적화를 추상화한 공통 차트 아키텍처 구현.',
           statNumber: '30+',
           statLabel: '차트 종류',
+          colorClass: 'text-emerald-500 dark:text-cyan-brand',
         },
         {
-          title: 'WebSocket 스트리밍',
-          description:
-            '주기적 폴링 방식 대신 WebSocket 데이터 수집으로 네트워크 부하 최소화 및 실시간 업데이트.',
           statNumber: 'WS',
-          statLabel: '실시간 연결',
+          statLabel: 'WebSocket 실시간',
+          colorClass: 'text-amber-500 dark:text-amber-brand',
         },
         {
-          title: '보고서 자동 PDF 출력',
-          description:
-            '클라이언트 사이드 렌더링 기반 고화질 대시보드 보고서 자동 PDF 출력 연동.',
           statNumber: 'PDF',
-          statLabel: '보고서 생성',
+          statLabel: '보고서 자동 출력',
+          colorClass: 'text-emerald-500 dark:text-emerald-400',
+        },
+      ],
+      features: [
+        {
+          title: 'API 초기 로드 + WebSocket 전환',
+          bulletColor: 'emerald',
+          description:
+            '초기 데이터 표시용으로 API를 1회 호출한 뒤, 성공하면 WebSocket 통신을 시작하여 이후 실시간 데이터를 지속 수신하는 구조로 설계',
+        },
+        {
+          title: 'ECharts 커스터마이징',
+          bulletColor: 'amber',
+          description:
+            '전기 흐름의 동적 표현 등 공식 문서에 없는 요구사항을 속성 조합과 차트 레이어링으로 해결',
+        },
+        {
+          title: '재사용 차트 아키텍처',
+          bulletColor: 'emerald',
+          description:
+            '데이터 로딩, 에러 처리 등 공통 로직을 추상화한 컴포넌트로 수십 종류 차트의 개발 복잡도를 낮춤',
         },
       ],
       galleryImages: [
-        { url: ew08, title: '전기 요금 및 전력 품질 진단', caption: '전기 요금 및 전력 품질 진단 분석 화면 (분석형 리포트)' },
-        { url: ew07, title: '압축 공기 시스템 분석', caption: '산업 현장 압축 공기 시스템 사용량 및 효율 분석 화면' },
-        { url: ew11, title: '실시간 모니터링 주요 화면', caption: 'WebSocket 기반 실시간 전력 모니터링 영역 화면' },
-        { url: ew12, title: '실시간 모니터링 전체 화면', caption: '실시간 전력 모니터링 대시보드 전체 화면 뷰' },
+        {
+          url: ew07,
+          title: '압축 공기 시스템 분석',
+          caption: '산업 현장 압축 공기 시스템 사용량 및 효율 분석 화면',
+        },
+        {
+          url: ew11,
+          title: '실시간 모니터링 주요 화면',
+          caption: 'WebSocket 기반 실시간 전력 모니터링 영역 화면',
+        },
+        {
+          url: ew12,
+          title: '실시간 모니터링 전체 화면',
+          caption: '실시간 전력 모니터링 대시보드 전체 화면 뷰',
+        },
       ],
     },
     {
@@ -408,13 +459,41 @@ export const portfolioData: PortfolioData = {
         },
       ],
       galleryImages: [
-        { url: ewMobileDemo, title: '모바일 로그인 페이지 (GIF)', caption: 'EnergyWatch 모바일 앱 로그인 및 인증 화면 애니메이션' },
-        { url: ew24, title: '사이트 목록', caption: '사업장 및 공간 단위별 계측 사이트 목록 화면' },
-        { url: ew25, title: '서비스 메뉴', caption: '모바일 주요 기능 및 네비게이션 서비스 메뉴' },
-        { url: ew26, title: '실시간 모니터링 차트', caption: '모바일 최적화 실시간 전력 사용량 및 부하 추이 차트' },
-        { url: ew27, title: '모니터링 차트 상세 보기', caption: '선택 시간대 및 기간별 모니터링 차트 상세 뷰' },
-        { url: ew28, title: '설정 페이지 (언어 설정)', caption: '다국어 언어 설정, 푸시 알림 및 모바일 사용자 환경 설정' },
-        { url: ew29, title: '메인 대시보드', caption: 'EnergyWatch 모바일 앱 실시간 종합 메인 대시보드' },
+        {
+          url: ewMobileDemo,
+          title: '모바일 로그인 페이지 (GIF)',
+          caption: 'EnergyWatch 모바일 앱 로그인 및 인증 화면 애니메이션',
+        },
+        {
+          url: ew24,
+          title: '사이트 목록',
+          caption: '사업장 및 공간 단위별 계측 사이트 목록 화면',
+        },
+        {
+          url: ew25,
+          title: '서비스 메뉴',
+          caption: '모바일 주요 기능 및 네비게이션 서비스 메뉴',
+        },
+        {
+          url: ew26,
+          title: '실시간 모니터링 차트',
+          caption: '모바일 최적화 실시간 전력 사용량 및 부하 추이 차트',
+        },
+        {
+          url: ew27,
+          title: '모니터링 차트 상세 보기',
+          caption: '선택 시간대 및 기간별 모니터링 차트 상세 뷰',
+        },
+        {
+          url: ew28,
+          title: '설정 페이지 (언어 설정)',
+          caption: '다국어 언어 설정, 푸시 알림 및 모바일 사용자 환경 설정',
+        },
+        {
+          url: ew29,
+          title: '메인 대시보드',
+          caption: 'EnergyWatch 모바일 앱 실시간 종합 메인 대시보드',
+        },
       ],
     },
     {
@@ -426,15 +505,11 @@ export const portfolioData: PortfolioData = {
       role: '풀스택 모노레포 설계 & 서비스 독립 운영',
       techStack: [
         'Next.js 15',
-        'React 19',
         'NestJS 11',
         'MongoDB',
         'Zustand 5',
-        'MUI v7',
-        'Emotion',
         'Vercel',
         'ECharts',
-        'Swiper',
         'pnpm Monorepo',
       ],
       summary:
@@ -461,12 +536,38 @@ export const portfolioData: PortfolioData = {
         },
       ],
       galleryImages: [
-        { url: gf211, title: '커뮤니티 메인 & 5대 서비스', caption: '과금 효율 계산기, 가챠 확률 계산기, 가챠 시뮬레이터, 웹 포토카드 메인 UI' },
-        { url: gf212, title: '가챠 확률 시뮬레이터', caption: '천장 시스템 및 픽업 캐릭터 모델링 기반 실시간 가챠 시뮬레이션 UI' },
-        { url: gf213, title: '가챠 확률 및 효율 예측 통계', caption: 'ECharts 기반 천장 확률 분포, 누적 가챠 기대값 및 파편 획득 예측 대시보드' },
-        { url: gf214, title: '인게임 패키지 과금 효율 분석', caption: 'Google Sheets 연동 인게임 패키지 가격 대비 효율 자동 계산 산출 표' },
-        { url: gf215, title: '웹 포토 카드 갤러리', caption: '인게임 캐릭터 모션 호버 연출 및 웹 포토 카드 컬렉션 UI' },
-        { url: gf216, title: '웹 포토 카드 플립 모션 데모', caption: 'CSS 3D Transform & 인터랙션 기반 실시간 포토 카드 플립 모션' },
+        {
+          url: gf211,
+          title: '커뮤니티 메인 & 5대 서비스',
+          caption:
+            '과금 효율 계산기, 가챠 확률 계산기, 가챠 시뮬레이터, 웹 포토카드 메인 UI',
+        },
+        {
+          url: gf212,
+          title: '가챠 확률 시뮬레이터',
+          caption: '천장 시스템 및 픽업 캐릭터 모델링 기반 실시간 가챠 시뮬레이션 UI',
+        },
+        {
+          url: gf213,
+          title: '가챠 확률 및 효율 예측 통계',
+          caption:
+            'ECharts 기반 천장 확률 분포, 누적 가챠 기대값 및 파편 획득 예측 대시보드',
+        },
+        {
+          url: gf214,
+          title: '인게임 패키지 과금 효율 분석',
+          caption: 'Google Sheets 연동 인게임 패키지 가격 대비 효율 자동 계산 산출 표',
+        },
+        {
+          url: gf215,
+          title: '웹 포토 카드 갤러리',
+          caption: '인게임 캐릭터 모션 호버 연출 및 웹 포토 카드 컬렉션 UI',
+        },
+        {
+          url: gf216,
+          title: '웹 포토 카드 플립 모션 데모',
+          caption: 'CSS 3D Transform & 인터랙션 기반 실시간 포토 카드 플립 모션',
+        },
       ],
     },
   ],
@@ -484,7 +585,11 @@ export const portfolioData: PortfolioData = {
       link: 'https://grid.blackolf.dev/?g=',
       imageKey: 'images/03_grid/steam_01.gif',
       galleryImages: [
-        { url: steam01, title: '스팀 그리드 메이커 에디터', caption: 'Fabric.js 기반 GIF 지원 캔버스 에디터' },
+        {
+          url: steam01,
+          title: '스팀 그리드 메이커 에디터',
+          caption: 'Fabric.js 기반 GIF 지원 캔버스 에디터',
+        },
       ],
     },
     {
@@ -499,7 +604,11 @@ export const portfolioData: PortfolioData = {
       link: 'https://pmw0310.github.io/nc_algorithm/',
       imageKey: 'images/05_nc/algo_01.png',
       galleryImages: [
-        { url: algo01, title: '뉴럴클라우드 알고리즘 파밍 UI', caption: '요일별 아이템 파밍 및 캐릭터별 통계 리포트' },
+        {
+          url: algo01,
+          title: '뉴럴클라우드 알고리즘 파밍 UI',
+          caption: '요일별 아이템 파밍 및 캐릭터별 통계 리포트',
+        },
       ],
     },
     {
@@ -514,7 +623,11 @@ export const portfolioData: PortfolioData = {
       link: 'https://map.blackolf.com/',
       imageKey: 'images/06_map/map_01.png',
       galleryImages: [
-        { url: map01, title: '천애명월도M Leaflet 지도', caption: 'Leaflet.js 기반 캔버스 지도 마커 필터링' },
+        {
+          url: map01,
+          title: '천애명월도M Leaflet 지도',
+          caption: 'Leaflet.js 기반 캔버스 지도 마커 필터링',
+        },
       ],
     },
     {
@@ -529,10 +642,26 @@ export const portfolioData: PortfolioData = {
       link: 'https://github.com/pmw0310/last-origin-vote',
       imageKey: 'images/07_lo/vote_01.png',
       galleryImages: [
-        { url: vote01, title: '실시간 인기 투표 메인', caption: 'GraphQL + Redis 기반 실시간 집계 투표 웹 서비스' },
-        { url: vote02, title: '투표 결과 집계 그래프', caption: '실시간 투표 결과 시각화 및 부문별 순위 차트' },
-        { url: vote03, title: '세션 중복 방지 UI', caption: '중복 투표 방지 및 안전한 세션 검증 프로세스' },
-        { url: vote04, title: '결과 상세 분석 대시보드', caption: '득표율 및 타임라인별 투표 참여 추이 분석' },
+        {
+          url: vote01,
+          title: '실시간 인기 투표 메인',
+          caption: 'GraphQL + Redis 기반 실시간 집계 투표 웹 서비스',
+        },
+        {
+          url: vote02,
+          title: '투표 결과 집계 그래프',
+          caption: '실시간 투표 결과 시각화 및 부문별 순위 차트',
+        },
+        {
+          url: vote03,
+          title: '세션 중복 방지 UI',
+          caption: '중복 투표 방지 및 안전한 세션 검증 프로세스',
+        },
+        {
+          url: vote04,
+          title: '결과 상세 분석 대시보드',
+          caption: '득표율 및 타임라인별 투표 참여 추이 분석',
+        },
         { url: vote06, title: '모바일 반응형 뷰', caption: '모바일 반응형 투표 UI 화면' },
       ],
     },
@@ -548,7 +677,11 @@ export const portfolioData: PortfolioData = {
       link: 'https://blackolf.com/radish/',
       imageKey: 'images/08_radish/radish_01.png',
       galleryImages: [
-        { url: radish01, title: '동물의숲 무 가격 예측기', caption: '알고리즘 기반 무 가격 등락 패턴 분석 UI' },
+        {
+          url: radish01,
+          title: '동물의숲 무 가격 예측기',
+          caption: '알고리즘 기반 무 가격 등락 패턴 분석 UI',
+        },
       ],
     },
   ],

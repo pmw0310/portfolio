@@ -2,6 +2,7 @@ import React from 'react';
 import type { PersonalInfo } from '@/types/portfolio';
 import { SmartCountUp } from '@/components/CountUp';
 import SplitText from '@/components/SplitText';
+import ShapeGrid from '@/components/ShapeGrid';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -20,8 +21,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
       id="hero"
       className="relative min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col justify-center items-center px-4 md:px-8 py-20 overflow-hidden border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
-      {/* 백그라운드 격자 그래픽 */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#cbd5e120_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e120_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* 백그라운드 인터랙티브 ShapeGrid 애니메이션 */}
+      <div className="absolute inset-0 z-0 opacity-70 dark:opacity-40 pointer-events-auto overflow-hidden [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_60%,transparent_100%)]">
+        <ShapeGrid
+          shape="square"
+          speed={0.6}
+          squareSize={72}
+          direction="diagonal"
+          borderColor="rgba(148, 163, 184, 0.18)"
+          hoverFillColor="rgba(6, 182, 212, 0.3)"
+          hoverTrailAmount={4}
+          enableVignette={false}
+        />
+      </div>
 
       <div className="relative z-10 max-w-5xl w-full text-center space-y-8 mt-12">
         <Badge
@@ -35,7 +47,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
           <SplitText
             tag="h1"
             text={profile.englishName}
-            className="text-4xl sm:text-6xl md:text-8xl font-black font-display tracking-tight text-slate-900 dark:text-white"
+            className="text-4xl sm:text-6xl md:text-8xl font-black font-display tracking-tight text-slate-900 dark:text-white uppercase"
             delay={40}
             duration={0.6}
             splitType="chars"
@@ -55,21 +67,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
             textAlign="center"
           />
         </div>
-
-        <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 via-amber-500 to-cyan-500 mx-auto rounded-full" />
-
-        <SplitText
-          tag="p"
-          text={profile.summary}
-          className="max-w-2xl mx-auto text-slate-700 dark:text-slate-300 text-base md:text-xl leading-relaxed font-light"
-          delay={20}
-          duration={0.4}
-          splitType="words"
-          from={{ opacity: 0, y: 15 }}
-          to={{ opacity: 1, y: 0 }}
-          textAlign="center"
-        />
-
         {/* 주요 핵심 통계 지표 (shadcn/ui Card 시스템 적용) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto pt-8">
           {profile.stats.map((stat, idx) => (

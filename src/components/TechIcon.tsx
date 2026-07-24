@@ -96,6 +96,8 @@ const techIconMap: Record<string, { icon: IconType; color?: string }> = {
   Dart: { icon: SiDart, color: '#0175C2' },
   Firebase: { icon: SiFirebase, color: '#FFCA28' },
   WebSocket: { icon: TbPlugConnected, color: '#010101' },
+  postMessage: { icon: TbPlugConnected, color: '#10B981' },
+  'iframe + postMessage': { icon: TbPlugConnected, color: '#10B981' },
   'Node.js': { icon: SiNodedotjs, color: '#5FA04E' },
   NestJS: { icon: SiNestjs, color: '#E0234E' },
   'NestJS 11': { icon: SiNestjs, color: '#E0234E' },
