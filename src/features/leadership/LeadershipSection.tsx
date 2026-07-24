@@ -6,16 +6,11 @@ export type LeadershipSectionProps = {
   leadership: LeadershipCard[];
 };
 
-/**
- * 리더십 & 소프트 스킬 섹션 컴포넌트
- * @param props LeadershipSectionProps
- * @returns 리더십 섹션 엘리먼트
- */
 export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership }) => {
   return (
     <section
       id="leadership"
-      className="py-24 bg-slate-900 px-4 md:px-8 border-b border-slate-800"
+      className="py-24 bg-white dark:bg-slate-900 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors"
     >
       <div className="max-w-6xl mx-auto space-y-12">
         <SectionHeader
@@ -28,32 +23,34 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
           {leadership.map((item) => (
             <div
               key={item.id}
-              className="bg-slate-950 border border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-slate-700 transition-all hover:-translate-y-1 shadow-xl"
+              className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 shadow-md dark:shadow-xl"
             >
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center text-cyan-brand font-bold text-lg">
+                <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-emerald-600 dark:text-cyan-brand font-bold text-lg shadow-xs">
                   ⚡
                 </div>
-                <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                   {item.description}
                 </p>
 
-                <ul className="space-y-2 pt-2 text-xs text-slate-400">
+                <ul className="space-y-2 pt-2 text-xs text-slate-500 dark:text-slate-400">
                   {item.details.map((detail, idx) => (
                     <li key={idx} className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-brand" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-cyan-brand" />
                       <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-slate-800 flex items-baseline justify-between">
-                <span className="text-3xl font-black font-display text-cyan-brand">
+              <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-baseline justify-between">
+                <span className="text-3xl font-black font-display text-emerald-600 dark:text-cyan-brand">
                   {item.metricNumber}
                 </span>
-                <span className="text-xs text-slate-400 font-medium">
+                <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                   {item.metricLabel}
                 </span>
               </div>

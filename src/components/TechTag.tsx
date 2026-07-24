@@ -1,8 +1,5 @@
 import React from 'react';
 
-/**
- * TechTag 컴포넌트 Props
- */
 export type TechTagProps = {
   /** 기술명 또는 태그 텍스트 */
   name: string;
@@ -13,7 +10,7 @@ export type TechTagProps = {
 };
 
 /**
- * 기술 스택 및 키워드 태그 뱃지 컴포넌트
+ * 기술 스택 및 키워드 태그 뱃지 컴포넌트 (다크/라이트 지원)
  * @param props TechTagProps
  * @returns 뱃지 엘리먼트
  */
@@ -26,8 +23,8 @@ export const TechTag: React.FC<TechTagProps> = ({
     'inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-200';
 
   const colorStyles = isPrimary
-    ? 'bg-emerald-500/10 text-cyan-brand border border-emerald-500/30 font-semibold shadow-xs'
-    : 'bg-slate-800 text-slate-300 border border-slate-700/80 hover:border-slate-600';
+    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/10 dark:text-cyan-brand dark:border-emerald-500/30 font-semibold shadow-xs'
+    : 'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700/80 hover:border-slate-300 dark:hover:border-slate-600';
 
   return <span className={`${baseStyles} ${colorStyles} ${className}`}>{name}</span>;
 };

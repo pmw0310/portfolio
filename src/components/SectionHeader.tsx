@@ -1,8 +1,5 @@
 import React from 'react';
 
-/**
- * SectionHeader 컴포넌트 Props
- */
 export type SectionHeaderProps = {
   /** 소제목 카테고리 태그 (예: ABOUT ME, CAREER PATH) */
   category: string;
@@ -12,12 +9,10 @@ export type SectionHeaderProps = {
   description?: string;
   /** 정렬 모드 (기본: left) */
   align?: 'left' | 'center';
-  /** 다크 모드 여부 */
-  isDark?: boolean;
 };
 
 /**
- * 포트폴리오 주요 섹션별 타이틀 헤더 컴포넌트
+ * 포트폴리오 주요 섹션별 타이틀 헤더 컴포넌트 (다크/라이트 지원)
  * @param props SectionHeaderProps
  * @returns 섹션 타이틀 엘리먼트
  */
@@ -26,27 +21,19 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,
   align = 'left',
-  isDark = true,
 }) => {
   const alignClass = align === 'center' ? 'text-center mx-auto' : 'text-left';
-  const categoryColor = isDark ? 'text-cyan-brand' : 'text-emerald-600';
-  const titleColor = isDark ? 'text-white' : 'text-slate-900';
-  const descColor = isDark ? 'text-slate-400' : 'text-slate-600';
 
   return (
     <div className={`mb-10 max-w-3xl ${alignClass}`}>
-      <p
-        className={`text-xs md:text-sm font-semibold tracking-wider uppercase mb-2 ${categoryColor}`}
-      >
+      <p className="text-xs md:text-sm font-semibold tracking-wider uppercase mb-2 text-emerald-600 dark:text-cyan-brand">
         {category}
       </p>
-      <h2
-        className={`text-2xl md:text-4xl font-bold font-display tracking-tight leading-tight mb-4 ${titleColor}`}
-      >
+      <h2 className="text-2xl md:text-4xl font-bold font-display tracking-tight leading-tight mb-4 text-slate-900 dark:text-white">
         {title}
       </h2>
       {description && (
-        <p className={`text-base md:text-lg leading-relaxed ${descColor}`}>
+        <p className="text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-400">
           {description}
         </p>
       )}

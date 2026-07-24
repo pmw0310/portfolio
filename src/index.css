@@ -1,11 +1,9 @@
 @import 'tailwindcss';
 
-/* 기존 html/index.html 디자인 테마를 Tailwind CSS v4 커스텀 테마로 정의 */
 @theme {
   --color-navy: #0b1120;
   --color-navy-light: #1e293b;
   --color-navy-mid: #334155;
-  --color-navy-watermark: #192338;
 
   --color-cyan-brand: #00d4aa;
   --color-cyan-brand-dark: #00896e;
@@ -20,11 +18,19 @@
   --font-body: 'Pretendard', -apple-system, sans-serif;
 }
 
+/* Tailwind CSS v4 다크 모드 수동 토글 커스텀 베리언트 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
-  body {
+  html {
     font-family: var(--font-body);
-    background-color: #f8fafc;
-    color: #0b1120;
+    scroll-behavior: smooth;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;

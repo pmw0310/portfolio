@@ -1,5 +1,6 @@
 import React from 'react';
 import { portfolioData } from '@/data/portfolioData';
+import { useTheme } from '@/hooks/useTheme';
 import { Header } from '@/components/Header';
 import { HeroSection } from '@/features/hero/HeroSection';
 import { ProfileSection } from '@/features/profile/ProfileSection';
@@ -12,17 +13,19 @@ import { LeadershipSection } from '@/features/leadership/LeadershipSection';
 import { ContactSection } from '@/features/contact/ContactSection';
 
 /**
- * 포트폴리오 메인 애플리케이션 컴포넌트
+ * 포트폴리오 메인 애플리케이션 컴포넌트 (다크/라이트 테마 제어)
  * @returns 포트폴리오 메인 페이지
  */
 export const App: React.FC = () => {
+  const [isDark, toggleTheme] = useTheme();
+
   const flutterProject = portfolioData.majorProjects.find((p) => p.id === 'flutter-app');
   const gf2Project = portfolioData.majorProjects.find((p) => p.id === 'gf2-blackolf');
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans antialiased selection:bg-cyan-brand selection:text-slate-950">
-      {/* 1. 상단 고정 네비게이션 헤더 */}
-      <Header />
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-white dark:selection:bg-cyan-brand dark:selection:text-slate-950 transition-colors duration-300">
+      {/* 1. 상단 고정 네비게이션 헤더 (테마 토글 포함) */}
+      <Header isDark={isDark} onToggleTheme={toggleTheme} />
 
       {/* 2. 히어로 커버 섹션 */}
       <HeroSection profile={portfolioData.profile} />
