@@ -1,9 +1,12 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import type { MajorProject, SideProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import BorderGlow from '@/components/BorderGlow';
 import SplitText from '@/components/SplitText';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 
 import steamGif from '@/assets/images/03_grid/steam_01.gif';
 import algoPng from '@/assets/images/05_nc/algo_01.png';
@@ -28,7 +31,7 @@ const sideImageMap: Record<string, string> = {
 };
 
 /**
- * 사이드 프로젝트 목록 섹션 컴포넌트 (BorderGlow 글로우 카드 효과 적용)
+ * 사이드 프로젝트 목록 섹션 컴포넌트 (Community Platform 카드 애니메이션 적용)
  * @param props SideProjectsSectionProps
  * @returns 사이드 프로젝트 섹션 엘리먼트
  */
@@ -39,7 +42,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
   return (
     <section
       id="side-projects"
-      className="py-24 bg-slate-50 dark:bg-slate-950 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors"
+      className="py-24 bg-slate-50 dark:bg-slate-950 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden"
     >
       <div className="max-w-6xl mx-auto space-y-16">
         <SectionHeader
@@ -48,7 +51,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
           description="업무 밖에서도 사용자의 불편함을 발굴하여 실제 서비스로 구현하고 운영하는 7+ 사이드 프로젝트입니다."
         />
 
-        {/* GF2 메인 사이드 프로젝트 - ReactBits BorderGlow 적용 */}
+        {/* GF2 메인 사이드 프로젝트 (Community Platform) - BorderGlow 및 서브 카드 애니메이션 적용 */}
         {gf2Project && (
           <BorderGlow
             animated={true}
@@ -60,14 +63,14 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
             contentClassName="space-y-8"
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
-              <div>
-                <span className="text-xs font-bold text-emerald-700 dark:text-cyan-brand tracking-widest uppercase bg-emerald-100 dark:bg-cyan-brand/10 border border-emerald-300 dark:border-cyan-brand/30 px-3 py-1 rounded-full">
+              <div className="space-y-4">
+                <Badge variant="glow" className="text-xs px-3 py-1 font-bold">
                   {gf2Project.badge}
-                </span>
+                </Badge>
                 <SplitText
                   tag="h3"
                   text={gf2Project.title}
-                  className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white mt-3"
+                  className="text-2xl md:text-4xl font-bold font-display text-slate-900 dark:text-white pt-1"
                   delay={25}
                   duration={0.5}
                   splitType="words"
@@ -82,15 +85,32 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 dark:bg-cyan-brand text-white dark:text-slate-950 font-bold hover:bg-emerald-700 dark:hover:bg-cyan-400 shadow-md hover:shadow-lg transition-all text-sm group"
               >
                 <span>🔗 서비스 바로가기</span>
-                <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                <span className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
+                  ↗
+                </span>
               </a>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-6 space-y-4">
+              {/* 좌측 서브 특성 카드 목록 (좌측에서 슬라이드 등장) */}
+              <motion.div
+                initial={{ opacity: 0, x: -35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="lg:col-span-6 space-y-4"
+              >
                 {gf2Project.features.map((feature, idx) => (
-                  <div
+                  <motion.div
                     key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: idx * 0.1,
+                      ease: 'easeOut',
+                    }}
                     className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-xs"
                   >
                     <div className="font-bold text-slate-900 dark:text-white text-base">
@@ -99,7 +119,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                     <div className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
                       {feature.description}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
 
                 <div className="flex flex-wrap gap-2 pt-2">
@@ -107,9 +127,16 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                     <TechTag key={idx} name={tech} isPrimary />
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="lg:col-span-6 space-y-4">
+              {/* 우측 대표 서비스 캡처 이미지들 (우측에서 슬라이드 등장) */}
+              <motion.div
+                initial={{ opacity: 0, x: 35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+                className="lg:col-span-6 space-y-4"
+              >
                 <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
                   <img
                     src={gf201}
@@ -125,65 +152,56 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                     <img src={gf207} alt="캐릭터 카드 컬렉션" className="w-full h-auto" />
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </BorderGlow>
         )}
 
-        {/* 사이드 프로젝트 그리드 */}
+        {/* 사이드 프로젝트 카드 그리드 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sideProjects.map((project) => (
-            <div
+          {sideProjects.map((project, idx) => (
+            <motion.div
               key={project.id}
-              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 flex flex-col"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-30px' }}
+              transition={{ duration: 0.4, delay: idx * 0.1, ease: 'easeOut' }}
             >
-              {project.imageKey && sideImageMap[project.imageKey] && (
-                <div className="h-48 overflow-hidden bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
-                  <img
-                    src={sideImageMap[project.imageKey]}
-                    alt={project.title}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              )}
-
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                <div>
-                  <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
-                    <span className="font-semibold text-emerald-600 dark:text-cyan-brand uppercase tracking-wider">
-                      {project.category}
-                    </span>
-                    <span>{project.period}</span>
+              <Card className="h-full border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-md hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 flex flex-col p-0">
+                {project.imageKey && sideImageMap[project.imageKey] && (
+                  <div className="h-48 overflow-hidden bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800">
+                    <img
+                      src={sideImageMap[project.imageKey]}
+                      alt={project.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <SplitText
-                    tag="h4"
-                    text={project.title}
-                    className="text-xl font-bold text-slate-900 dark:text-white mb-2"
-                    delay={20}
-                    duration={0.4}
-                    splitType="words"
-                    from={{ opacity: 0, y: 15 }}
-                    to={{ opacity: 1, y: 0 }}
-                  />
-                  <SplitText
-                    tag="p"
-                    text={project.description}
-                    className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"
-                    delay={15}
-                    duration={0.3}
-                    splitType="words"
-                    from={{ opacity: 0, y: 10 }}
-                    to={{ opacity: 1, y: 0 }}
-                  />
-                </div>
+                )}
 
-                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-                  {project.techStack.map((tech, idx) => (
-                    <TechTag key={idx} name={tech} isPrimary={false} showIcon />
-                  ))}
-                </div>
-              </div>
-            </div>
+                <CardContent className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-2">
+                      <span className="font-semibold text-emerald-600 dark:text-cyan-brand uppercase tracking-wider">
+                        {project.category}
+                      </span>
+                      <span>{project.period}</span>
+                    </div>
+                    <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                      {project.title}
+                    </h4>
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    {project.techStack.map((tIdx, tech) => (
+                      <TechTag key={tech} name={tIdx} isPrimary={false} showIcon />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

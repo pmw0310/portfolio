@@ -3,14 +3,13 @@ import type { LeadershipCard } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { SmartCountUp } from '@/components/CountUp';
 import { SpotlightCard } from '@/components/SpotlightCard';
-import SplitText from '@/components/SplitText';
 
 export type LeadershipSectionProps = {
   leadership: LeadershipCard[];
 };
 
 /**
- * 리더십 및 역량 섹션 컴포넌트 (SpotlightCard 광원 효과 지원)
+ * 리더십 및 역량 섹션 컴포넌트 (SpotlightCard 스크롤 진입 및 내부 폰트 효과 제거)
  * @param props LeadershipSectionProps
  * @returns 리더십 섹션 엘리먼트
  */
@@ -28,40 +27,27 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {leadership.map((item) => (
+          {leadership.map((item, idx) => (
             <SpotlightCard
               key={item.id}
               spotlightColor="rgba(16, 185, 129, 0.15)"
+              delay={idx * 0.1}
               className="rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 shadow-md dark:shadow-xl"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-emerald-600 dark:text-cyan-brand font-bold text-lg shadow-xs">
                   ⚡
                 </div>
-                <SplitText
-                  tag="h3"
-                  text={item.title}
-                  className="text-xl font-bold text-slate-900 dark:text-white"
-                  delay={20}
-                  duration={0.4}
-                  splitType="words"
-                  from={{ opacity: 0, y: 15 }}
-                  to={{ opacity: 1, y: 0 }}
-                />
-                <SplitText
-                  tag="p"
-                  text={item.description}
-                  className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed"
-                  delay={15}
-                  duration={0.3}
-                  splitType="words"
-                  from={{ opacity: 0, y: 10 }}
-                  to={{ opacity: 1, y: 0 }}
-                />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                  {item.description}
+                </p>
 
                 <ul className="space-y-2 pt-2 text-xs text-slate-500 dark:text-slate-400">
-                  {item.details.map((detail, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
+                  {item.details.map((detail, dIdx) => (
+                    <li key={dIdx} className="flex items-center gap-2">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-cyan-brand" />
                       <span>{detail}</span>
                     </li>
@@ -84,4 +70,3 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
     </section>
   );
 };
-

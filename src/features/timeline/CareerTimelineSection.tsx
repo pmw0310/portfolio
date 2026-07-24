@@ -3,16 +3,15 @@ import type { TimelineNode } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import BorderGlow from '@/components/BorderGlow';
 import { TechTag } from '@/components/TechTag';
-import SplitText from '@/components/SplitText';
 import { motion, AnimatePresence } from 'motion/react';
+import { Badge } from '@/components/ui/badge';
 
 export type CareerTimelineSectionProps = {
   timeline: TimelineNode[];
 };
 
 /**
- * 경력 타임라인 가로 1페이지 로드맵 섹션 컴포넌트
- * 이중 박스 잘림 없는 깔끔한 세련된 모던 미니 카드로 정돈된 가로 타임라인
+ * 경력 타임라인 가로 1페이지 로드맵 섹션 컴포넌트 (카드 등장 애니메이션 적용 및 내부 폰트 SplitText 제거)
  * @param props CareerTimelineSectionProps
  * @returns 타임라인 섹션 UI 엘리먼트
  */
@@ -25,18 +24,18 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
   );
 
   /**
-   * colorType별 뱃지 스타일 반환
+   * colorType별 뱃지 variant 반환
    */
-  const getBadgeStyle = (type: TimelineNode['colorType']) => {
+  const getBadgeVariant = (type: TimelineNode['colorType']) => {
     switch (type) {
       case 'cyan':
-        return 'text-emerald-700 bg-emerald-50 border-emerald-300 dark:text-cyan-brand dark:bg-cyan-brand/10 dark:border-cyan-brand/40';
+        return 'cyan';
       case 'amber':
-        return 'text-amber-700 bg-amber-50 border-amber-300 dark:text-amber-brand dark:bg-amber-brand/10 dark:border-amber-brand/40';
+        return 'amber';
       case 'green':
-        return 'text-green-700 bg-green-50 border-green-300 dark:text-green-brand dark:bg-green-brand/10 dark:border-green-brand/40';
+        return 'emerald';
       default:
-        return 'text-slate-600 bg-slate-100 border-slate-300 dark:text-slate-400 dark:bg-slate-800 dark:border-slate-700';
+        return 'secondary';
     }
   };
 
@@ -91,7 +90,7 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
 
         {/* 1페이지 가로 타임라인 컨테이너 */}
         <div className="mt-6 mb-4">
-          {/* 데스크탑 7컬럼 가로 로드맵 */}
+          {/* 데스크탑 7컬럼 가로 로드맵 (스크롤 진입 애니메이션) */}
           <div className="relative pt-10 pb-10 hidden md:block">
             {/* 중앙 가로 연결선 */}
             <div className="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-slate-300 via-emerald-400 to-amber-400 dark:from-slate-800 dark:via-cyan-brand dark:to-amber-brand rounded-full shadow-[0_0_12px_rgba(0,212,170,0.3)] z-0" />
@@ -103,8 +102,16 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                 const dotColor = getDotColors(item.colorType);
 
                 return (
-                  <div
+                  <motion.div
                     key={item.id}
+                    initial={{ opacity: 0, y: isTop ? -15 : 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.4,
+                      delay: idx * 0.08,
+                      ease: 'easeOut',
+                    }}
                     className="flex flex-col items-center justify-between min-h-[250px] relative group"
                   >
                     {/* 상단 카드 영역 (홀수 index) */}
@@ -118,13 +125,12 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 hover:-translate-y-0.5'
                           }`}
                         >
-                          <span
-                            className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold font-display border mb-1 shadow-2xs ${getBadgeStyle(
-                              item.colorType
-                            )}`}
+                          <Badge
+                            variant={getBadgeVariant(item.colorType)}
+                            className="text-[10px] px-2 py-0.5 mb-1"
                           >
                             {item.year}
-                          </span>
+                          </Badge>
                           <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                             {item.role}
                           </h4>
@@ -158,13 +164,12 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                               : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-700 hover:translate-y-0.5'
                           }`}
                         >
-                          <span
-                            className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-extrabold font-display border mb-1 shadow-2xs ${getBadgeStyle(
-                              item.colorType
-                            )}`}
+                          <Badge
+                            variant={getBadgeVariant(item.colorType)}
+                            className="text-[10px] px-2 py-0.5 mb-1"
                           >
                             {item.year}
-                          </span>
+                          </Badge>
                           <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                             {item.role}
                           </h4>
@@ -174,7 +179,7 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                         </button>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -195,13 +200,12 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                         : 'bg-white/90 dark:bg-slate-900/90 border-slate-200 dark:border-slate-800'
                     }`}
                   >
-                    <span
-                      className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold border mb-1.5 ${getBadgeStyle(
-                        item.colorType
-                      )}`}
+                    <Badge
+                      variant={getBadgeVariant(item.colorType)}
+                      className="text-[10px] px-2 py-0.5 mb-1.5"
                     >
                       {item.year}
-                    </span>
+                    </Badge>
                     <h4 className="text-xs font-bold text-slate-900 dark:text-white truncate">
                       {item.role}
                     </h4>
@@ -214,7 +218,7 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
             </div>
           </div>
 
-          {/* 하단 선택된 마일스톤 상세 디테일 보드 (BorderGlow 완벽 일체화) */}
+          {/* 하단 선택된 마일스톤 상세 디테일 보드 */}
           <div className="mt-4">
             <AnimatePresence mode="wait">
               {activeNode && (
@@ -235,66 +239,53 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                     <div className="p-6 rounded-[24px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800/80">
                         <div className="flex items-center gap-3">
-                          <span
-                            className={`px-3 py-1 rounded-full text-xs font-extrabold font-display border shadow-2xs ${getBadgeStyle(
-                              activeNode.colorType
-                            )}`}
+                          <Badge
+                            variant={getBadgeVariant(activeNode.colorType)}
+                            className="px-3 py-1 text-xs"
                           >
                             {activeNode.year}
-                          </span>
+                          </Badge>
                           <div>
-                            <SplitText
-                              tag="h3"
-                              text={activeNode.role}
-                              className="text-base md:text-lg font-bold text-slate-900 dark:text-white"
-                              delay={20}
-                              duration={0.4}
-                              splitType="words"
-                            />
-                            <SplitText
-                              tag="p"
-                              text={activeNode.description}
-                              className="text-xs text-slate-500 dark:text-slate-400"
-                              delay={15}
-                              duration={0.3}
-                              splitType="words"
-                            />
+                            <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white">
+                              {activeNode.role}
+                            </h3>
+                            <p className="text-xs text-slate-500 dark:text-slate-400">
+                              {activeNode.description}
+                            </p>
                           </div>
                         </div>
 
                         {/* 기술 스택 로고 태그 */}
-                        {activeNode.techStack &&
-                          activeNode.techStack.length > 0 && (
-                            <div className="flex flex-wrap gap-1.5 shrink-0">
-                              {activeNode.techStack.map((tech) => (
-                                <TechTag key={tech} name={tech} showIcon isPrimary />
-                              ))}
-                            </div>
-                          )}
+                        {activeNode.techStack && activeNode.techStack.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5 shrink-0">
+                            {activeNode.techStack.map((tech) => (
+                              <TechTag key={tech} name={tech} showIcon isPrimary />
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       {/* 세부 주요 성과 (Scope & Key Achievements) */}
-                      {activeNode.achievements &&
-                        activeNode.achievements.length > 0 && (
-                          <div className="pt-4">
-                            <h4 className="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 mb-2.5 uppercase tracking-wider">
-                              Key Achievements & Scope
-                            </h4>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs md:text-sm text-slate-700 dark:text-slate-300">
-                              {activeNode.achievements.map((ach, aIdx) => (
-                                <div
-                                  key={aIdx}
-                                  className="flex items-start gap-2 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800/80"
-                                >
-                                  <span className="text-emerald-500 dark:text-cyan-brand font-bold text-xs mt-0.5 shrink-0">
-                                    ✓
-                                  </span>
-                                  <span>{ach}</span>
-                                </div>
-                              ))}
-                            </div>
+                      {activeNode.achievements && activeNode.achievements.length > 0 && (
+                        <div className="pt-4">
+                          <h4 className="text-[11px] font-extrabold text-slate-400 dark:text-slate-500 mb-2.5 uppercase tracking-wider">
+                            Key Achievements & Scope
+                          </h4>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs md:text-sm text-slate-700 dark:text-slate-300">
+                            {activeNode.achievements.map((ach, aIdx) => (
+                              <div
+                                key={aIdx}
+                                className="flex items-start gap-2 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-xl border border-slate-100 dark:border-slate-800/80"
+                              >
+                                <span className="text-emerald-500 dark:text-cyan-brand font-bold text-xs mt-0.5 shrink-0">
+                                  ✓
+                                </span>
+                                <span>{ach}</span>
+                              </div>
+                            ))}
                           </div>
-                        )}
+                        </div>
+                      )}
                     </div>
                   </BorderGlow>
                 </motion.div>

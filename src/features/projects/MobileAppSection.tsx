@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import type { MajorProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
@@ -11,9 +12,14 @@ export type MobileAppSectionProps = {
   project?: MajorProject;
 };
 
+/**
+ * Cross-Platform Mobile App 섹션 컴포넌트 (좌/우 옆에서 슬라이드 등장 애니메이션 적용)
+ * @param props MobileAppSectionProps
+ * @returns 모바일 앱 섹션 엘리먼트
+ */
 export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) => {
   return (
-    <section className="py-24 bg-white dark:bg-slate-900 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <section className="py-24 bg-white dark:bg-slate-900 px-4 md:px-8 border-b border-slate-200 dark:border-slate-800 transition-colors overflow-hidden">
       <div className="max-w-6xl mx-auto space-y-12">
         <SectionHeader
           category="Cross-Platform Mobile App"
@@ -22,10 +28,25 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-6">
+          {/* 좌측 서브 특징 카드들 (좌측에서 슬라이드 인) */}
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="lg:col-span-5 space-y-6"
+          >
             {project?.features.map((feature, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  delay: idx * 0.1,
+                  ease: 'easeOut',
+                }}
                 className="p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-2 shadow-sm"
               >
                 <div className="font-bold text-lg text-emerald-600 dark:text-cyan-brand">
@@ -34,7 +55,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
                 <div className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
                   {feature.description}
                 </div>
-              </div>
+              </motion.div>
             ))}
 
             <div className="p-4 rounded-xl bg-emerald-50 dark:bg-cyan-brand/10 border border-emerald-200 dark:border-cyan-brand/30 text-emerald-700 dark:text-cyan-brand text-xs font-semibold">
@@ -48,12 +69,27 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
                 )
               )}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {/* 우측 앱 화면 이미지 목업들 (우측에서 슬라이드 인) */}
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+            className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-4"
+          >
             {[ew24, ew25, ew26, ew27].map((imgSrc, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.4,
+                  delay: idx * 0.08,
+                  ease: 'easeOut',
+                }}
                 className="rounded-2xl overflow-hidden border-2 border-slate-200 dark:border-slate-800 shadow-xl bg-slate-100 dark:bg-slate-950 hover:border-emerald-500 dark:hover:border-cyan-brand/50 transition-all hover:-translate-y-1"
               >
                 <img
@@ -61,9 +97,9 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
                   alt={`EnergyWatch App Screen ${idx + 1}`}
                   className="w-full h-auto object-cover"
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

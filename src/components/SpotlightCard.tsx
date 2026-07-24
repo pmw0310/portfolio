@@ -1,4 +1,7 @@
 import React, { useRef, useState } from 'react';
+import { motion } from 'motion/react';
+import { Card } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 /**
  * 마우스 움직임을 추적하는 스포트라이트 위치 타입
@@ -16,17 +19,20 @@ export type SpotlightCardProps = React.PropsWithChildren<{
   className?: string;
   /** 스포트라이트 광원 색상 (기본값: rgba(6, 182, 212, 0.15)) */
   spotlightColor?: string;
+  /** 애니메이션 지연 시간 (초) */
+  delay?: number;
 }>;
 
 /**
- * 마우스 커서를 따라 은은한 광원(Glow Gradient) 효과를 연출하는 카드 컴포넌트
+ * shadcn/ui Card 시스템과 은은한 스포트라이트 및 화면 진입 애니메이션이 결합된 카드 컴포넌트
  * @param props SpotlightCardProps
- * @returns 인터랙티브 카드 엘리먼트
+ * @returns 인터랙티브 스포트라이트 애니메이션 카드 엘리먼트
  */
 export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
   spotlightColor = 'rgba(6, 182, 212, 0.15)',
+  delay = 0,
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -59,24 +65,31 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
   };
 
   return (
-    <div
-      ref={divRef}
-      onMouseMove={handleMouseMove}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative rounded-xl border border-slate-200 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950 overflow-hidden p-5 transition-colors ${className}`}
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay, ease: 'easeOut' }}
     >
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 ease-in-out z-10"
-        style={{
-          opacity,
-          background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
-        }}
-      />
-      <div className="relative z-20">{children}</div>
-    </div>
+      <Card
+        ref={divRef}
+        onMouseMove={handleMouseMove}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={cn('relative overflow-hidden p-6', className)}
+      >
+        <div
+          className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 ease-in-out z-10"
+          style={{
+            opacity,
+            background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
+          }}
+        />
+        <div className="relative z-20">{children}</div>
+      </Card>
+    </motion.div>
   );
 };
 
