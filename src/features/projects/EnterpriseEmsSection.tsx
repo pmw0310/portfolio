@@ -7,6 +7,7 @@ import { SmartCountUp } from '@/components/CountUp';
 import BorderGlow from '@/components/BorderGlow';
 import SplitText from '@/components/SplitText';
 import { Badge } from '@/components/ui/badge';
+import { ImageCarousel } from '@/components/ImageCarousel';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';
 import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 
@@ -15,7 +16,7 @@ export type EnterpriseEmsSectionProps = {
 };
 
 /**
- * 주요 B2B 프로젝트 섹션 컴포넌트 (좌/우 슬라이드 등장 애니메이션 적용)
+ * 주요 B2B 프로젝트 섹션 컴포넌트 (슬라이더/갤러리 인터랙션 연동)
  * @param props EnterpriseEmsSectionProps
  * @returns 주요 B2B 프로젝트 섹션 엘리먼트
  */
@@ -37,7 +38,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
           description="레거시 마이그레이션부터 실시간 대용량 모니터링 시스템 설계까지 단독 주도한 주요 성과입니다."
         />
 
-        {/* 1. 무중단 레거시 마이그레이션 - 옆에서 슬라이드 등장 애니메이션 */}
+        {/* 1. 무중단 레거시 마이그레이션 */}
         {migrationProject && (
           <BorderGlow
             animated={true}
@@ -48,7 +49,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl [--card-bg:#f8fafc] dark:[--card-bg:#0f172a]"
             contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
-            {/* 좌측 설명 및 서브 카드들 (좌측에서 슬라이드 인) */}
+            {/* 좌측 설명 및 서브 카드들 */}
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -107,29 +108,33 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* 우측 대표 이미지 (우측에서 슬라이드 인) */}
+            {/* 우측 프로젝트 이미지 슬라이더 (Carousel) */}
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-              className="lg:col-span-6 space-y-4"
+              className="lg:col-span-6 space-y-3"
             >
-              <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">
-                <img
-                  src={ew14}
-                  alt="EnergyWatch 데이터 분석 페이지"
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+              {migrationProject.galleryImages && migrationProject.galleryImages.length > 0 ? (
+                <ImageCarousel
+                  images={migrationProject.galleryImages}
+                  aspectRatio="video"
                 />
-              </div>
-              <p className="text-xs text-center text-slate-500 dark:text-slate-400">
-                Next.js로 최초 전환된 핵심 데이터 분석 대시보드 화면
-              </p>
+              ) : (
+                <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">
+                  <img
+                    src={ew14}
+                    alt="EnergyWatch 데이터 분석 페이지"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
             </motion.div>
           </BorderGlow>
         )}
 
-        {/* 2. 실시간 전력 모니터링 & CMS 대시보드 - 옆에서 슬라이드 등장 애니메이션 */}
+        {/* 2. 실시간 전력 모니터링 & CMS 대시보드 */}
         {cmsProject && (
           <BorderGlow
             animated={true}
@@ -140,7 +145,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl [--card-bg:#f8fafc] dark:[--card-bg:#0f172a]"
             contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
-            {/* 오른쪽 text 영역 (우측에서 슬라이드 인) */}
+            {/* 오른쪽 text 영역 */}
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -199,24 +204,28 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* 왼쪽 이미지 영역 (좌측에서 슬라이드 인) */}
+            {/* 왼쪽 이미지 프로젝트 슬라이더 (Carousel) */}
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
-              className="lg:col-span-6 lg:order-1 space-y-4"
+              className="lg:col-span-6 lg:order-1 space-y-3"
             >
-              <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">
-                <img
-                  src={ew08}
-                  alt="CMS 모니터링 대시보드 화면"
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+              {cmsProject.galleryImages && cmsProject.galleryImages.length > 0 ? (
+                <ImageCarousel
+                  images={cmsProject.galleryImages}
+                  aspectRatio="video"
                 />
-              </div>
-              <p className="text-xs text-center text-slate-500 dark:text-slate-400">
-                WebSocket 실시간 데이터 수집 및 ECharts 시각화 화면
-              </p>
+              ) : (
+                <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">
+                  <img
+                    src={ew08}
+                    alt="CMS 모니터링 대시보드 화면"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
             </motion.div>
           </BorderGlow>
         )}

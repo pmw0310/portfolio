@@ -70,6 +70,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay, ease: 'easeOut' }}
+      className="h-full"
     >
       <Card
         ref={divRef}
@@ -78,7 +79,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
         onBlur={handleBlur}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={cn('relative overflow-hidden p-6', className)}
+        className={cn('relative overflow-hidden p-6 h-full flex flex-col justify-between', className)}
       >
         <div
           className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 ease-in-out z-10"
@@ -87,7 +88,7 @@ export const SpotlightCard: React.FC<SpotlightCardProps> = ({
             background: `radial-gradient(400px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 80%)`,
           }}
         />
-        <div className="relative z-20">{children}</div>
+        <div className="relative z-20 h-full flex flex-col justify-between">{children}</div>
       </Card>
     </motion.div>
   );

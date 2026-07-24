@@ -82,11 +82,7 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[350px] bg-cyan-500/5 dark:bg-cyan-500/10 blur-[140px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <SectionHeader
-          category="Career Path"
-          title="게임에서 웹, 그리고 모바일까지의 성장 스펙트럼"
-          description="2011년부터 축적해 온 프론트엔드 및 임베디드 기술 성장 흐름입니다."
-        />
+        <SectionHeader category="Career Path" title="게임에서 웹, 그리고 모바일까지" />
 
         {/* 1페이지 가로 타임라인 컨테이너 */}
         <div className="mt-6 mb-4">

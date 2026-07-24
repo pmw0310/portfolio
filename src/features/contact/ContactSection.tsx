@@ -140,7 +140,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
               <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-400">
                 <div className="flex items-center gap-2.5">
                   <MapPin className="w-4 h-4 text-emerald-500 dark:text-cyan-400 shrink-0" />
-                  <span>대한민국, 서울</span>
+                  <span>서울시 영등포구</span>
                 </div>
                 <div className="flex items-center gap-2.5">
                   <Clock className="w-4 h-4 text-amber-500 shrink-0" />

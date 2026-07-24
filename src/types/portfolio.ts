@@ -49,6 +49,15 @@ export type SkillGroup = {
 };
 
 /**
+ * 프로젝트 갤러리 이미지 정보 타입
+ */
+export type ProjectGalleryImage = {
+  url: string;
+  caption?: string;
+  title?: string;
+};
+
+/**
  * 주요 프로젝트 딥다이브 상세 데이터 타입
  */
 export type MajorProject = {
@@ -69,6 +78,7 @@ export type MajorProject = {
   architecturePoints?: string[];
   outcomes?: string[];
   imageKey?: string;
+  galleryImages?: ProjectGalleryImage[];
 };
 
 /**
@@ -84,6 +94,7 @@ export type SideProject = {
   techStack: string[];
   link?: string;
   imageKey?: string;
+  galleryImages?: ProjectGalleryImage[];
 };
 
 /**

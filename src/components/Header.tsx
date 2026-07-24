@@ -12,7 +12,7 @@ const navItems: NavItem[] = [
   { label: '소개', targetId: 'about' },
   { label: '경력', targetId: 'timeline' },
   { label: '주요 프로젝트', targetId: 'projects' },
-  { label: '리더십', targetId: 'leadership' },
+  { label: '소프트 스킬', targetId: 'leadership' },
   { label: '사이드 프로젝트', targetId: 'side-projects' },
   { label: '연락처', targetId: 'contact' },
 ];
