@@ -1,0 +1,2314 @@
+<!doctype html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>박민우 | 시니어 프론트엔드 개발자 포트폴리오</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+      />
+      <link
+         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+         rel="stylesheet"
+      />
+      <style>
+         /* ===== RESET ===== */
+         *,
+         *::before,
+         *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+         /* ===== CUSTOM PROPERTIES ===== */
+         :root {
+            --navy: #0b1120;
+            --navy-light: #1e293b;
+            --navy-mid: #334155;
+            --navy-watermark: #192338;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --cyan: #00d4aa;
+            --cyan-on-light: #00896e;
+            --amber: #ffb800;
+            --amber-on-light: #946800;
+            --green: #22c55e;
+            --green-on-light: #15803d;
+            --font-body: "Pretendard", -apple-system, sans-serif;
+            --font-display: "Space Grotesk", sans-serif;
+            --page-w: 1920px;
+            --page-h: 1080px;
+         }
+
+         /* ===== BASE ===== */
+         html {
+            font-size: 16px;
+         }
+         body {
+            font-family: var(--font-body);
+            color: var(--navy);
+            background: var(--gray-100);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+         }
+
+         /* ===== SLIDE ===== */
+         .slide {
+            width: var(--page-w);
+            height: var(--page-h);
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto 40px;
+            break-after: page;
+            break-inside: avoid;
+         }
+         .slide-dark {
+            background: var(--navy);
+            color: var(--white);
+         }
+         .slide-light {
+            background: var(--white);
+            color: var(--navy);
+         }
+         .slide-tinted {
+            background: var(--gray-50);
+            color: var(--navy);
+         }
+
+         /* ===== TYPOGRAPHY ===== */
+         .t-headline {
+            font-family: var(--font-body);
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            text-wrap: balance;
+            word-break: keep-all;
+         }
+         .t-display {
+            font-family: var(--font-display);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+         }
+         .t-stat {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.02em;
+            line-height: 1;
+         }
+
+         /* ===== WATERMARK ===== */
+         .watermark {
+            position: absolute;
+            font-family: var(--font-display);
+            font-weight: 800;
+            color: var(--navy-watermark);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+         }
+
+         /* ===== CARD ===== */
+         .card-dark {
+            border: 1px solid var(--navy-light);
+            border-radius: 14px;
+            background: var(--navy-light);
+         }
+
+         /* ===== TAG ===== */
+         .tech-tag {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.4;
+         }
+         .tech-tag-light {
+            background: var(--gray-100);
+            color: var(--gray-600);
+         }
+
+         /* ===== SCREENSHOT FRAME ===== */
+         .screenshot {
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+            display: block;
+         }
+         .screenshot-dark {
+            border-radius: 8px;
+            border: 1px solid var(--navy-mid);
+            display: block;
+         }
+
+         /* ===== PRINT ===== */
+         @page {
+            size: 1920px 1080px;
+            margin: 0;
+         }
+         @media print {
+            body {
+               background: none;
+               padding: 0;
+            }
+            .slide {
+               margin: 0;
+               border-radius: 0;
+            }
+            .slide,
+            .slide * {
+               print-color-adjust: exact;
+               -webkit-print-color-adjust: exact;
+            }
+         }
+         @media screen {
+            body {
+               padding: 40px 0;
+            }
+         }
+
+         /* ===== COVER ===== */
+         .cover-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+         }
+         .cover-name {
+            font-family: var(--font-display);
+            font-size: 96px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            color: var(--white);
+            margin-bottom: 16px;
+         }
+         .cover-title {
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--gray-400);
+            letter-spacing: -0.02em;
+            margin-bottom: 64px;
+         }
+         .cover-stats {
+            display: flex;
+            gap: 48px;
+         }
+         .cover-stat {
+            text-align: center;
+         }
+         .cover-stat-num {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 8px;
+         }
+         .cover-stat-label {
+            font-size: 17px;
+            color: var(--gray-400);
+         }
+         .cover-line {
+            width: 120px;
+            height: 2px;
+            background: var(--navy-mid);
+            margin-bottom: 48px;
+         }
+         .cover-grid-line {
+            position: absolute;
+            background: var(--navy-watermark);
+         }
+         .cover-grid-v {
+            width: 1px;
+            height: 100%;
+         }
+         .cover-grid-h {
+            width: 100%;
+            height: 1px;
+         }
+
+         /* ===== PROFILE ===== */
+         .profile-layout {
+            display: flex;
+            height: 100%;
+            padding: 100px;
+            gap: 80px;
+         }
+         .profile-left {
+            width: 38%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .profile-right {
+            width: 62%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .profile-intro {
+            font-size: 22px;
+            line-height: 1.7;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            word-break: keep-all;
+         }
+         .profile-highlight {
+            padding: 20px 24px;
+            border-left: 3px solid var(--cyan-on-light);
+            margin-bottom: 16px;
+            background: var(--gray-50);
+            border-radius: 0 8px 8px 0;
+         }
+         .profile-highlight-text {
+            font-size: 17px;
+            color: var(--navy);
+            line-height: 1.5;
+            word-break: keep-all;
+         }
+         .skill-category {
+            margin-bottom: 24px;
+         }
+         .skill-category-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+         }
+         .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+         }
+         .skill-tag {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+         }
+         .skill-tag-primary {
+            background: #e6faf5;
+            color: var(--cyan-on-light);
+            border: 1px solid #b3f0e0;
+         }
+
+         /* ===== TIMELINE ===== */
+         .timeline-layout {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 120px;
+         }
+         .timeline-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 80px;
+         }
+         .timeline-track {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 340px;
+         }
+         .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gray-200);
+            transform: translateY(-50%);
+         }
+         .timeline-nodes {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+         }
+         .timeline-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px;
+         }
+         .timeline-node-top {
+            flex-direction: column-reverse;
+         }
+         .timeline-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            margin: 16px 0;
+            flex-shrink: 0;
+         }
+         .timeline-dot-cyan {
+            background: var(--cyan-on-light);
+         }
+         .timeline-dot-amber {
+            background: var(--amber-on-light);
+         }
+         .timeline-dot-green {
+            background: var(--green-on-light);
+         }
+         .timeline-dot-gray {
+            background: var(--gray-400);
+         }
+         .timeline-info {
+            text-align: center;
+         }
+         .timeline-year {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+         }
+         .timeline-desc {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 1.5;
+            word-break: keep-all;
+         }
+         .timeline-role {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--cyan-on-light);
+            margin-bottom: 4px;
+         }
+
+         /* ===== SECTION DIVIDERS ===== */
+         .divider-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 160px;
+            z-index: 1;
+         }
+         .divider-label {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 24px;
+         }
+         .divider-title {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            text-wrap: balance;
+            word-break: keep-all;
+         }
+         .divider-sub {
+            font-size: 22px;
+            color: var(--gray-400);
+            line-height: 1.6;
+            max-width: 800px;
+            word-break: keep-all;
+         }
+         .divider-watermark {
+            position: absolute;
+            right: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--font-display);
+            font-size: 400px;
+            font-weight: 800;
+            color: var(--navy-watermark);
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+         }
+
+         /* ===== PROJECT SPLIT ===== */
+         .project-split {
+            display: flex;
+            height: 100%;
+         }
+         .project-text {
+            padding: 80px 60px 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .project-image {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+         }
+         .project-tag {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+         }
+         .project-title {
+            font-size: 38px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 28px;
+            text-wrap: balance;
+            word-break: keep-all;
+         }
+         .project-bullet {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+         }
+         .project-bullet-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 9px;
+         }
+         .project-bullet-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--gray-600);
+            word-break: keep-all;
+         }
+         .project-result {
+            margin-top: 24px;
+            padding: 16px 20px;
+            border-left: 3px solid var(--cyan-on-light);
+            background: var(--gray-50);
+            border-radius: 0 8px 8px 0;
+         }
+         .project-result-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.5;
+         }
+
+         /* ===== DASHBOARD (DARK) ===== */
+         .dashboard-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 80px 100px;
+         }
+         .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+         }
+         .dashboard-kpis {
+            display: flex;
+            gap: 48px;
+         }
+         .dashboard-kpi {
+            text-align: center;
+         }
+         .dashboard-kpi-num {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--cyan);
+            line-height: 1;
+            margin-bottom: 8px;
+         }
+         .dashboard-kpi-label {
+            font-size: 15px;
+            color: var(--gray-400);
+         }
+         .dashboard-body {
+            display: flex;
+            gap: 40px;
+            flex: 1;
+            min-height: 0;
+         }
+         .dashboard-screenshot-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
+         .dashboard-info-area {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+         }
+         .dashboard-info-card {
+            padding: 24px;
+            background: var(--navy-light);
+            border-radius: 12px;
+            border: 1px solid var(--navy-mid);
+         }
+         .dashboard-info-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--cyan);
+            margin-bottom: 8px;
+         }
+         .dashboard-info-text {
+            font-size: 15px;
+            color: var(--gray-400);
+            line-height: 1.6;
+            word-break: keep-all;
+         }
+
+         /* ===== IOT ARCHITECTURE ===== */
+         .arch-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 80px 120px;
+            justify-content: center;
+         }
+         .arch-title-area {
+            margin-bottom: 48px;
+         }
+         .arch-svg-area {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+         }
+         .arch-details {
+            display: flex;
+            gap: 32px;
+         }
+         .arch-detail-card {
+            flex: 1;
+            padding: 24px;
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            border-top: 3px solid var(--cyan-on-light);
+         }
+         .arch-detail-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+         }
+         .arch-detail-text {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.6;
+            word-break: keep-all;
+         }
+         .arch-clients {
+            margin-top: 40px;
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+         }
+         .arch-client {
+            padding: 10px 24px;
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 15px;
+            color: var(--gray-500);
+            font-weight: 500;
+         }
+
+         /* ===== FLUTTER ===== */
+         .flutter-layout {
+            display: flex;
+            height: 100%;
+         }
+         .flutter-text {
+            width: 42%;
+            padding: 80px 40px 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .flutter-phones {
+            width: 58%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 60px 60px 60px 0;
+         }
+         .flutter-phone {
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+            height: 520px;
+            width: auto;
+         }
+
+         /* ===== LEADERSHIP ===== */
+         .leader-layout {
+            height: 100%;
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .leader-cards {
+            display: flex;
+            gap: 32px;
+            margin-top: 48px;
+         }
+         .leader-card {
+            flex: 1;
+            padding: 40px 32px;
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+         }
+         .leader-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+         }
+         .leader-card-icon-cyan {
+            background: #e6faf5;
+         }
+         .leader-card-icon-amber {
+            background: #fff4cc;
+         }
+         .leader-card-icon-green {
+            background: #e6f9ed;
+         }
+         .leader-card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            word-break: keep-all;
+         }
+         .leader-card-text {
+            font-size: 16px;
+            color: var(--gray-500);
+            line-height: 1.65;
+            word-break: keep-all;
+         }
+         .leader-card-stat {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-200);
+         }
+         .leader-card-stat-num {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            font-size: 32px;
+            font-weight: 700;
+         }
+         .leader-card-stat-label {
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-top: 4px;
+         }
+
+         /* ===== GF2 ===== */
+         .gf2-layout {
+            display: flex;
+            height: 100%;
+         }
+         .gf2-images {
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 16px;
+            padding: 60px 30px 60px 80px;
+         }
+         .gf2-text {
+            width: 45%;
+            padding: 80px 80px 80px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .gf2-feature {
+            margin-bottom: 18px;
+            padding-left: 16px;
+            border-left: 2px solid var(--cyan-on-light);
+         }
+         .gf2-feature-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+         }
+         .gf2-feature-text {
+            font-size: 15px;
+            color: var(--gray-500);
+            line-height: 1.5;
+            word-break: keep-all;
+         }
+
+         /* ===== SIDE PROJECTS GRID ===== */
+         .sides-layout {
+            height: 100%;
+            padding: 80px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+         }
+         .sides-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+         }
+         .sides-card {
+            border: 1px solid var(--gray-200);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+         }
+         .sides-card-img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--gray-200);
+         }
+         .sides-card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+         }
+         .sides-card-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            word-break: keep-all;
+         }
+         .sides-card-year {
+            font-family: var(--font-display);
+            font-variant-numeric: tabular-nums;
+            font-size: 14px;
+            color: var(--gray-400);
+            margin-bottom: 8px;
+         }
+         .sides-card-desc {
+            font-size: 14px;
+            color: var(--gray-500);
+            line-height: 1.5;
+            word-break: keep-all;
+            flex: 1;
+         }
+         .sides-card-tech {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--cyan-on-light);
+            font-weight: 500;
+         }
+
+         /* ===== CONTACT ===== */
+         .contact-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+         }
+         .contact-thankyou {
+            font-family: var(--font-display);
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+         }
+         .contact-name {
+            font-size: 28px;
+            color: var(--gray-400);
+            margin-bottom: 48px;
+         }
+         .contact-links {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 64px;
+         }
+         .contact-link {
+            text-align: center;
+         }
+         .contact-link-label {
+            font-size: 14px;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+         }
+         .contact-link-value {
+            font-size: 18px;
+            color: var(--white);
+            text-decoration: none;
+         }
+         .contact-link-value:hover {
+            color: var(--cyan);
+         }
+         .contact-tagline {
+            font-size: 20px;
+            color: var(--gray-500);
+            word-break: keep-all;
+            text-wrap: balance;
+            text-align: center;
+         }
+      </style>
+   </head>
+   <script>
+      const adjustSlideScale = () => {
+         const slides = document.querySelectorAll(".slide");
+         const containerWidth = window.innerWidth;
+
+         // 화면 너비가 1920px보다 작을 때만 비율 계산 (최대 1배율로 제한)
+         const scale = Math.min(containerWidth / 1920, 1);
+
+         // 화면 전체 너비에서 줄어든 문서 너비를 빼고 반으로 나눠서 완벽한 중앙 여백 계산
+         const leftSpace = Math.max(0, (containerWidth - 1920 * scale) / 2);
+
+         slides.forEach((slide) => {
+            slide.style.transform = `scale(${scale})`;
+            slide.style.transformOrigin = "top left"; // 기준점을 중앙이 아닌 왼쪽 상단으로 변경
+
+            // 스크립트로 계산한 왼쪽 여백을 직접 주입
+            slide.style.marginLeft = `${leftSpace}px`;
+
+            // transform 축소로 인해 발생하는 하단 빈 공간 보정 (+ 기존 margin 40px 유지)
+            slide.style.marginBottom = `${-(1080 - 1080 * scale) + 40}px`;
+         });
+      };
+
+      // 윈도우 리사이즈 및 초기 로드 시 실행
+      window.addEventListener("resize", adjustSlideScale);
+      document.addEventListener("DOMContentLoaded", adjustSlideScale);
+   </script>
+   <body>
+      <!-- ============================================================
+     SLIDE 1 — COVER
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="Cover">
+         <div class="cover-grid-line cover-grid-v" style="left: 25%"></div>
+         <div class="cover-grid-line cover-grid-v" style="left: 50%"></div>
+         <div class="cover-grid-line cover-grid-v" style="left: 75%"></div>
+         <div class="cover-grid-line cover-grid-h" style="top: 33%"></div>
+         <div class="cover-grid-line cover-grid-h" style="top: 66%"></div>
+         <div class="cover-content">
+            <p
+               style="
+                  margin-bottom: 12px;
+                  font-size: 20px;
+                  color: #64748b;
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+               "
+            >
+               Frontend Developer Portfolio
+            </p>
+            <h1 class="cover-name">PARK MINWOO</h1>
+            <p class="cover-title">시니어 프론트엔드 개발자</p>
+            <div class="cover-line"></div>
+            <div class="cover-stats">
+               <div class="cover-stat">
+                  <div class="cover-stat-num">
+                     6<span style="font-size: 28px">+</span>
+                  </div>
+                  <div class="cover-stat-label">Years FE Experience</div>
+               </div>
+               <div class="cover-stat">
+                  <div class="cover-stat-num" style="color: var(--amber)">
+                     B2B
+                  </div>
+                  <div class="cover-stat-label">IoT SaaS Platform</div>
+               </div>
+               <div class="cover-stat">
+                  <div class="cover-stat-num" style="color: var(--green)">
+                     7<span style="font-size: 28px">+</span>
+                  </div>
+                  <div class="cover-stat-label">Side Projects</div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 2 — PROFILE & SKILLS
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="Profile and Skills">
+         <div class="profile-layout">
+            <div class="profile-left">
+               <p
+                  style="
+                     font-size: 15px;
+                     font-weight: 600;
+                     color: var(--cyan-on-light);
+                     letter-spacing: 0.08em;
+                     text-transform: uppercase;
+                     margin-bottom: 16px;
+                  "
+               >
+                  About Me
+               </p>
+               <h2
+                  class="t-headline"
+                  style="
+                     font-size: 34px;
+                     font-weight: 700;
+                     margin-bottom: 28px;
+                     line-height: 1.35;
+                  "
+               >
+                  사용자의 문제를 발견하고,<br />기술로 해결하는 개발자
+               </h2>
+               <p class="profile-intro">
+                  IoT 솔루션 기업에서 B2B SaaS 플랫폼의 프론트엔드를 단독
+                  구축하고 6년간 운영했습니다. 레거시 시스템의 현대화부터
+                  크로스플랫폼 앱 개발까지, 비즈니스가 필요로 하는 기술적 판단을
+                  내리고 실행해 왔습니다.
+               </p>
+               <div
+                  class="profile-highlight"
+                  style="border-left-color: var(--cyan-on-light)"
+               >
+                  <p class="profile-highlight-text">
+                     AngularJS&nbsp;&rarr;&nbsp;Next.js 점진적 마이그레이션으로
+                     서비스 무중단 현대화
+                  </p>
+               </div>
+               <div
+                  class="profile-highlight"
+                  style="border-left-color: var(--amber-on-light)"
+               >
+                  <p class="profile-highlight-text">
+                     WebSocket 실시간 모니터링 + ECharts 데이터 시각화 시스템
+                     설계
+                  </p>
+               </div>
+               <div
+                  class="profile-highlight"
+                  style="border-left-color: var(--green-on-light)"
+               >
+                  <p class="profile-highlight-text">
+                     Flutter 크로스플랫폼 앱 단독 개발, 양대 앱스토어 배포
+                  </p>
+               </div>
+            </div>
+            <div class="profile-right">
+               <div
+                  style="
+                     display: grid;
+                     grid-template-columns: 1fr 1fr;
+                     gap: 28px;
+                  "
+               >
+                  <div class="skill-category">
+                     <p class="skill-category-title">Frontend Core</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag skill-tag-primary">React</span>
+                        <span class="skill-tag skill-tag-primary">Next.js</span>
+                        <span class="skill-tag skill-tag-primary"
+                           >TypeScript</span
+                        >
+                        <span class="skill-tag">AngularJS</span>
+                        <span class="skill-tag">Vue.js</span>
+                     </div>
+                  </div>
+                  <div class="skill-category">
+                     <p class="skill-category-title">State &amp; Styling</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag">Redux</span>
+                        <span class="skill-tag">SWR</span>
+                        <span class="skill-tag">Provider</span>
+                        <span class="skill-tag">MUI</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Emotion</span>
+                        <span class="skill-tag">SCSS</span>
+                     </div>
+                  </div>
+                  <div class="skill-category">
+                     <p class="skill-category-title">Data Visualization</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag skill-tag-primary">ECharts</span>
+                        <span class="skill-tag">Recharts</span>
+                        <span class="skill-tag">D3.js</span>
+                        <span class="skill-tag">Leaflet</span>
+                     </div>
+                  </div>
+                  <div class="skill-category">
+                     <p class="skill-category-title">Mobile</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag skill-tag-primary">Flutter</span>
+                        <span class="skill-tag">Dart</span>
+                        <span class="skill-tag">Firebase</span>
+                        <span class="skill-tag">WebSocket</span>
+                     </div>
+                  </div>
+                  <div class="skill-category">
+                     <p class="skill-category-title">Backend (Side Projects)</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">Redis</span>
+                     </div>
+                  </div>
+                  <div class="skill-category">
+                     <p class="skill-category-title">Tools &amp; Infra</p>
+                     <div class="skill-tags">
+                        <span class="skill-tag">Vite</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">NGINX</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 3 — CAREER TIMELINE
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="Career Timeline">
+         <div class="timeline-layout">
+            <p
+               style="
+                  font-size: 15px;
+                  font-weight: 600;
+                  color: var(--cyan-on-light);
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 12px;
+               "
+            >
+               Career Path
+            </p>
+            <h2 class="t-headline timeline-title">
+               게임에서 웹, 그리고 모바일까지
+            </h2>
+            <div class="timeline-track">
+               <div class="timeline-line"></div>
+               <div class="timeline-nodes">
+                  <div class="timeline-node">
+                     <div class="timeline-info">
+                        <p class="timeline-year">2011</p>
+                        <p class="timeline-role" style="color: var(--gray-400)">
+                           게임 개발자
+                        </p>
+                        <p class="timeline-desc">
+                           C#, Unity<br />모바일 게임 개발
+                        </p>
+                     </div>
+                     <div class="timeline-dot timeline-dot-gray"></div>
+                     <div style="height: 80px"></div>
+                  </div>
+                  <div class="timeline-node timeline-node-top">
+                     <div style="height: 80px"></div>
+                     <div class="timeline-dot timeline-dot-gray"></div>
+                     <div class="timeline-info">
+                        <p class="timeline-year">2015</p>
+                        <p class="timeline-role" style="color: var(--gray-400)">
+                           전환기
+                        </p>
+                        <p class="timeline-desc">
+                           전자회로, MCU<br />직업훈련학교
+                        </p>
+                     </div>
+                  </div>
+                  <div class="timeline-node">
+                     <div class="timeline-info">
+                        <p class="timeline-year">2016</p>
+                        <p
+                           class="timeline-role"
+                           style="color: var(--amber-on-light)"
+                        >
+                           레티그리드 입사
+                        </p>
+                        <p class="timeline-desc">
+                           펌웨어 개발로 입사<br />프론트엔드로 전환
+                        </p>
+                     </div>
+                     <div class="timeline-dot timeline-dot-amber"></div>
+                     <div style="height: 80px"></div>
+                  </div>
+                  <div class="timeline-node timeline-node-top">
+                     <div style="height: 80px"></div>
+                     <div class="timeline-dot timeline-dot-cyan"></div>
+                     <div class="timeline-info">
+                        <p class="timeline-year">2018</p>
+                        <p class="timeline-role">EnergyWatch FE 리드</p>
+                        <p class="timeline-desc">
+                           B2B SaaS 플랫폼<br />프론트엔드 전체 책임
+                        </p>
+                     </div>
+                  </div>
+                  <div class="timeline-node">
+                     <div class="timeline-info">
+                        <p class="timeline-year">2020</p>
+                        <p
+                           class="timeline-role"
+                           style="color: var(--green-on-light)"
+                        >
+                           사이드 프로젝트
+                        </p>
+                        <p class="timeline-desc">
+                           커뮤니티 서비스 개발<br />7개+ 프로젝트 운영
+                        </p>
+                     </div>
+                     <div class="timeline-dot timeline-dot-green"></div>
+                     <div style="height: 80px"></div>
+                  </div>
+                  <div class="timeline-node timeline-node-top">
+                     <div style="height: 80px"></div>
+                     <div class="timeline-dot timeline-dot-cyan"></div>
+                     <div class="timeline-info">
+                        <p class="timeline-year">2023</p>
+                        <p class="timeline-role">Flutter 앱 출시</p>
+                        <p class="timeline-desc">
+                           크로스플랫폼 앱<br />양대 마켓 배포
+                        </p>
+                     </div>
+                  </div>
+                  <div class="timeline-node">
+                     <div class="timeline-info">
+                        <p class="timeline-year">2024</p>
+                        <p
+                           class="timeline-role"
+                           style="color: var(--amber-on-light)"
+                        >
+                           새로운 도전
+                        </p>
+                        <p class="timeline-desc">
+                           레티그리드 퇴사<br />다음 단계를 향해
+                        </p>
+                     </div>
+                     <div class="timeline-dot timeline-dot-amber"></div>
+                     <div style="height: 80px"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 4 — SEC-1 DIVIDER
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="Section 1 Divider">
+         <div class="divider-watermark">01</div>
+         <div class="divider-content">
+            <p class="divider-label">EnergyWatch &mdash; Architecture</p>
+            <h2 class="t-headline divider-title">
+               Legacy를<br />현대 아키텍처로
+            </h2>
+            <p class="divider-sub">
+               4년간의 AngularJS&nbsp;&rarr;&nbsp;Next.js 마이그레이션과 실시간
+               IoT 데이터 시각화 시스템 설계
+            </p>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 5 — ANGULARJS → NEXT.JS MIGRATION
+     ============================================================ -->
+      <section
+         class="slide slide-light"
+         aria-label="AngularJS to Next.js Migration"
+      >
+         <div class="project-split">
+            <div class="project-text" style="width: 45%">
+               <p class="project-tag" style="color: var(--cyan-on-light)">
+                  Legacy Migration
+               </p>
+               <h2 class="t-headline project-title">
+                  서비스 무중단<br />레거시 마이그레이션
+               </h2>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--cyan-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>문제:</strong> AngularJS 기반 레거시 시스템의
+                     유지보수 한계와 신기능 개발 병목
+                  </p>
+               </div>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--amber-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>판단:</strong> 전체 재작성 대신 가장 복잡한 데이터
+                     분석 페이지를 우선 전환하여 핵심 컴포넌트와 아키텍처를 먼저
+                     확보
+                  </p>
+               </div>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--green-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>변화:</strong> iframe + postMessage 기반 공존
+                     아키텍처 구현. MUI 테마 통일, origin 검증 보안 체계, 동적
+                     리사이징으로 끊김 없는 UX 확보
+                  </p>
+               </div>
+               <div class="project-result">
+                  <p class="project-result-text">
+                     서비스 중단 없이 핵심 페이지부터 점진적 전환 성공. 신기술
+                     도입의 안전한 경로를 확보
+                  </p>
+               </div>
+               <div
+                  style="
+                     display: flex;
+                     gap: 8px;
+                     margin-top: 20px;
+                     flex-wrap: wrap;
+                  "
+               >
+                  <span class="tech-tag tech-tag-light">Next.js</span>
+                  <span class="tech-tag tech-tag-light">AngularJS</span>
+                  <span class="tech-tag tech-tag-light">postMessage</span>
+                  <span class="tech-tag tech-tag-light">MUI</span>
+               </div>
+            </div>
+            <div
+               class="project-image"
+               style="width: 55%; background: var(--gray-50)"
+            >
+               <img
+                  src="images/01_EnergyWatch/ew_14.png"
+                  alt="EnergyWatch 데이터 분석 페이지 - Next.js로 최초 전환된 핵심 페이지"
+                  width="1905"
+                  height="675"
+                  class="screenshot"
+                  style="width: 100%; height: auto; max-width: 860px"
+               />
+               <p
+                  style="
+                     font-size: 14px;
+                     color: var(--gray-400);
+                     margin-top: 12px;
+                     text-align: center;
+                  "
+               >
+                  데이터 분석 페이지 &mdash; Next.js로 최초 전환된 핵심 페이지
+               </p>
+               <img
+                  src="images/01_EnergyWatch/ew_06.png"
+                  alt="EnergyWatch 대시보드"
+                  width="1905"
+                  height="1275"
+                  class="screenshot"
+                  style="
+                     width: 100%;
+                     height: auto;
+                     max-width: 860px;
+                     margin-top: 16px;
+                  "
+               />
+               <p
+                  style="
+                     font-size: 14px;
+                     color: var(--gray-400);
+                     margin-top: 12px;
+                     text-align: center;
+                  "
+               >
+                  통합 대시보드 &mdash; AngularJS 프레임 내 iframe으로 연동
+               </p>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 6 — CMS DASHBOARD (DARK)
+     [UPDATED] WebSocket 설명 수정: 주기적 API→초기 1회 API 후 WS 시작
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="CMS Dashboard">
+         <div class="dashboard-layout">
+            <div class="dashboard-header">
+               <div>
+                  <p
+                     style="
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: var(--cyan);
+                        letter-spacing: 0.08em;
+                        text-transform: uppercase;
+                        margin-bottom: 12px;
+                     "
+                  >
+                     Real-Time Monitoring
+                  </p>
+                  <h2
+                     class="t-headline"
+                     style="
+                        font-size: 38px;
+                        font-weight: 700;
+                        color: var(--white);
+                     "
+                  >
+                     실시간 전력 모니터링 시스템
+                  </h2>
+               </div>
+               <div class="dashboard-kpis">
+                  <div class="dashboard-kpi">
+                     <div class="dashboard-kpi-num">
+                        30<span style="font-size: 28px">+</span>
+                     </div>
+                     <div class="dashboard-kpi-label">차트 종류</div>
+                  </div>
+                  <div class="dashboard-kpi">
+                     <div class="dashboard-kpi-num" style="color: var(--amber)">
+                        WS
+                     </div>
+                     <div class="dashboard-kpi-label">WebSocket 실시간</div>
+                  </div>
+                  <div class="dashboard-kpi">
+                     <div class="dashboard-kpi-num" style="color: var(--green)">
+                        PDF
+                     </div>
+                     <div class="dashboard-kpi-label">보고서 자동 출력</div>
+                  </div>
+               </div>
+            </div>
+            <div class="dashboard-body">
+               <div class="dashboard-screenshot-area">
+                  <div
+                     style="
+                        display: flex;
+                        flex-direction: column;
+                        gap: 16px;
+                        width: 100%;
+                     "
+                  >
+                     <div style="display: flex; gap: 16px">
+                        <img
+                           src="images/01_EnergyWatch/ew_08.png"
+                           alt="CMS 모니터링 - 정상 상태"
+                           width="464"
+                           height="356"
+                           class="screenshot-dark"
+                           style="width: 33%; height: auto"
+                        />
+                        <img
+                           src="images/01_EnergyWatch/ew_09.png"
+                           alt="CMS 모니터링 - 경고 상태"
+                           width="464"
+                           height="360"
+                           class="screenshot-dark"
+                           style="width: 33%; height: auto"
+                        />
+                        <img
+                           src="images/01_EnergyWatch/ew_10.png"
+                           alt="CMS 모니터링 - 위험 상태"
+                           width="463"
+                           height="357"
+                           class="screenshot-dark"
+                           style="width: 33%; height: auto"
+                        />
+                     </div>
+                     <p
+                        style="
+                           font-size: 14px;
+                           color: var(--gray-500);
+                           text-align: center;
+                        "
+                     >
+                        CMS 통합 모니터링 &mdash; WebSocket으로 실시간 상태
+                        변화를 반영
+                     </p>
+                     <img
+                        src="images/01_EnergyWatch/ew_11.png"
+                        alt="장비 계층 페이지"
+                        width="1905"
+                        height="1148"
+                        class="screenshot-dark"
+                        style="
+                           width: 100%;
+                           height: auto;
+                           max-height: 380px;
+                           object-fit: cover;
+                           object-position: top;
+                        "
+                     />
+                     <p
+                        style="
+                           font-size: 14px;
+                           color: var(--gray-500);
+                           text-align: center;
+                        "
+                     >
+                        장비 계층 관리 페이지 &mdash; 사이트별 설비 구조를 트리
+                        형태로 시각화
+                     </p>
+                  </div>
+               </div>
+               <div class="dashboard-info-area">
+                  <div class="dashboard-info-card">
+                     <p class="dashboard-info-title">
+                        API 초기 로드 + WebSocket 전환
+                     </p>
+                     <p class="dashboard-info-text">
+                        초기 데이터 표시용으로 API를 1회 호출한 뒤, 성공하면
+                        WebSocket 통신을 시작하여 이후 실시간 데이터를 지속
+                        수신하는 구조로 설계
+                     </p>
+                  </div>
+                  <div class="dashboard-info-card">
+                     <p
+                        class="dashboard-info-title"
+                        style="color: var(--amber)"
+                     >
+                        ECharts 커스터마이징
+                     </p>
+                     <p class="dashboard-info-text">
+                        전기 흐름의 동적 표현 등 공식 문서에 없는 요구사항을
+                        속성 조합과 차트 레이어링으로 해결
+                     </p>
+                  </div>
+                  <div class="dashboard-info-card">
+                     <p
+                        class="dashboard-info-title"
+                        style="color: var(--green)"
+                     >
+                        재사용 차트 아키텍처
+                     </p>
+                     <p class="dashboard-info-text">
+                        데이터 로딩, 에러 처리 등 공통 로직을 추상화한
+                        컴포넌트로 수십 종류 차트의 개발 복잡도를 낮춤
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 7 — IOT DATA ARCHITECTURE
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="IoT Data Architecture">
+         <div class="arch-layout">
+            <div class="arch-title-area">
+               <p
+                  style="
+                     font-size: 14px;
+                     font-weight: 600;
+                     color: var(--cyan-on-light);
+                     letter-spacing: 0.08em;
+                     text-transform: uppercase;
+                     margin-bottom: 12px;
+                  "
+               >
+                  Data Pipeline
+               </p>
+               <h2 class="t-headline" style="font-size: 38px; font-weight: 700">
+                  현장에서 클라우드까지, 데이터 파이프라인
+               </h2>
+            </div>
+            <div class="arch-svg-area">
+               <svg
+                  viewBox="0 0 1400 260"
+                  width="1400"
+                  height="260"
+                  role="img"
+                  aria-label="DS-125 계측모듈에서 DS-CBN 전력품질미터를 거쳐 Cloud EMS로 이어지는 3-tier 데이터 파이프라인"
+                  xmlns="http://www.w3.org/2000/svg"
+               >
+                  <rect
+                     x="40"
+                     y="50"
+                     width="300"
+                     height="160"
+                     rx="16"
+                     fill="#F8FAFC"
+                     stroke="#00896E"
+                     stroke-width="2"
+                  />
+                  <text
+                     x="190"
+                     y="105"
+                     text-anchor="middle"
+                     font-family="Space Grotesk, sans-serif"
+                     font-size="28"
+                     font-weight="700"
+                     fill="#0B1120"
+                  >
+                     DS-125
+                  </text>
+                  <text
+                     x="190"
+                     y="140"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="18"
+                     fill="#64748B"
+                  >
+                     계측모듈
+                  </text>
+                  <text
+                     x="190"
+                     y="172"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="15"
+                     fill="#94A3B8"
+                  >
+                     현장 전력 데이터 수집
+                  </text>
+                  <line
+                     x1="350"
+                     y1="130"
+                     x2="490"
+                     y2="130"
+                     stroke="#00896E"
+                     stroke-width="2"
+                     stroke-dasharray="8,6"
+                  />
+                  <polygon points="490,124 510,130 490,136" fill="#00896E" />
+                  <text
+                     x="420"
+                     y="118"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="14"
+                     fill="#94A3B8"
+                  >
+                     RS-485
+                  </text>
+                  <rect
+                     x="520"
+                     y="50"
+                     width="300"
+                     height="160"
+                     rx="16"
+                     fill="#F8FAFC"
+                     stroke="#946800"
+                     stroke-width="2"
+                  />
+                  <text
+                     x="670"
+                     y="105"
+                     text-anchor="middle"
+                     font-family="Space Grotesk, sans-serif"
+                     font-size="28"
+                     font-weight="700"
+                     fill="#0B1120"
+                  >
+                     DS-CBN
+                  </text>
+                  <text
+                     x="670"
+                     y="140"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="18"
+                     fill="#64748B"
+                  >
+                     전력품질미터
+                  </text>
+                  <text
+                     x="670"
+                     y="172"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="15"
+                     fill="#94A3B8"
+                  >
+                     모듈 데이터 통합·전송
+                  </text>
+                  <line
+                     x1="830"
+                     y1="130"
+                     x2="970"
+                     y2="130"
+                     stroke="#946800"
+                     stroke-width="2"
+                     stroke-dasharray="8,6"
+                  />
+                  <polygon points="970,124 990,130 970,136" fill="#946800" />
+                  <text
+                     x="900"
+                     y="118"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="14"
+                     fill="#94A3B8"
+                  >
+                     LTE / Ethernet
+                  </text>
+                  <rect
+                     x="1000"
+                     y="50"
+                     width="340"
+                     height="160"
+                     rx="16"
+                     fill="#F8FAFC"
+                     stroke="#15803D"
+                     stroke-width="2"
+                  />
+                  <text
+                     x="1170"
+                     y="100"
+                     text-anchor="middle"
+                     font-family="Space Grotesk, sans-serif"
+                     font-size="28"
+                     font-weight="700"
+                     fill="#0B1120"
+                  >
+                     Cloud EMS
+                  </text>
+                  <text
+                     x="1170"
+                     y="135"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="18"
+                     fill="#64748B"
+                  >
+                     Energy Watch
+                  </text>
+                  <text
+                     x="1170"
+                     y="167"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="15"
+                     fill="#94A3B8"
+                  >
+                     웹 대시보드 &amp; 모바일 앱
+                  </text>
+                  <text
+                     x="1170"
+                     y="192"
+                     text-anchor="middle"
+                     font-family="Pretendard, sans-serif"
+                     font-size="15"
+                     fill="#94A3B8"
+                  >
+                     실시간 시각화 &amp; 보고서
+                  </text>
+               </svg>
+            </div>
+            <div class="arch-details">
+               <div class="arch-detail-card">
+                  <p class="arch-detail-title">대용량 시계열 최적화</p>
+                  <p class="arch-detail-text">
+                     사용자가 요청한 조회 기간을 내부적으로 분할, API를 병렬
+                     호출하고 프론트엔드 캐싱 + 데이터 샘플링을 복합 적용하여
+                     렌더링 성능 확보
+                  </p>
+               </div>
+               <div
+                  class="arch-detail-card"
+                  style="border-top-color: var(--amber-on-light)"
+               >
+                  <p class="arch-detail-title">TypeScript 타입 안전성</p>
+                  <p class="arch-detail-text">
+                     복잡한 시계열 데이터 변환 로직을 TypeScript 타입 시스템과
+                     lodash로 안정적으로 처리. 수십 종류 차트에 필요한 데이터
+                     구조를 타입으로 보장
+                  </p>
+               </div>
+               <div
+                  class="arch-detail-card"
+                  style="border-top-color: var(--green-on-light)"
+               >
+                  <p class="arch-detail-title">고객사 맞춤 설정</p>
+                  <p class="arch-detail-text">
+                     요금제, 알림 기준치, 표시 데이터 등 각 기업 고객의 설비
+                     환경에 맞춰 유연하게 변경 가능한 관리 시스템 구현
+                  </p>
+               </div>
+               <div
+                  class="arch-detail-card"
+                  style="border-top-color: var(--gray-400)"
+               >
+                  <p class="arch-detail-title">PDF 보고서 출력</p>
+                  <p class="arch-detail-text">
+                     월별/분기별 전력 사용 패턴, 요금 분석이 담긴 종합 보고서를
+                     웹에서 PDF로 다운로드할 수 있는 출력 기능 제공
+                  </p>
+               </div>
+            </div>
+            <div class="arch-clients">
+               <div class="arch-client">SK Hynix</div>
+               <div class="arch-client">경기도 태양광 350개소</div>
+               <div class="arch-client">GS칼텍스</div>
+               <div class="arch-client">삼천포 화력발전소</div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 8 — SEC-2 DIVIDER
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="Section 2 Divider">
+         <div class="divider-watermark">02</div>
+         <div class="divider-content">
+            <p class="divider-label">EnergyWatch &mdash; Expansion</p>
+            <h2 class="t-headline divider-title">웹을 넘어<br />모바일까지</h2>
+            <p class="divider-sub">
+               Flutter 크로스플랫폼 앱 단독 개발과 프론트엔드 팀 빌딩
+            </p>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 9 — FLUTTER MOBILE APP
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="Flutter Mobile App">
+         <div class="flutter-layout">
+            <div class="flutter-text">
+               <p class="project-tag" style="color: var(--cyan-on-light)">
+                  Cross-Platform Mobile
+               </p>
+               <h2 class="t-headline project-title">
+                  EnergyWatch<br />모바일 앱
+               </h2>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--cyan-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>문제:</strong> PC 중심 웹 UI로는 현장 엔지니어의
+                     모바일 접근성이 부재
+                  </p>
+               </div>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--amber-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>판단:</strong> Flutter로 iOS/Android 동시 개발. 웹
+                     UI를 그대로 옮기는 대신 모바일에 최적화된 UX 재설계
+                  </p>
+               </div>
+               <div class="project-bullet">
+                  <div
+                     class="project-bullet-icon"
+                     style="background: var(--green-on-light)"
+                  ></div>
+                  <p class="project-bullet-text">
+                     <strong>변화:</strong> Figma 프로토타입 도입으로
+                     디자인&rarr;개발 프로세스 전환. 실시간 대시보드 + 데이터
+                     요약 + 푸시 알림까지 모바일 핵심 기능 완성
+                  </p>
+               </div>
+               <div class="project-result">
+                  <p class="project-result-text">
+                     양대 앱스토어 배포 완료. 인증서 관리부터 스토어 심사까지
+                     배포 파이프라인 전과정을 독립 수행
+                  </p>
+               </div>
+               <div
+                  style="
+                     display: flex;
+                     gap: 8px;
+                     margin-top: 20px;
+                     flex-wrap: wrap;
+                  "
+               >
+                  <span class="tech-tag tech-tag-light">Flutter</span>
+                  <span class="tech-tag tech-tag-light">Dart</span>
+                  <span class="tech-tag tech-tag-light">Provider</span>
+                  <span class="tech-tag tech-tag-light">WebSocket</span>
+                  <span class="tech-tag tech-tag-light">Firebase</span>
+               </div>
+            </div>
+            <div class="flutter-phones">
+               <img
+                  src="images/01_EnergyWatch/ew_24.jpg"
+                  alt="EnergyWatch 앱 - 대시보드"
+                  width="666"
+                  height="1440"
+                  class="flutter-phone"
+               />
+               <img
+                  src="images/01_EnergyWatch/ew_25.jpg"
+                  alt="EnergyWatch 앱 - 모니터링"
+                  width="666"
+                  height="1440"
+                  class="flutter-phone"
+               />
+               <img
+                  src="images/01_EnergyWatch/ew_26.jpg"
+                  alt="EnergyWatch 앱 - 차트"
+                  width="666"
+                  height="1440"
+                  class="flutter-phone"
+               />
+               <img
+                  src="images/01_EnergyWatch/ew_27.jpg"
+                  alt="EnergyWatch 앱 - 설정"
+                  width="666"
+                  height="1440"
+                  class="flutter-phone"
+               />
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 10 — LEADERSHIP & PROCESS
+     ============================================================ -->
+      <section class="slide slide-tinted" aria-label="Leadership and Process">
+         <div class="leader-layout">
+            <p
+               style="
+                  font-size: 15px;
+                  font-weight: 600;
+                  color: var(--cyan-on-light);
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 12px;
+               "
+            >
+               Soft Skills
+            </p>
+            <h2 class="t-headline" style="font-size: 40px; font-weight: 700">
+               기술을 넘어, 팀과 프로세스
+            </h2>
+            <div class="leader-cards">
+               <div class="leader-card">
+                  <div class="leader-card-icon leader-card-icon-cyan">
+                     <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#00896E"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        aria-hidden="true"
+                     >
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                     </svg>
+                  </div>
+                  <h3 class="leader-card-title">프론트엔드 단독 구축</h3>
+                  <p class="leader-card-text">
+                     약 4년간 B2B SaaS 플랫폼의 프론트엔드 전반을 1인으로 책임.
+                     기술 스택 선정, 아키텍처 설계부터 전체 기능 개발, 배포,
+                     운영까지 주도
+                  </p>
+                  <div class="leader-card-stat">
+                     <p
+                        class="leader-card-stat-num"
+                        style="color: var(--cyan-on-light)"
+                     >
+                        ~4
+                     </p>
+                     <p class="leader-card-stat-label">년간 FE 독립 운영</p>
+                  </div>
+               </div>
+               <div class="leader-card">
+                  <div class="leader-card-icon leader-card-icon-amber">
+                     <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#946800"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        aria-hidden="true"
+                     >
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                     </svg>
+                  </div>
+                  <h3 class="leader-card-title">주니어 채용 &amp; 멘토링</h3>
+                  <p class="leader-card-text">
+                     프론트엔드 팀 확장을 위한 채용 프로세스 참여. 코드 리뷰와
+                     페어 프로그래밍으로 신규 개발자가 팀에 빠르게 적응하도록
+                     이끔
+                  </p>
+                  <div class="leader-card-stat">
+                     <p
+                        class="leader-card-stat-num"
+                        style="color: var(--amber-on-light)"
+                     >
+                        CR
+                     </p>
+                     <p class="leader-card-stat-label">
+                        Code Review &amp; Pair Programming
+                     </p>
+                  </div>
+               </div>
+               <div class="leader-card">
+                  <div class="leader-card-icon leader-card-icon-green">
+                     <svg
+                        width="28"
+                        height="28"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#15803D"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        aria-hidden="true"
+                     >
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                     </svg>
+                  </div>
+                  <h3 class="leader-card-title">UI/UX 직접 설계</h3>
+                  <p class="leader-card-text">
+                     전담 디자이너 없이 사용자 친화적인 UI를 완성. 개발 도중
+                     Figma를 독학하여 프로토타입&rarr;개발 프로세스를 스스로
+                     도입하고 정착
+                  </p>
+                  <div class="leader-card-stat">
+                     <p
+                        class="leader-card-stat-num"
+                        style="color: var(--green-on-light)"
+                     >
+                        Figma
+                     </p>
+                     <p class="leader-card-stat-label">독학 후 프로세스 도입</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 11 — SEC-3 DIVIDER
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="Section 3 Divider">
+         <div class="divider-watermark">03</div>
+         <div class="divider-content">
+            <p class="divider-label">Side Projects</p>
+            <h2 class="t-headline divider-title">
+               끊임없이<br />만드는 개발자
+            </h2>
+            <p class="divider-sub">
+               업무 밖에서도 문제를 발견하고, 코드로 해결하는 7개의 사이드
+               프로젝트
+            </p>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 12 — 소녀전선2 BY BLACKOLF
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="GF2 by BlackOlf">
+         <div class="gf2-layout">
+            <div class="gf2-images">
+               <img
+                  src="images/02_gf2/gf2_01.png"
+                  alt="소녀전선2 BlackOlf - 메인 페이지"
+                  width="1295"
+                  height="738"
+                  class="screenshot"
+                  style="width: 100%; height: auto"
+               />
+               <div style="display: flex; gap: 16px">
+                  <img
+                     src="images/02_gf2/gf2_03.png"
+                     alt="소녀전선2 - 패키지 가치 분석"
+                     width="1292"
+                     height="726"
+                     class="screenshot"
+                     style="width: 50%; height: auto"
+                  />
+                  <img
+                     src="images/02_gf2/gf2_07.png"
+                     alt="소녀전선2 - 캐릭터 카드 컬렉션"
+                     width="1383"
+                     height="745"
+                     class="screenshot"
+                     style="width: 50%; height: auto"
+                  />
+               </div>
+            </div>
+            <div class="gf2-text">
+               <p class="project-tag" style="color: var(--cyan-on-light)">
+                  Community Platform &mdash; 운영 중
+               </p>
+               <h2
+                  class="t-headline"
+                  style="font-size: 32px; font-weight: 700; margin-bottom: 8px"
+               >
+                  소녀전선2 by BlackOlf
+               </h2>
+               <p style="margin-bottom: 28px">
+                  <a
+                     href="https://gf2.blackolf.dev"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     style="
+                        font-size: 16px;
+                        color: var(--cyan-on-light);
+                        text-decoration: none;
+                        font-family: var(--font-display);
+                        font-weight: 600;
+                        transition: opacity 0.2s;
+                     "
+                  >
+                     gf2.blackolf.dev
+                  </a>
+               </p>
+               <div class="gf2-feature">
+                  <p class="gf2-feature-title">ISR + Google Sheets 아키텍처</p>
+                  <p class="gf2-feature-text">
+                     Sheets API로 데이터를 가져와 페이지를 미리 생성, 변경 시
+                     필요한 페이지만 재빌드하는 유연한 구조
+                  </p>
+               </div>
+               <div
+                  class="gf2-feature"
+                  style="border-left-color: var(--amber-on-light)"
+               >
+                  <p class="gf2-feature-title">가챠 확률 시뮬레이터</p>
+                  <p class="gf2-feature-text">
+                     천장 시스템까지 반영한 확률 계산 + Motion 라이브러리 연출로
+                     실제 소환 경험을 웹에서 재현
+                  </p>
+               </div>
+               <div
+                  class="gf2-feature"
+                  style="border-left-color: var(--green-on-light)"
+               >
+                  <p class="gf2-feature-title">유료 패키지 가치 분석</p>
+                  <p class="gf2-feature-text">
+                     인게임 가치를 자동 계산하고 효율순/가격순 정렬로 사용자에게
+                     합리적인 소비 판단 도구 제공
+                  </p>
+               </div>
+               <div
+                  class="gf2-feature"
+                  style="border-left-color: var(--gray-400)"
+               >
+                  <p class="gf2-feature-title">풀스택 + API 문서화</p>
+                  <p class="gf2-feature-text">
+                     NestJS + Swagger 연동으로 API 문서 자동화. Phaser 기반
+                     미니게임, 서버 점수 검증까지
+                  </p>
+               </div>
+               <div
+                  style="
+                     display: flex;
+                     gap: 8px;
+                     margin-top: 20px;
+                     flex-wrap: wrap;
+                  "
+               >
+                  <span class="tech-tag tech-tag-light">Next.js</span>
+                  <span class="tech-tag tech-tag-light">NestJS</span>
+                  <span class="tech-tag tech-tag-light">MongoDB</span>
+                  <span class="tech-tag tech-tag-light">Vercel</span>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 13 — SIDE PROJECTS GRID
+     [UPDATED] 뉴럴클라우드 설명 수정 + 알고리즘 프로젝트 분리 추가
+     ============================================================ -->
+      <section class="slide slide-light" aria-label="Side Projects Collection">
+         <div class="sides-layout">
+            <p
+               style="
+                  font-size: 15px;
+                  font-weight: 600;
+                  color: var(--cyan-on-light);
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 12px;
+               "
+            >
+               More Projects
+            </p>
+            <h2 class="t-headline" style="font-size: 40px; font-weight: 700">
+               문제를 발견하면, 만든다
+            </h2>
+            <div class="sides-grid">
+               <!-- 스팀 그리드 메이커 -->
+               <div class="sides-card">
+                  <img
+                     src="images/03_grid/steam_01.gif"
+                     alt="스팀 그리드 메이커 데모"
+                     width="480"
+                     height="441"
+                     class="sides-card-img"
+                  />
+                  <div class="sides-card-body">
+                     <h3 class="sides-card-title">스팀 그리드 메이커</h3>
+                     <p class="sides-card-year">2024</p>
+                     <p class="sides-card-desc">
+                        Fabric.js로 Canvas를 직접 제어, GIF까지 편집 가능한
+                        이미지 에디터. 클라이언트 사이드에서 모든 처리 완료
+                     </p>
+                     <p class="sides-card-tech">Next.js &middot; Fabric.js</p>
+                  </div>
+               </div>
+               <!-- 뉴럴클라우드 알고리즘 정보 [NEW - 고객 요청으로 추가] -->
+               <div class="sides-card">
+                  <img
+                     src="images/05_nc/algo_01.png"
+                     alt="뉴럴클라우드 알고리즘 정보 페이지"
+                     width="604"
+                     height="833"
+                     class="sides-card-img"
+                  />
+                  <div class="sides-card-body">
+                     <h3 class="sides-card-title">뉴럴클라우드 알고리즘</h3>
+                     <p class="sides-card-year">2023</p>
+                     <p class="sides-card-desc">
+                        요일별 아이템 획득 정보를 정리하고, 캐릭터별 필요 통계를
+                        제공하여 효율적인 파밍 우선순위 결정을 지원
+                     </p>
+                     <p class="sides-card-tech">
+                        React &middot; Recharts &middot; TypeScript
+                     </p>
+                  </div>
+               </div>
+               <!-- 천애명월도M -->
+               <div class="sides-card">
+                  <img
+                     src="images/06_map/map_01.png"
+                     alt="천애명월도M 인터랙티브 지도"
+                     width="720"
+                     height="644"
+                     class="sides-card-img"
+                  />
+                  <div class="sides-card-body">
+                     <h3 class="sides-card-title">천애명월도M 지도</h3>
+                     <p class="sides-card-year">2022</p>
+                     <p class="sides-card-desc">
+                        Leaflet으로 게임 좌표 시스템을 웹에 구현. 카테고리별
+                        마커 필터링으로 도감 위치를 효율적으로 탐색
+                     </p>
+                     <p class="sides-card-tech">
+                        React &middot; Leaflet &middot; TypeScript
+                     </p>
+                  </div>
+               </div>
+               <!-- 라스트오리진 -->
+               <div class="sides-card">
+                  <img
+                     src="images/07_lo/vote_01.png"
+                     alt="라스트오리진 캐릭터 투표"
+                     width="644"
+                     height="391"
+                     class="sides-card-img"
+                  />
+                  <div class="sides-card-body">
+                     <h3 class="sides-card-title">라스트오리진 투표</h3>
+                     <p class="sides-card-year">2020</p>
+                     <p class="sides-card-desc">
+                        GraphQL + Redis 캐싱으로 실시간 투표 집계. 세션 기반
+                        중복 투표 방지와 빠른 응답속도 구현
+                     </p>
+                     <p class="sides-card-tech">
+                        Next.js &middot; GraphQL &middot; Redis
+                     </p>
+                  </div>
+               </div>
+               <!-- 동물의숲 -->
+               <div class="sides-card">
+                  <img
+                     src="images/08_radish/radish_01.png"
+                     alt="동물의숲 무 가격 예측"
+                     width="639"
+                     height="578"
+                     class="sides-card-img"
+                  />
+                  <div class="sides-card-body">
+                     <h3 class="sides-card-title">동물의숲 무 예측</h3>
+                     <p class="sides-card-year">2020</p>
+                     <p class="sides-card-desc">
+                        알려진 가격 패턴 알고리즘 기반으로 해당 주의 무 가격
+                        등락을 예측. Vue.js 첫 토이 프로젝트
+                     </p>
+                     <p class="sides-card-tech">Vue.js &middot; JavaScript</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <!-- ============================================================
+     SLIDE 14 — CONTACT
+     [UPDATED] 개인 포트폴리오 페이지 URL 추가
+     ============================================================ -->
+      <section class="slide slide-dark" aria-label="Contact">
+         <div class="cover-grid-line cover-grid-v" style="left: 25%"></div>
+         <div class="cover-grid-line cover-grid-v" style="left: 50%"></div>
+         <div class="cover-grid-line cover-grid-v" style="left: 75%"></div>
+         <div class="cover-grid-line cover-grid-h" style="top: 33%"></div>
+         <div class="cover-grid-line cover-grid-h" style="top: 66%"></div>
+         <div class="contact-content">
+            <h2 class="contact-thankyou">THANK YOU</h2>
+            <p class="contact-name">박민우 &mdash; 시니어 프론트엔드 개발자</p>
+            <div class="contact-links">
+               <div class="contact-link">
+                  <p class="contact-link-label">GitHub</p>
+                  <a
+                     target="_blank"
+                     href="https://github.com/pmw0310"
+                     class="contact-link-value"
+                     >github.com/pmw0310</a
+                  >
+               </div>
+               <div class="contact-link">
+                  <p class="contact-link-label">Portfolio</p>
+                  <a
+                     target="_blank"
+                     href="https://mammoth-llama-22f.notion.site/26ec51a3be4a812cb04dd52358c83113"
+                     class="contact-link-value"
+                     >Notion Portfolio</a
+                  >
+               </div>
+            </div>
+            <div
+               style="
+                  width: 120px;
+                  height: 2px;
+                  background: var(--navy-mid);
+                  margin-bottom: 40px;
+               "
+            ></div>
+            <p class="contact-tagline">
+               사용자의 문제를 발견하고, 코드로 해결합니다.
+            </p>
+         </div>
+      </section>
+   </body>
+</html>
