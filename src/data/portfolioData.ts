@@ -101,13 +101,13 @@ export const portfolioData: PortfolioData = {
     {
       category: 'State & Styling',
       skills: [
-        { name: 'Redux', isPrimary: false },
-        { name: 'SWR', isPrimary: false },
-        { name: 'Provider', isPrimary: false },
-        { name: 'Tailwind CSS', isPrimary: true },
-        { name: 'MUI', isPrimary: false },
+        { name: 'Redux', isPrimary: true },
+        { name: 'SWR', isPrimary: true },
+        { name: 'MUI', isPrimary: true },
+        { name: 'Styled Components', isPrimary: true },
+        { name: 'SCSS', isPrimary: true },
         { name: 'Emotion', isPrimary: false },
-        { name: 'SCSS', isPrimary: false },
+        { name: 'Tailwind CSS', isPrimary: false },
       ],
     },
     {
@@ -124,6 +124,7 @@ export const portfolioData: PortfolioData = {
       skills: [
         { name: 'Flutter', isPrimary: true },
         { name: 'Dart', isPrimary: true },
+        { name: 'Provider', isPrimary: false },
         { name: 'Firebase', isPrimary: false },
         { name: 'WebSocket', isPrimary: false },
       ],
@@ -142,6 +143,7 @@ export const portfolioData: PortfolioData = {
       category: 'Tools & Infra',
       skills: [
         { name: 'Vite', isPrimary: true },
+        { name: 'Webpack', isPrimary: false },
         { name: 'Git', isPrimary: false },
         { name: 'Figma', isPrimary: false },
         { name: 'Vercel', isPrimary: false },
