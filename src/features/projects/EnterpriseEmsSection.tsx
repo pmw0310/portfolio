@@ -5,7 +5,6 @@ import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import { SmartCountUp } from '@/components/CountUp';
 import BorderGlow from '@/components/BorderGlow';
-import SplitText from '@/components/SplitText';
 import { Badge } from '@/components/ui/badge';
 import { ImageCarousel } from '@/components/ImageCarousel';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';

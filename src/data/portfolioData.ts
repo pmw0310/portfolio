@@ -11,7 +11,6 @@ import type {
 import ew05 from '@/assets/images/01_EnergyWatch/ew_05.png';
 import ew06 from '@/assets/images/01_EnergyWatch/ew_06.png';
 import ew07 from '@/assets/images/01_EnergyWatch/ew_07.png';
-import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 import ew11 from '@/assets/images/01_EnergyWatch/ew_11.png';
 import ew12 from '@/assets/images/01_EnergyWatch/ew_12.png';
 import ew13 from '@/assets/images/01_EnergyWatch/ew_13.png';
