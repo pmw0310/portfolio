@@ -2,6 +2,7 @@ import React from 'react';
 import type { MajorProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
+import { SmartCountUp } from '@/components/CountUp';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';
 import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 
@@ -100,7 +101,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
                     className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center shadow-xs"
                   >
                     <div className="text-2xl md:text-3xl font-black font-display text-emerald-600 dark:text-cyan-brand">
-                      {kpi.statNumber || '30+'}
+                      <SmartCountUp value={kpi.statNumber || '30+'} />
                     </div>
                     <div className="text-xs text-slate-600 dark:text-slate-400 mt-1 font-medium">
                       {kpi.statLabel || kpi.title}
@@ -108,6 +109,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
                   </div>
                 ))}
               </div>
+
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {cmsProject.techStack.map((tech, idx) => (

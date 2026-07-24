@@ -1,5 +1,6 @@
 import React from 'react';
 import type { PersonalInfo } from '@/types/portfolio';
+import { SmartCountUp } from '@/components/CountUp';
 
 export type HeroSectionProps = {
   profile: PersonalInfo;
@@ -51,7 +52,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
                   stat.colorClass || 'text-emerald-600 dark:text-cyan-brand'
                 } mb-2 group-hover:scale-105 transition-transform`}
               >
-                {stat.value}
+                <SmartCountUp value={stat.value} duration={0.3} />
               </div>
               <div className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium">
                 {stat.label}
@@ -63,3 +64,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ profile }) => {
     </section>
   );
 };
+

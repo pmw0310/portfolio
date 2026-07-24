@@ -1,6 +1,7 @@
 import React from 'react';
 import type { LeadershipCard } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
+import { SmartCountUp } from '@/components/CountUp';
 
 export type LeadershipSectionProps = {
   leadership: LeadershipCard[];
@@ -48,7 +49,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
 
               <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-baseline justify-between">
                 <span className="text-3xl font-black font-display text-emerald-600 dark:text-cyan-brand">
-                  {item.metricNumber}
+                  <SmartCountUp value={item.metricNumber} />
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
                   {item.metricLabel}
@@ -61,3 +62,4 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
     </section>
   );
 };
+
