@@ -36,6 +36,11 @@ export const portfolioData: PortfolioData = {
       description: 'C#, Unity 모바일 게임 개발',
       colorType: 'gray',
       isTop: false,
+      techStack: ['C#', 'Unity', 'Mobile'],
+      achievements: [
+        '모바일 2D/3D 게임 렌더링 및 물리 엔진 로직 개발',
+        '객체 지향 프로그래밍 기초 축적',
+      ],
     },
     {
       id: 't-2015',
@@ -44,6 +49,11 @@ export const portfolioData: PortfolioData = {
       description: '전자회로, MCU 직업훈련학교',
       colorType: 'gray',
       isTop: true,
+      techStack: ['C', 'ATmega', 'STM32', 'Arduino'],
+      achievements: [
+        '직업훈련학교 C 언어 및 ATmega MCU 과정을 통한 기초 축적',
+        '개인 학습으로 STM32 및 아두이노(Arduino) 임베디드 제어 파이프라인 습득',
+      ],
     },
     {
       id: 't-2016',
@@ -52,6 +62,11 @@ export const portfolioData: PortfolioData = {
       description: '펌웨어 개발로 입사 → 프론트엔드로 전환',
       colorType: 'amber',
       isTop: false,
+      techStack: ['JavaScript', 'AngularJS'],
+      achievements: [
+        'IoT 게이트웨이 웹 대시보드 구축',
+        'IoT 데이터 인터페이스 자체 설계',
+      ],
     },
     {
       id: 't-2018',
@@ -60,6 +75,12 @@ export const portfolioData: PortfolioData = {
       description: 'B2B SaaS 플랫폼 프론트엔드 전체 책임',
       colorType: 'cyan',
       isTop: true,
+      techStack: ['React', 'TypeScript', 'Redux', 'MUI', 'SWR', 'ECharts'],
+      achievements: [
+        '10,000+ 센서 관제 대용량 시리얼 차트 실시간 렌더링 최적화',
+        'Next.js 기반 SEO 통합 및 빌드 크기 45% 단축',
+        'FE 공통 디자인 시스템 컴포넌트 레포 구축',
+      ],
     },
     {
       id: 't-2020',
@@ -68,6 +89,11 @@ export const portfolioData: PortfolioData = {
       description: '커뮤니티 서비스 개발 (7개+ 프로젝트 운영)',
       colorType: 'green',
       isTop: false,
+      techStack: ['React', 'Next.js', 'Vercel', 'Tailwind CSS'],
+      achievements: [
+        '실사용자 유지 사이드 서비스 7건 런칭 및 CI/CD 전개',
+        '반응형 UI/UX 및 웹 성능 지표 극대화',
+      ],
     },
     {
       id: 't-2023',
@@ -76,6 +102,11 @@ export const portfolioData: PortfolioData = {
       description: '크로스플랫폼 앱 양대 마켓 배포',
       colorType: 'cyan',
       isTop: true,
+      techStack: ['Flutter', 'Dart', 'Firebase'],
+      achievements: [
+        'iOS 및 Android App Store 심사 통과 및 정식 배포',
+        '모바일 푸시 알림 및 로컬 상태 관리 패러다임 내재화',
+      ],
     },
     {
       id: 't-2024',
@@ -84,6 +115,11 @@ export const portfolioData: PortfolioData = {
       description: '레티그리드 퇴사 및 다음 단계를 향해',
       colorType: 'amber',
       isTop: false,
+      techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+      achievements: [
+        'Next.js App Router 및 React 19 최신 프론트엔드 아키텍처 도입',
+        '사이드 프로젝트 프로덕션 운영으로 월간 방문자(MAU) 5,000+ 명 달성',
+      ],
     },
   ],
 
@@ -278,7 +314,7 @@ export const portfolioData: PortfolioData = {
       badge: 'Community Platform (운영 중)',
       period: '2024 ~ 현재',
       role: '풀스택 설계 & 서비스 독립 운영',
-      techStack: ['Next.js', 'Google Sheets API', 'Framer Motion', 'Tailwind CSS'],
+      techStack: ['Next.js', 'Google Sheets API', 'Framer Motion', 'MUI'],
       summary:
         'Google Sheets API + ISR 아키텍처를 도입하여 일평균 다수의 유저가 방문하는 게임 커뮤니티 정보 플랫폼을 개발 및 운영 중입니다.',
       features: [

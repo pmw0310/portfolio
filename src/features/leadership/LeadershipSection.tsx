@@ -2,11 +2,17 @@ import React from 'react';
 import type { LeadershipCard } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { SmartCountUp } from '@/components/CountUp';
+import { SpotlightCard } from '@/components/SpotlightCard';
 
 export type LeadershipSectionProps = {
   leadership: LeadershipCard[];
 };
 
+/**
+ * 리더십 및 역량 섹션 컴포넌트 (SpotlightCard 광원 효과 지원)
+ * @param props LeadershipSectionProps
+ * @returns 리더십 섹션 엘리먼트
+ */
 export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership }) => {
   return (
     <section
@@ -22,9 +28,10 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {leadership.map((item) => (
-            <div
+            <SpotlightCard
               key={item.id}
-              className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 shadow-md dark:shadow-xl"
+              spotlightColor="rgba(16, 185, 129, 0.15)"
+              className="rounded-3xl p-6 md:p-8 flex flex-col justify-between hover:border-slate-300 dark:hover:border-slate-700 transition-all hover:-translate-y-1 shadow-md dark:shadow-xl"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-emerald-600 dark:text-cyan-brand font-bold text-lg shadow-xs">
@@ -55,7 +62,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({ leadership
                   {item.metricLabel}
                 </span>
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

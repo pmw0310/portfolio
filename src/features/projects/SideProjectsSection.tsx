@@ -2,6 +2,7 @@ import React from 'react';
 import type { MajorProject, SideProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
+import BorderGlow from '@/components/BorderGlow';
 
 import steamGif from '@/assets/images/03_grid/steam_01.gif';
 import algoPng from '@/assets/images/05_nc/algo_01.png';
@@ -25,6 +26,11 @@ const sideImageMap: Record<string, string> = {
   'images/08_radish/radish_01.png': radishPng,
 };
 
+/**
+ * 사이드 프로젝트 목록 섹션 컴포넌트 (BorderGlow 글로우 카드 효과 적용)
+ * @param props SideProjectsSectionProps
+ * @returns 사이드 프로젝트 섹션 엘리먼트
+ */
 export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
   gf2Project,
   sideProjects,
@@ -41,9 +47,16 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
           description="업무 밖에서도 사용자의 불편함을 발굴하여 실제 서비스로 구현하고 운영하는 7+ 사이드 프로젝트입니다."
         />
 
-        {/* GF2 메인 사이드 프로젝트 */}
+        {/* GF2 메인 사이드 프로젝트 - BorderGlow 적용 */}
         {gf2Project && (
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl dark:shadow-2xl space-y-8">
+          <BorderGlow
+            animated={true}
+            borderRadius={24}
+            glowColor="185 80 50"
+            colors={['#38bdf8', '#34d399', '#818cf8']}
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-xl dark:shadow-2xl"
+            contentClassName="space-y-8"
+          >
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
               <div>
                 <span className="text-xs font-bold text-emerald-700 dark:text-cyan-brand tracking-widest uppercase bg-emerald-100 dark:bg-cyan-brand/10 border border-emerald-300 dark:border-cyan-brand/30 px-3 py-1 rounded-full">
@@ -104,7 +117,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 </div>
               </div>
             </div>
-          </div>
+          </BorderGlow>
         )}
 
         {/* 사이드 프로젝트 그리드 */}
@@ -142,12 +155,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
 
                 <div className="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
                   {project.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="text-xs bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 px-2 py-0.5 rounded-md"
-                    >
-                      {tech}
-                    </span>
+                    <TechTag key={idx} name={tech} isPrimary={false} showIcon />
                   ))}
                 </div>
               </div>

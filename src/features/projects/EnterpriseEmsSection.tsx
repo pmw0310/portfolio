@@ -3,6 +3,7 @@ import type { MajorProject } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
 import { SmartCountUp } from '@/components/CountUp';
+import BorderGlow from '@/components/BorderGlow';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';
 import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 
@@ -10,6 +11,11 @@ export type EnterpriseEmsSectionProps = {
   projects: MajorProject[];
 };
 
+/**
+ * 주요 B2B 프로젝트 섹션 컴포넌트 (BorderGlow 글로우 카드 효과 적용)
+ * @param props EnterpriseEmsSectionProps
+ * @returns 주요 B2B 프로젝트 섹션 엘리먼트
+ */
 export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
   projects,
 }) => {
@@ -28,9 +34,16 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
           description="레거시 마이그레이션부터 실시간 대용량 모니터링 시스템 설계까지 단독 주도한 주요 성과입니다."
         />
 
-        {/* 1. 무중단 레거시 마이그레이션 */}
+        {/* 1. 무중단 레거시 마이그레이션 - BorderGlow 적용 */}
         {migrationProject && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl">
+          <BorderGlow
+            animated={true}
+            borderRadius={24}
+            glowColor="160 80 50"
+            colors={['#10b981', '#06b6d4', '#6366f1']}
+            className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl"
+            contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
             <div className="lg:col-span-6 space-y-6">
               <span className="text-xs font-bold text-emerald-700 dark:text-cyan-brand tracking-widest uppercase bg-emerald-100 dark:bg-cyan-brand/10 border border-emerald-300 dark:border-cyan-brand/30 px-3 py-1 rounded-full">
                 {migrationProject.badge}
@@ -77,12 +90,19 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
                 Next.js로 최초 전환된 핵심 데이터 분석 대시보드 화면
               </p>
             </div>
-          </div>
+          </BorderGlow>
         )}
 
-        {/* 2. 실시간 전력 모니터링 & CMS 대시보드 */}
+        {/* 2. 실시간 전력 모니터링 & CMS 대시보드 - BorderGlow 적용 */}
         {cmsProject && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl">
+          <BorderGlow
+            animated={true}
+            borderRadius={24}
+            glowColor="40 90 60"
+            colors={['#f59e0b', '#ec4899', '#3b82f6']}
+            className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl"
+            contentClassName="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+          >
             <div className="lg:col-span-6 lg:order-2 space-y-6">
               <span className="text-xs font-bold text-amber-700 dark:text-amber-brand tracking-widest uppercase bg-amber-100 dark:bg-amber-brand/10 border border-amber-300 dark:border-amber-brand/30 px-3 py-1 rounded-full">
                 {cmsProject.badge}
@@ -130,7 +150,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
                 WebSocket 실시간 데이터 수집 및 ECharts 시각화 화면
               </p>
             </div>
-          </div>
+          </BorderGlow>
         )}
       </div>
     </section>

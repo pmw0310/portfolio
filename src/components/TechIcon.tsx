@@ -35,6 +35,9 @@ import {
   SiGooglecloud,
   SiStyledcomponents,
   SiWebpack,
+  SiC,
+  SiArduino,
+  SiStmicroelectronics,
 } from 'react-icons/si';
 import {
   TbCode,
@@ -42,6 +45,7 @@ import {
   TbPlugConnected,
   TbBrandCSharp,
   TbLayersIntersect,
+  TbCpu,
 } from 'react-icons/tb';
 
 export type TechIconProps = {
@@ -96,6 +100,10 @@ const techIconMap: Record<string, { icon: IconType; color?: string }> = {
   'Google Sheets API': { icon: SiGooglecloud, color: '#34A853' },
   'Canvas API': { icon: SiHtml5, color: '#E34F26' },
   'HTML5 Canvas': { icon: SiHtml5, color: '#E34F26' },
+  C: { icon: SiC, color: '#A8B9CC' },
+  ATmega: { icon: TbCpu, color: '#00539B' },
+  STM32: { icon: SiStmicroelectronics, color: '#03234C' },
+  Arduino: { icon: SiArduino, color: '#00979D' },
 };
 
 /**

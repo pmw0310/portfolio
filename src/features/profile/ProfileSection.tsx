@@ -2,6 +2,7 @@ import React from 'react';
 import type { PersonalInfo, SkillGroup } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import { TechTag } from '@/components/TechTag';
+import { SpotlightCard } from '@/components/SpotlightCard';
 
 export type ProfileSectionProps = {
   profile: PersonalInfo;
@@ -9,7 +10,7 @@ export type ProfileSectionProps = {
 };
 
 /**
- * 프로필 소개 & 스킬 카테고리 섹션 컴포넌트 (다크/라이트 지원)
+ * 프로필 소개 & 스킬 카테고리 섹션 컴포넌트 (다크/라이트 지원 & SpotlightCard 적용)
  * @param props ProfileSectionProps
  * @returns 프로필 섹션 엘리먼트
  */
@@ -47,9 +48,10 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
           {/* 우측 기술 스택 그룹 그리드 */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {skills.map((group, idx) => (
-              <div
+              <SpotlightCard
                 key={idx}
-                className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800/80 rounded-xl p-5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                spotlightColor="rgba(6, 182, 212, 0.18)"
+                className="shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300"
               >
                 <h3 className="text-sm font-semibold text-emerald-600 dark:text-cyan-brand uppercase tracking-wider mb-3">
                   {group.category}
@@ -59,7 +61,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
                     <TechTag key={sIdx} name={skill.name} isPrimary={skill.isPrimary} />
                   ))}
                 </div>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

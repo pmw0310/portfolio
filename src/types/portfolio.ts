@@ -29,9 +29,12 @@ export type TimelineNode = {
   year: string;
   role: string;
   company?: string;
+  period?: string;
   description: string;
   colorType: 'cyan' | 'amber' | 'green' | 'gray';
   isTop?: boolean;
+  techStack?: string[];
+  achievements?: string[];
 };
 
 /**
