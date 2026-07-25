@@ -51,11 +51,11 @@ export const Gf2ArchitectureModal: React.FC = () => {
       {/* 아키텍처 모달 트리거 버튼 */}
       <button
         onClick={handleOpen}
-        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/90 dark:bg-slate-900 hover:bg-slate-800 dark:hover:bg-slate-800 border border-slate-700/80 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all group cursor-pointer"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300/80 dark:border-slate-700/80 text-slate-800 dark:text-white text-xs font-bold shadow-md hover:shadow-lg transition-all group cursor-pointer"
       >
-        <Cpu className="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform" />
+        <Cpu className="w-4 h-4 text-emerald-600 dark:text-cyan-400 group-hover:rotate-12 transition-transform" />
         <span>시스템 아키텍처 구조도</span>
-        <Maximize2 className="w-3.5 h-3.5 text-slate-400 group-hover:text-white transition-colors" />
+        <Maximize2 className="w-3.5 h-3.5 text-slate-400 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors" />
       </button>
 
       {/* 모달 팝업 오버레이 & 드래그 캔버스 컨테이너 (Portal로 document.body에 렌더링) */}

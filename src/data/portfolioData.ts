@@ -537,9 +537,8 @@ export const portfolioData: PortfolioData = {
       galleryImages: [
         {
           url: gf211,
-          title: '커뮤니티 메인 & 5대 서비스',
-          caption:
-            '과금 효율 계산기, 가챠 확률 계산기, 가챠 시뮬레이터, 웹 포토카드 메인 UI',
+          title: '메인 페이지',
+          caption: '주요 서비스 및 유틸리티 기능 통합 메인 화면',
         },
         {
           url: gf212,
@@ -554,8 +553,8 @@ export const portfolioData: PortfolioData = {
         },
         {
           url: gf214,
-          title: '인게임 패키지 과금 효율 분석',
-          caption: 'Google Sheets 연동 인게임 패키지 가격 대비 효율 자동 계산 산출 표',
+          title: '인게임 과금 효율 분석',
+          caption: 'MUI Data Grid 기반 인게임 패키지 가격 대비 효율 자동 계산 표',
         },
         {
           url: gf215,

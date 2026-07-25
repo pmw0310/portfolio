@@ -8,6 +8,7 @@ import SplitText from '@/components/SplitText';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ImageCarousel } from '@/components/ImageCarousel';
+import { BrowserFrameStackGallery } from '@/components/BrowserFrameStackGallery';
 import { ExternalLink } from 'lucide-react';
 import { Gf2ArchitectureModal } from './Gf2ArchitectureModal';
 
@@ -134,7 +135,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 </div>
               </motion.div>
 
-              {/* 우측 프로젝트 이미지 슬라이더 (Carousel) */}
+              {/* 우측 프로젝트 브라우저 3D 스택 갤러리 */}
               <motion.div
                 initial={{ opacity: 0, x: 35 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -143,9 +144,8 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 className="lg:col-span-6 space-y-3"
               >
                 {gf2Project.galleryImages && gf2Project.galleryImages.length > 0 ? (
-                  <ImageCarousel
+                  <BrowserFrameStackGallery
                     images={gf2Project.galleryImages}
-                    aspectRatio="video"
                   />
                 ) : (
                   <div className="space-y-4">

@@ -227,10 +227,11 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                 >
                   <BorderGlow
                     glowColor={getGlowColor(activeNode.colorType)}
-                    backgroundColor="rgba(15, 23, 42, 0.95)"
+                    backgroundColor="var(--card-bg)"
                     borderRadius={24}
                     glowRadius={35}
                     glowIntensity={0.9}
+                    className="[--card-bg:#ffffff] dark:[--card-bg:#0f172a] rounded-[24px]"
                   >
                     <div className="p-6 rounded-[24px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 shadow-xl">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800/80">

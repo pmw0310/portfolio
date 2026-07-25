@@ -72,11 +72,11 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
   return (
     <>
       <div
-        className={`relative group rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-800 bg-slate-950 shadow-xl transition-all ${className}`}
+        className={`relative group rounded-2xl overflow-hidden border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 shadow-xl transition-all ${className}`}
       >
         {/* 이미지 슬라이드 뷰포트 (스크린샷 원본 비율 맞춤) */}
         <div
-          className={`relative w-full ${aspectClasses} overflow-hidden bg-slate-950 flex items-center justify-center cursor-pointer p-2`}
+          className={`relative w-full ${aspectClasses} overflow-hidden bg-slate-100 dark:bg-slate-950 flex items-center justify-center cursor-pointer p-2`}
           onClick={() => setIsLightboxOpen(true)}
         >
           <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -157,13 +157,13 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
 
         {/* 하단 캡션 & 슬라이드 인디케이터 (Dot) */}
         {(showCaption || images.length > 1) && (
-          <div className="p-3 bg-slate-900/90 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+          <div className="p-3 bg-white/95 dark:bg-slate-900/90 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
             {showCaption && currentImage.caption ? (
-              <p className="text-slate-300 font-medium truncate max-w-md">
+              <p className="text-slate-700 dark:text-slate-300 font-medium truncate max-w-md">
                 💡 {currentImage.caption}
               </p>
             ) : (
-              <span className="text-slate-400 font-medium truncate">
+              <span className="text-slate-500 dark:text-slate-400 font-medium truncate">
                 {currentImage.title || '프로젝트 갤러리'}
               </span>
             )}
@@ -184,8 +184,8 @@ export const ImageCarousel: React.FC<ImageCarouselProps> = ({
                     aria-label={`${idx + 1}번 이미지로 이동`}
                     className={`h-2 rounded-full transition-all ${
                       idx === currentIndex
-                        ? 'w-6 bg-cyan-brand'
-                        : 'w-2 bg-slate-700 hover:bg-slate-500'
+                        ? 'w-6 bg-emerald-500 dark:bg-cyan-brand'
+                        : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500'
                     }`}
                   />
                 ))}

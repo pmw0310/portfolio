@@ -6,7 +6,7 @@ import { TechTag } from '@/components/TechTag';
 import { SmartCountUp } from '@/components/CountUp';
 import BorderGlow from '@/components/BorderGlow';
 import { Badge } from '@/components/ui/badge';
-import { ImageCarousel } from '@/components/ImageCarousel';
+import { BrowserFrameStackGallery } from '@/components/BrowserFrameStackGallery';
 import ew14 from '@/assets/images/01_EnergyWatch/ew_14.png';
 import ew08 from '@/assets/images/01_EnergyWatch/ew_08.png';
 
@@ -117,7 +117,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* 우측 프로젝트 이미지 슬라이더 (Carousel) */}
+            {/* 우측 프로젝트 브라우저 3D 스택 갤러리 */}
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -126,9 +126,8 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               className="lg:col-span-6 space-y-3"
             >
               {migrationProject.galleryImages && migrationProject.galleryImages.length > 0 ? (
-                <ImageCarousel
+                <BrowserFrameStackGallery
                   images={migrationProject.galleryImages}
-                  aspectRatio="video"
                 />
               ) : (
                 <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">
@@ -225,7 +224,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               </div>
             </motion.div>
 
-            {/* 왼쪽 이미지 프로젝트 슬라이더 (Carousel) */}
+            {/* 왼쪽 프로젝트 브라우저 3D 스택 갤러리 */}
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -234,9 +233,8 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
               className="lg:col-span-6 lg:order-1 space-y-3"
             >
               {cmsProject.galleryImages && cmsProject.galleryImages.length > 0 ? (
-                <ImageCarousel
+                <BrowserFrameStackGallery
                   images={cmsProject.galleryImages}
-                  aspectRatio="video"
                 />
               ) : (
                 <div className="overflow-hidden rounded-2xl border border-slate-300 dark:border-slate-700/60 shadow-xl group">

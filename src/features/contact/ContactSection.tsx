@@ -14,11 +14,8 @@ import {
   CheckCircle2,
   Copy,
   ExternalLink,
-  MapPin,
-  Clock,
   Sparkles,
   FileText,
-  MessageSquare,
 } from 'lucide-react';
 
 export type ContactSectionProps = {
@@ -99,9 +96,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                   <p className="text-sm text-emerald-600 dark:text-cyan-400 font-semibold">
                     {profile.role}
                   </p>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-light pt-1">
-                    사용자의 문제를 깊이 고민하고, 확장 가능하고 깔끔한 코드로 해결합니다.
-                  </p>
                 </div>
 
                 <div>
@@ -134,21 +128,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
                       )}
                     </Button>
                   </div>
-                </div>
-              </div>
-
-              <div className="space-y-3 pt-6 border-t border-slate-100 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-400">
-                <div className="flex items-center gap-2.5">
-                  <MapPin className="w-4 h-4 text-emerald-500 dark:text-cyan-400 shrink-0" />
-                  <span>서울시 영등포구</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <Clock className="w-4 h-4 text-amber-500 shrink-0" />
-                  <span>24시간 이내 답변드립니다</span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <MessageSquare className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>이메일 주소 클릭 시 복사할 수 있습니다</span>
                 </div>
               </div>
             </Card>

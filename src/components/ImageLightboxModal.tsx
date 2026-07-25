@@ -4,15 +4,20 @@ import 'react-photo-view/dist/react-photo-view.css';
 import type { ProjectGalleryImage } from '@/types/portfolio';
 
 export type ImageLightboxModalProps = {
+  /** 라이트박스 열림 여부 */
   isOpen: boolean;
+  /** 표시할 이미지 목록 */
   images: ProjectGalleryImage[];
+  /** 현재 활성화된 이미지 인덱스 */
   currentIndex: number;
+  /** 모달 닫기 이벤트 핸들러 */
   onClose: () => void;
+  /** 이미지 인덱스 변경 이벤트 핸들러 */
   onSelectIndex: (index: number) => void;
 };
 
 /**
- * react-photo-view 기반 고해상도 이미지 확대/줌/탐색 뷰어 라이트박스 컴포넌트
+ * react-photo-view 기반 고해상도 이미지 확대, 휠 스크롤 줌, 핀치 줌, 좌우 탐색 라이트박스 컴포넌트
  * @param props ImageLightboxModalProps
  * @returns PhotoSlider 라이트박스 엘리먼트
  */
@@ -25,32 +30,10 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
 }) => {
   if (!images || images.length === 0) return null;
 
-  const sliderImages = images.map((img, idx) => {
-    const isGif = img.url.toLowerCase().includes('.gif');
-    return {
-      src: img.url,
-      key: `${img.url}-${idx}`,
-      ...(isGif
-        ? {
-            render: () => (
-              <div className="w-full h-full flex items-center justify-center p-4">
-                <img
-                  src={img.url}
-                  alt={img.title || 'GIF Animation'}
-                  className="max-h-[85vh] max-w-[90vw] object-contain mx-auto shadow-2xl rounded-lg select-none"
-                />
-              </div>
-            ),
-          }
-        : {}),
-      intro: (
-        <div className="text-center py-2 px-4 bg-slate-900/90 backdrop-blur-md rounded-xl border border-slate-800 text-white max-w-xl mx-auto shadow-2xl">
-          {img.title && <div className="font-bold text-sm text-cyan-brand mb-0.5">{img.title}</div>}
-          {img.caption && <div className="text-xs text-slate-200">{img.caption}</div>}
-        </div>
-      ),
-    };
-  });
+  const sliderImages = images.map((img, idx) => ({
+    src: img.url,
+    key: `${img.url}-${idx}`,
+  }));
 
   return (
     <PhotoSlider
@@ -60,10 +43,22 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
       index={currentIndex}
       onIndexChange={onSelectIndex}
       overlayRender={(props) => {
+        const curImg = images[props.index] || images[0];
         return (
-          <div className="absolute bottom-6 left-0 right-0 z-50 pointer-events-none px-4">
-            <div className="pointer-events-auto">
-              {sliderImages[props.index]?.intro}
+          <div className="absolute bottom-6 left-0 right-0 z-[1000] pointer-events-none px-4 select-none">
+            <div className="max-w-xl mx-auto text-center pointer-events-auto">
+              <div className="py-3 px-6 bg-slate-900/90 backdrop-blur-xl rounded-2xl border border-slate-800 text-white shadow-2xl">
+                {curImg?.title && (
+                  <div className="font-bold text-sm md:text-base text-emerald-400 dark:text-cyan-brand mb-1">
+                    {curImg.title}
+                  </div>
+                )}
+                {curImg?.caption && (
+                  <div className="text-xs md:text-sm text-slate-200 leading-relaxed font-medium">
+                    {curImg.caption}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         );
@@ -71,3 +66,5 @@ export const ImageLightboxModal: React.FC<ImageLightboxModalProps> = ({
     />
   );
 };
+
+export default ImageLightboxModal;
