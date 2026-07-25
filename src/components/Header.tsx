@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-md py-3'
+          ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-md py-3'
           : 'bg-transparent py-5'
       )}
     >
@@ -167,7 +167,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, onToggleTheme }) => {
 
       {/* 모바일 드롭다운 메뉴 */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-2 shadow-lg">
+        <div className="md:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-2 shadow-lg">
           {navItems.map((item) => {
             const isActive = activeSection === item.targetId;
             return (

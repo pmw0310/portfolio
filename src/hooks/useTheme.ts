@@ -18,12 +18,21 @@ export const useTheme = (): [boolean, () => void] => {
 
   useEffect(() => {
     const root = document.documentElement;
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta');
+      metaThemeColor.setAttribute('name', 'theme-color');
+      document.head.appendChild(metaThemeColor);
+    }
+
     if (isDark) {
       root.classList.add('dark');
       localStorage.setItem('theme', 'dark');
+      metaThemeColor.setAttribute('content', '#020617');
     } else {
       root.classList.remove('dark');
       localStorage.setItem('theme', 'light');
+      metaThemeColor.setAttribute('content', '#f8fafc');
     }
   }, [isDark]);
 
