@@ -181,7 +181,7 @@ export const IotPipelineSection: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-3xl p-6 md:p-10 shadow-lg dark:shadow-2xl"
         >

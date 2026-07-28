@@ -55,7 +55,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
                   key={idx}
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
+                  viewport={{ once: true, amount: 0.1 }}
                   transition={{
                     duration: 0.5,
                     delay: idx * 0.1,
@@ -79,7 +79,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({ profile, skills 
                 key={idx}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-20px' }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{
                   duration: 0.5,
                   delay: idx * 0.1,

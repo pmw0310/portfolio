@@ -51,7 +51,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="lg:col-span-6 space-y-6"
             >
@@ -121,7 +121,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               className="lg:col-span-6 space-y-3"
             >
@@ -157,7 +157,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             <motion.div
               initial={{ opacity: 0, x: 35 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
               className="lg:col-span-6 lg:order-2 space-y-6"
             >
@@ -228,7 +228,7 @@ export const EnterpriseEmsSection: React.FC<EnterpriseEmsSectionProps> = ({
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
               className="lg:col-span-6 lg:order-1 space-y-3"
             >

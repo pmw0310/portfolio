@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import type { TimelineNode } from '@/types/portfolio';
 import { SectionHeader } from '@/components/SectionHeader';
 import BorderGlow from '@/components/BorderGlow';
 import { TechTag } from '@/components/TechTag';
-import { motion, AnimatePresence, useInView } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Badge } from '@/components/ui/badge';
 
 export type CareerTimelineSectionProps = {
@@ -11,7 +11,7 @@ export type CareerTimelineSectionProps = {
 };
 
 /**
- * 경력 타임라인 가로 1페이지 로드맵 섹션 컴포넌트 (카드 등장 애니메이션 적용 및 내부 폰트 SplitText 제거)
+ * 경력 타임라인 가로 1페이지 로드맵 섹션 컴포넌트 (카드 등장 애니메이션 적용 및 크로스브라우저 호환성 확보)
  * @param props CareerTimelineSectionProps
  * @returns 타임라인 섹션 UI 엘리먼트
  */
@@ -71,10 +71,6 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
     }
   };
 
-  // 타임라인 컨테이너 뷰포트 진입 감지용 ref
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const isTimelineInView = useInView(timelineRef, { once: true, amount: 0.1 });
-
   const activeNode = timeline.find((item) => item.id === selectedId) || timeline[0];
 
   return (
@@ -91,7 +87,7 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
         {/* 1페이지 가로 타임라인 컨테이너 */}
         <div className="mt-6 mb-4">
           {/* 데스크탑 7컬럼 가로 로드맵 (스크롤 진입 애니메이션) */}
-          <div ref={timelineRef} className="relative pt-10 pb-10 hidden md:block">
+          <div className="relative pt-10 pb-10 hidden md:block">
             {/* 중앙 가로 연결선 */}
             <div className="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1 bg-gradient-to-r from-slate-300 via-emerald-400 to-amber-400 dark:from-slate-800 dark:via-cyan-brand dark:to-amber-brand rounded-full shadow-[0_0_12px_rgba(0,212,170,0.3)] z-0" />
 
@@ -105,11 +101,8 @@ export const CareerTimelineSection: React.FC<CareerTimelineSectionProps> = ({
                   <motion.div
                     key={item.id}
                     initial={{ opacity: 0, y: isTop ? -15 : 15 }}
-                    animate={
-                      isTimelineInView
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: isTop ? -15 : 15 }
-                    }
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.05 }}
                     transition={{
                       duration: 0.4,
                       delay: idx * 0.08,

@@ -77,7 +77,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="lg:col-span-5 flex"
           >
@@ -137,7 +137,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ profile }) => {
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
             className="lg:col-span-7 flex"
           >

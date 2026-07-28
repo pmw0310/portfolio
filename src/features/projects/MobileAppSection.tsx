@@ -98,7 +98,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, y: 0, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className="lg:col-span-6 space-y-6"
           >
@@ -160,7 +160,7 @@ export const MobileAppSection: React.FC<MobileAppSectionProps> = ({ project }) =
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
             className="lg:col-span-6 flex flex-col items-center justify-center space-y-5 py-2"
           >

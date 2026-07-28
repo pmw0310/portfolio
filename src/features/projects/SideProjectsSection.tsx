@@ -102,7 +102,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
               <motion.div
                 initial={{ opacity: 0, x: -35 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="lg:col-span-6 space-y-4"
               >
@@ -139,7 +139,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
               <motion.div
                 initial={{ opacity: 0, x: 35 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
                 className="lg:col-span-6 space-y-3"
               >
@@ -178,7 +178,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
               key={project.id}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.4, delay: idx * 0.1, ease: 'easeOut' }}
             >
               <Card className="h-full border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-md hover:border-emerald-500/50 dark:hover:border-cyan-500/50 transition-all hover:-translate-y-1 flex flex-col p-0 group">
