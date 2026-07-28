@@ -74,7 +74,8 @@ const ARCH_DETAILS: ArchitectureDetail[] = [
     description:
       '사용자가 요청한 조회 기간을 내부적으로 분할, API를 병렬 호출하고 프론트엔드 캐싱 + 데이터 샘플링을 복합 적용하여 렌더링 성능 확보',
     icon: <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />,
-    iconBg: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/60 dark:border-emerald-800/60',
+    iconBg:
+      'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-200/60 dark:border-emerald-800/60',
     spotlightColor: 'rgba(16, 185, 129, 0.15)',
   },
   {
@@ -82,7 +83,8 @@ const ARCH_DETAILS: ArchitectureDetail[] = [
     description:
       '복잡한 시계열 데이터 변환 로직을 TypeScript 타입 시스템과 lodash로 안정적으로 처리. 수십 종류 차트에 필요한 데이터 구조를 타입으로 보장',
     icon: <ShieldCheck className="w-5 h-5 text-amber-600 dark:text-amber-400" />,
-    iconBg: 'bg-amber-50 dark:bg-amber-950/60 border-amber-200/60 dark:border-amber-800/60',
+    iconBg:
+      'bg-amber-50 dark:bg-amber-950/60 border-amber-200/60 dark:border-amber-800/60',
     spotlightColor: 'rgba(245, 158, 11, 0.15)',
   },
   {
@@ -98,7 +100,8 @@ const ARCH_DETAILS: ArchitectureDetail[] = [
     description:
       '월별/분기별 전력 사용 패턴, 요금 분석이 담긴 종합 보고서를 웹에서 PDF로 다운로드할 수 있는 출력 기능 제공',
     icon: <FileText className="w-5 h-5 text-indigo-600 dark:text-indigo-400" />,
-    iconBg: 'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200/60 dark:border-indigo-800/60',
+    iconBg:
+      'bg-indigo-50 dark:bg-indigo-950/60 border-indigo-200/60 dark:border-indigo-800/60',
     spotlightColor: 'rgba(99, 102, 241, 0.15)',
   },
 ];
@@ -134,7 +137,9 @@ const CLIENT_LIST: ClientItem[] = [
     logo: (
       <div className="flex items-center gap-2">
         <Sun className="w-5 h-5 text-amber-500 dark:text-amber-400" />
-        <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">경기도 태양광 350개소</span>
+        <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+          경기도 태양광 350개소
+        </span>
       </div>
     ),
     borderColor: 'hover:border-amber-500/50 dark:hover:border-amber-500/50',
@@ -145,7 +150,9 @@ const CLIENT_LIST: ClientItem[] = [
     logo: (
       <div className="flex items-center gap-2">
         <Factory className="w-5 h-5 text-sky-500 dark:text-sky-400" />
-        <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">삼천포 화력발전소</span>
+        <span className="font-bold text-slate-800 dark:text-slate-200 text-sm">
+          삼천포 화력발전소
+        </span>
       </div>
     ),
     borderColor: 'hover:border-sky-500/50 dark:hover:border-sky-500/50',
@@ -301,7 +308,9 @@ export const IotPipelineSection: React.FC = () => {
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <div className={`w-10 h-10 rounded-xl ${detail.iconBg} border flex items-center justify-center shadow-xs`}>
+                  <div
+                    className={`w-10 h-10 rounded-xl ${detail.iconBg} border flex items-center justify-center shadow-xs`}
+                  >
                     {detail.icon}
                   </div>
                 </div>
@@ -337,6 +346,3 @@ export const IotPipelineSection: React.FC = () => {
     </section>
   );
 };
-
-
-
