@@ -4,76 +4,52 @@ import { RefreshCw } from 'lucide-react';
 
 const mermaidDefinition = `
 graph TB
-    subgraph USERS ["👤 ACCESS LAYER"]
-        U_USER["🌐 일반 사용자"]
-        U_ADMIN["🔐 관리자 (ISR Trigger)"]
+    GITHUB["🐙 GitHub (소스코드)"]
+
+    subgraph FE ["☁️ FRONTEND (Vercel)"]
+        FE_APP["⚡ Next.js 15 (App Router)"]
     end
 
-    subgraph DEVOPS ["🚀 DEVOPS & CI/CD PIPELINE"]
-        GITHUB["🐙 GitHub (소스코드)"]
-        GHACTIONS["⚙️ GitHub Actions (CI/CD)"]
-        DOPPLER["🔒 Doppler (환경변수)"]
-        DOCKER["🐳 Docker Hub (이미지 저장소)"]
+    subgraph CI ["🚀 BACKEND CI/CD"]
+        direction LR
+        GHACTIONS["⚙️ GitHub Actions"] --> DOCKER["🐳 Docker Hub"]
     end
 
-    subgraph FE ["☁️ FRONTEND (Vercel) - Next.js 15"]
-        FE_API["⚡ API Route (재검증 핸들러)"]
-        FE_ISR["📄 정적 페이지 (ISR)"]
-        FE_DYN["🎮 동적 기능 (게임 / 좋아요)"]
+    subgraph BE ["🏠 BACKEND (Synology NAS) - NestJS 11"]
+        BE_API["🤖 API 서버 (REST & RAG 서비스)"]
+        BE_ADMIN["📑 Swagger UI (API 문서)"]
     end
 
-    subgraph BE ["🏠 BACKEND (Synology NAS Docker) - NestJS 11"]
-        BE_ADMIN["🔐 관리자 모듈 (갱신 트리거)"]
-        BE_GATEWAY["🚪 API 게이트웨이 & DTO"]
-        BE_BIZ["🧠 비즈니스 로직 (게임 / 시트 / 좋아요)"]
-        BE_SWAGGER["📑 Swagger UI (Basic Auth)"]
+    subgraph DATA_AI ["🌐 DATA & AI PIPELINE"]
+        GEMINI["✨ Google Gemini API"]
+        DB_MONGO["🍃 MongoDB Atlas"]
+        DB_GSHEET["🟢 Google Sheets (관리 DB)"]
     end
 
-    subgraph DB ["🌐 EXTERNAL DATA SERVICES"]
-        DB_GSHEET["🟢 Google Sheets (게임 DB)"]
-        DB_MONGO["🍃 MongoDB Atlas (클라우드 DB)"]
-    end
+    %% Deploy Flows
+    GITHUB == "Vercel 자동 빌드/배포" ==> FE
+    GITHUB -. "백엔드 푸시" .-> GHACTIONS
+    DOCKER == "NAS에서 이미지 Pull 및 실행" ==> BE
 
-    %% 연결 관계 (Access)
-    U_USER --> FE_DYN
-    U_USER --> FE_ISR
-    U_ADMIN --> BE_ADMIN
-    U_ADMIN -.-> BE_SWAGGER
+    %% FE to BE
+    FE_APP <--> BE_API
 
-    %% GitHub / Vercel / GitHub Actions / Docker Hub 파이프라인
-    GITHUB --> FE_DYN
-    GITHUB --> GHACTIONS
-    GHACTIONS ==> DOCKER
+    %% BE internal & external
+    BE_API <--> DB_MONGO
+    BE_API <--> GEMINI
+    BE_API <--> DB_GSHEET
 
-    DOPPLER -.-> FE_DYN
-    DOPPLER -.-> BE_GATEWAY
-    DOCKER ==> BE_GATEWAY
-
-    %% On-Demand Revalidation
-    BE_ADMIN --> FE_ISR
-    BE_ADMIN --> FE_API
-
-    %% Frontend & Backend API Flow
-    FE_DYN --> BE_GATEWAY
-    BE_GATEWAY --> BE_BIZ
-
-    %% Backend & Database Connections
-    BE_BIZ -.-> DB_GSHEET
-    BE_BIZ -.-> DB_MONGO
-
-    BE_GATEWAY -.-> BE_SWAGGER
-
-    classDef accessStyle fill:#1e1e2e,stroke:#89b4fa,stroke-width:2px,color:#cdd6f4;
     classDef devopsStyle fill:#1e1e2e,stroke:#fab387,stroke-width:2px,color:#cdd6f4;
     classDef feStyle fill:#1e1e2e,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4;
     classDef beStyle fill:#1e1e2e,stroke:#f38ba8,stroke-width:2px,color:#cdd6f4;
-    classDef dbStyle fill:#1e1e2e,stroke:#f9e2af,stroke-width:2px,color:#cdd6f4;
+    classDef dataStyle fill:#1e1e2e,stroke:#f9e2af,stroke-width:2px,color:#cdd6f4;
+    classDef gitStyle fill:#1e1e2e,stroke:#cba6f7,stroke-width:2px,color:#cdd6f4;
 
-    class U_USER,U_ADMIN accessStyle;
-    class GITHUB,GHACTIONS,DOPPLER,DOCKER devopsStyle;
-    class FE_API,FE_ISR,FE_DYN feStyle;
-    class BE_ADMIN,BE_GATEWAY,BE_BIZ,BE_SWAGGER beStyle;
-    class DB_GSHEET,DB_MONGO dbStyle;
+    class GITHUB gitStyle;
+    class GHACTIONS,DOCKER devopsStyle;
+    class FE_APP feStyle;
+    class BE_API,BE_ADMIN beStyle;
+    class DB_MONGO,DB_GSHEET,GEMINI dataStyle;
 `;
 
 /**

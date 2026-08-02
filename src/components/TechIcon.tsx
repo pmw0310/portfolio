@@ -42,6 +42,7 @@ import {
   SiPnpm,
   SiSwagger,
   SiFramer,
+  SiGooglegemini,
 } from 'react-icons/si';
 import {
   TbCode,
@@ -130,6 +131,7 @@ const techIconMap: Record<string, { icon: IconType; color?: string }> = {
   ATmega: { icon: TbCpu, color: '#00539B' },
   STM32: { icon: SiStmicroelectronics, color: '#03234C' },
   Arduino: { icon: SiArduino, color: '#00979D' },
+  'Gemini API': { icon: SiGooglegemini, color: '#8E24AA' },
 };
 
 /**

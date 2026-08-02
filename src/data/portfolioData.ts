@@ -35,6 +35,8 @@ import gf213 from '@/assets/images/02_gf2/gf2_13.png';
 import gf214 from '@/assets/images/02_gf2/gf2_14.png';
 import gf215 from '@/assets/images/02_gf2/gf2_15.jpg';
 import gf216 from '@/assets/images/02_gf2/gf2_16.gif';
+import gf217 from '@/assets/images/02_gf2/gf2_17.png';
+import gf218 from '@/assets/images/02_gf2/gf2_18.png';
 
 // Side Projects Images
 import steam01 from '@/assets/images/03_grid/steam_01.gif';
@@ -66,7 +68,7 @@ export const portfolioData: PortfolioData = {
       'IoT 솔루션 기업에서 B2B SaaS 플랫폼의 프론트엔드를 단독 구축하고 6년간 운영했습니다. 레거시 시스템의 현대화부터 크로스플랫폼 앱 개발까지, 비즈니스가 필요로 하는 기술적 판단을 내리고 실행해 왔습니다.',
     contact: {
       email: 'pmw0310@gmail.com',
-      github: 'https://github.com/blackolf',
+      github: 'https://github.com/pmw0310',
       blog: 'https://mammoth-llama-22f.notion.site/26ec51a3be4a812cb04dd52358c83113',
     },
     stats: [
@@ -506,9 +508,9 @@ export const portfolioData: PortfolioData = {
         'Next.js 15',
         'NestJS 11',
         'MongoDB',
+        'Gemini API',
         'Zustand 5',
         'Vercel',
-        'ECharts',
         'pnpm Monorepo',
       ],
       summary:
@@ -524,9 +526,9 @@ export const portfolioData: PortfolioData = {
             'Sheets API로 데이터를 가져와 페이지를 미리 생성, 변경 시 필요한 페이지만 재빌드하는 유연한 구조.',
         },
         {
-          title: '가챠 확률 시뮬레이터 & 패키지 가치 분석',
+          title: 'RAG 기반 지능형 위키 AI',
           description:
-            '천장 시스템 확률 계산 연출과 인게임 유료 패키지 자동 가치 산출로 합리적 유저 판단 도구 제공.',
+            '게임 내 방대한 데이터를 벡터화하여 MongoDB에 저장하고, Gemini LLM을 통해 자연어로 문답이 가능한 AI 위키 서비스 개발.',
         },
         {
           title: '풀스택 + API 문서화',
@@ -538,7 +540,8 @@ export const portfolioData: PortfolioData = {
         {
           url: gf211,
           title: '메인 페이지',
-          caption: '주요 서비스 및 유틸리티 기능 통합 메인 화면',
+          caption:
+            'MYONG AI 챗봇, 계산기, 확률 시뮬레이터 등 6개 서브 서비스 통합 메인 화면',
         },
         {
           url: gf212,
@@ -565,6 +568,16 @@ export const portfolioData: PortfolioData = {
           url: gf216,
           title: '웹 포토 카드 플립 모션 데모',
           caption: 'CSS 3D Transform & 인터랙션 기반 실시간 포토 카드 플립 모션',
+        },
+        {
+          url: gf217,
+          title: 'MYONG AI 서비스',
+          caption: '소녀전선2 전술 위키 RAG 기반 자연어 지능형 Q&A 검색 서비스',
+        },
+        {
+          url: gf218,
+          title: '무기 세계 지도',
+          caption: '총기/무기 타입별 국가 분포 시각화 및 필터링 지도 UI',
         },
       ],
     },
