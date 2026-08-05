@@ -29,7 +29,7 @@ graph TB
     %% Deploy Flows
     GITHUB == "Vercel 자동 빌드/배포" ==> FE
     GITHUB -. "백엔드 푸시" .-> GHACTIONS
-    DOCKER == "NAS에서 이미지 Pull 및 실행" ==> BE
+    DOCKER == "Watchtower를 이용한 자동 이미지 업데이트" ==> BE
 
     %% FE to BE
     FE_APP <--> BE_API

@@ -144,9 +144,7 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                 className="lg:col-span-6 space-y-3"
               >
                 {gf2Project.galleryImages && gf2Project.galleryImages.length > 0 ? (
-                  <BrowserFrameStackGallery
-                    images={gf2Project.galleryImages}
-                  />
+                  <BrowserFrameStackGallery images={gf2Project.galleryImages} />
                 ) : (
                   <div className="space-y-4">
                     <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-md">
@@ -161,7 +159,11 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
                         <img src={gf213} alt="가챠 확률 분석" className="w-full h-auto" />
                       </div>
                       <div className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
-                        <img src={gf215} alt="웹 포토 카드 갤러리" className="w-full h-auto" />
+                        <img
+                          src={gf215}
+                          alt="웹 포토 카드 갤러리"
+                          className="w-full h-auto"
+                        />
                       </div>
                     </div>
                   </div>
@@ -172,7 +174,9 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
         )}
 
         {/* 사이드 프로젝트 카드 그리드 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 gap-6 mx-auto ${
+          sideProjects.length <= 2 ? 'max-w-4xl' : 'lg:grid-cols-3'
+        }`}>
           {sideProjects.map((project, idx) => (
             <motion.div
               key={project.id}

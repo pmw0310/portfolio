@@ -83,8 +83,8 @@ export const portfolioData: PortfolioData = {
         colorClass: 'text-amber-500 dark:text-amber-brand',
       },
       {
-        label: 'Side Projects',
-        value: '7+',
+        label: 'Side Project MAU',
+        value: '5,000+',
         colorClass: 'text-emerald-500 dark:text-emerald-400',
       },
     ],
@@ -104,10 +104,6 @@ export const portfolioData: PortfolioData = {
       colorType: 'cyan',
       isTop: true,
       techStack: ['C#', 'Unity'],
-      achievements: [
-        'C# 및 Unity 엔진 기반 모바일 게임 개발',
-        '게임 제작 및 파이프라인 효율화를 위한 전용 제작 툴 개발',
-      ],
     },
     {
       id: 't-2014',
@@ -117,10 +113,6 @@ export const portfolioData: PortfolioData = {
       colorType: 'amber',
       isTop: false,
       techStack: ['C', 'ATmega', 'STM32', 'Arduino'],
-      achievements: [
-        '직업훈련학교에서 ATmega, 전자회로, C 언어 기술 습득',
-        'STM32 및 아두이노(Arduino) MCU 펌웨어 독학 학습',
-      ],
     },
     {
       id: 't-2016',
@@ -130,10 +122,6 @@ export const portfolioData: PortfolioData = {
       colorType: 'cyan',
       isTop: true,
       techStack: ['AngularJS', 'JavaScript', 'ECharts', 'jQuery'],
-      achievements: [
-        '기존 프로토타입 웹 프로젝트를 이어받아 본격적인 개발 시작',
-        '장비 설정 및 하드웨어 연동 웹 제어 페이지 개발',
-      ],
     },
     {
       id: 't-2018',
@@ -151,10 +139,6 @@ export const portfolioData: PortfolioData = {
         'WebSocket',
         'MUI',
       ],
-      achievements: [
-        'AngularJS & Next.js 무중단 하이브리드 병행 아키텍처 구축 주도',
-        'WebSocket 차트 실시간 전력 모니터링 SaaS 구축',
-      ],
     },
     {
       id: 't-2020',
@@ -164,10 +148,6 @@ export const portfolioData: PortfolioData = {
       colorType: 'green',
       isTop: false,
       techStack: ['React', 'Next.js', 'Vercel', 'Tailwind CSS'],
-      achievements: [
-        '사용자 니즈에 맞춘 유용한 웹 서비스 및 웹 툴 지속 런칭',
-        'Vercel 기반 자동 배포(CI/CD) 및 반응형 웹 UI 구현',
-      ],
     },
     {
       id: 't-2023',
@@ -177,10 +157,6 @@ export const portfolioData: PortfolioData = {
       colorType: 'cyan',
       isTop: true,
       techStack: ['Flutter', 'Dart', 'Firebase'],
-      achievements: [
-        'iOS 및 Android App Store 심사 통과 및 정식 배포',
-        '실시간 푸시 알림(FCM) 및 모바일 앱 상태 관리 구현',
-      ],
     },
     {
       id: 't-2024',
@@ -198,10 +174,6 @@ export const portfolioData: PortfolioData = {
         'Vercel',
         'pnpm Monorepo',
       ],
-      achievements: [
-        'Next.js 15 + NestJS 11 기반 사이드 프로젝트 pnpm 모노레포 아키텍처 수립',
-        '독립 프로덕션 운영을 통해 월간 활성 사용자(MAU) 5,000명 달성',
-      ],
     },
   ],
 
@@ -213,7 +185,6 @@ export const portfolioData: PortfolioData = {
         { name: 'Next.js', isPrimary: true },
         { name: 'TypeScript', isPrimary: true },
         { name: 'AngularJS', isPrimary: false },
-        { name: 'Vue 2', isPrimary: false },
       ],
     },
     {
@@ -225,7 +196,6 @@ export const portfolioData: PortfolioData = {
         { name: 'Styled Components', isPrimary: true },
         { name: 'Tailwind CSS', isPrimary: false },
         { name: 'Zustand', isPrimary: false },
-        { name: 'Emotion', isPrimary: false },
       ],
     },
     {
@@ -252,8 +222,6 @@ export const portfolioData: PortfolioData = {
         { name: 'NestJS', isPrimary: false },
         { name: 'Node.js', isPrimary: false },
         { name: 'MongoDB', isPrimary: false },
-        { name: 'GraphQL', isPrimary: false },
-        { name: 'Redis', isPrimary: false },
       ],
     },
     {
@@ -262,9 +230,6 @@ export const portfolioData: PortfolioData = {
         { name: 'Vite', isPrimary: true },
         { name: 'Vercel', isPrimary: false },
         { name: 'pnpm Workspace', isPrimary: false },
-        { name: 'Doppler', isPrimary: false },
-        { name: 'Git', isPrimary: false },
-        { name: 'Figma', isPrimary: false },
       ],
     },
   ],
@@ -462,7 +427,7 @@ export const portfolioData: PortfolioData = {
       galleryImages: [
         {
           url: ewMobileDemo,
-          title: '모바일 로그인 페이지 (GIF)',
+          title: '모바일 로그인 페이지',
           caption: 'EnergyWatch 모바일 앱 로그인 및 인증 화면 애니메이션',
         },
         {
@@ -501,7 +466,7 @@ export const portfolioData: PortfolioData = {
       id: 'gf2-blackolf',
       title: '소녀전선2 by BlackOlf',
       subtitle: 'gf2.blackolf.dev',
-      badge: 'Community Platform (운영 중)',
+      badge: 'Live Service (라이브 서비스)',
       period: '2024 ~ 현재',
       role: '풀스택 모노레포 설계 & 서비스 독립 운영',
       techStack: [
@@ -521,9 +486,9 @@ export const portfolioData: PortfolioData = {
           description: '출시 후 실사용자 유입 및 지속적인 팬 커뮤니티 트래픽 수용.',
         },
         {
-          title: 'ISR + Google Sheets 아키텍처',
+          title: 'Google Sheets를 활용한 서버리스 어드민 및 ISR',
           description:
-            'Sheets API로 데이터를 가져와 페이지를 미리 생성, 변경 시 필요한 페이지만 재빌드하는 유연한 구조.',
+            '별도의 어드민 시스템 구축 없이 Google Sheets를 활용하여 운영 리소스를 최소화. ISR과 결합해 데이터 변경 시 필요한 페이지만 즉각 갱신되도록 아키텍처 설계.',
         },
         {
           title: 'RAG 기반 지능형 위키 AI',
@@ -603,44 +568,7 @@ export const portfolioData: PortfolioData = {
         },
       ],
     },
-    {
-      id: 'nc-algo',
-      title: '뉴럴클라우드 알고리즘',
-      category: 'Web Service',
-      period: '2023',
-      role: '프론트엔드 유틸리티 설계',
-      description:
-        '요일별 아이템 획득 정보를 정리하고, 캐릭터별 필요 통계를 제공하여 효율적인 파밍 우선순위 결정을 지원.',
-      techStack: ['React', 'Recharts', 'TypeScript'],
-      link: 'https://pmw0310.github.io/nc_algorithm/',
-      imageKey: 'images/05_nc/algo_01.png',
-      galleryImages: [
-        {
-          url: algo01,
-          title: '뉴럴클라우드 알고리즘 파밍 UI',
-          caption: '요일별 아이템 파밍 및 캐릭터별 통계 리포트',
-        },
-      ],
-    },
-    {
-      id: 'wuxia-map',
-      title: '천애명월도M 지도',
-      category: 'Web Map Service',
-      period: '2022',
-      role: '단독 개발 & 인터랙티브 지도 구축',
-      description:
-        'Leaflet으로 게임 좌표 시스템을 웹에 구현. 카테고리별 마커 필터링으로 도감 위치를 효율적으로 탐색.',
-      techStack: ['React', 'Leaflet', 'TypeScript'],
-      link: 'https://map.blackolf.com/',
-      imageKey: 'images/06_map/map_01.png',
-      galleryImages: [
-        {
-          url: map01,
-          title: '천애명월도M Leaflet 지도',
-          caption: 'Leaflet.js 기반 캔버스 지도 마커 필터링',
-        },
-      ],
-    },
+
     {
       id: 'lo-vote',
       title: '라스트오리진 투표',
@@ -674,25 +602,6 @@ export const portfolioData: PortfolioData = {
           caption: '득표율 및 타임라인별 투표 참여 추이 분석',
         },
         { url: vote06, title: '모바일 반응형 뷰', caption: '모바일 반응형 투표 UI 화면' },
-      ],
-    },
-    {
-      id: 'radish-price',
-      title: '동물의숲 무 예측',
-      category: 'Utility App',
-      period: '2020',
-      role: '알고리즘 구현 및 첫 토이 프로젝트',
-      description:
-        '알려진 가격 패턴 알고리즘 기반으로 해당 주의 무 가격 등락을 예측. Vue 2 첫 토이 프로젝트.',
-      techStack: ['Vue 2', 'JavaScript'],
-      link: 'https://blackolf.com/radish/',
-      imageKey: 'images/08_radish/radish_01.png',
-      galleryImages: [
-        {
-          url: radish01,
-          title: '동물의숲 무 가격 예측기',
-          caption: '알고리즘 기반 무 가격 등락 패턴 분석 UI',
-        },
       ],
     },
   ],
