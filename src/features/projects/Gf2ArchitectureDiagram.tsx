@@ -7,7 +7,7 @@ graph TB
     GITHUB["🐙 GitHub (소스코드)"]
 
     subgraph FE ["☁️ FRONTEND (Vercel)"]
-        FE_APP["⚡ Next.js 15 (App Router)"]
+        FE_APP["⚡ Next.js 16 (App Router)"]
     end
 
     subgraph CI ["🚀 BACKEND CI/CD"]
@@ -17,6 +17,7 @@ graph TB
 
     subgraph BE ["🏠 BACKEND (Synology NAS) - NestJS 11"]
         BE_API["🤖 API 서버 (REST & RAG 서비스)"]
+        BE_MCP["🔌 SSC MCP"]
         BE_ADMIN["📑 Swagger UI (API 문서)"]
     end
 
@@ -48,7 +49,7 @@ graph TB
     class GITHUB gitStyle;
     class GHACTIONS,DOCKER devopsStyle;
     class FE_APP feStyle;
-    class BE_API,BE_ADMIN beStyle;
+    class BE_API,BE_MCP,BE_ADMIN beStyle;
     class DB_MONGO,DB_GSHEET,GEMINI dataStyle;
 `;
 

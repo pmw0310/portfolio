@@ -28,26 +28,14 @@ import ew27 from '@/assets/images/01_EnergyWatch/ew_27.jpg';
 import ew28 from '@/assets/images/01_EnergyWatch/ew_28.jpg';
 import ew29 from '@/assets/images/01_EnergyWatch/ew_29.jpg';
 
-// GF2 Images & GIFs (리뉴얼 최신 이미지)
-import gf211 from '@/assets/images/02_gf2/gf2_11.png';
-import gf212 from '@/assets/images/02_gf2/gf2_12.png';
-import gf213 from '@/assets/images/02_gf2/gf2_13.png';
-import gf214 from '@/assets/images/02_gf2/gf2_14.png';
-import gf215 from '@/assets/images/02_gf2/gf2_15.jpg';
-import gf216 from '@/assets/images/02_gf2/gf2_16.gif';
-import gf217 from '@/assets/images/02_gf2/gf2_17.png';
-import gf218 from '@/assets/images/02_gf2/gf2_18.png';
+// ElmoHub Images
+import elmoDashboard from '@/assets/images/02_gf2/elmo_dashboard.png';
+import elmoPhotocard from '@/assets/images/02_gf2/elmo_photocard.jpg';
+import elmoEventCalendar from '@/assets/images/02_gf2/elmo_event_calendar.png';
+import elmoMyongAi from '@/assets/images/02_gf2/elmo_myong_ai.png';
+import elmoCookingNote from '@/assets/images/02_gf2/elmo_cooking_note.png';
 
-// Side Projects Images
-import steam01 from '@/assets/images/03_grid/steam_01.gif';
-import algo01 from '@/assets/images/05_nc/algo_01.png';
-import map01 from '@/assets/images/06_map/map_01.png';
-import vote01 from '@/assets/images/07_lo/vote_01.png';
-import vote02 from '@/assets/images/07_lo/vote_02.png';
-import vote03 from '@/assets/images/07_lo/vote_03.png';
-import vote04 from '@/assets/images/07_lo/vote_04.png';
-import vote06 from '@/assets/images/07_lo/vote_06.jpg';
-import radish01 from '@/assets/images/08_radish/radish_01.png';
+
 
 export type PortfolioData = {
   profile: PersonalInfo;
@@ -464,13 +452,14 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: 'gf2-blackolf',
-      title: '소녀전선2 by BlackOlf',
+      title: 'ElmoHub',
       subtitle: 'gf2.blackolf.dev',
       badge: 'Live Service (라이브 서비스)',
-      period: '2024 ~ 현재',
+      period: '2025 ~ 현재',
       role: '풀스택 모노레포 설계 & 서비스 독립 운영',
       techStack: [
-        'Next.js 15',
+        'Next.js 16',
+        'MUI 9',
         'NestJS 11',
         'MongoDB',
         'Gemini API',
@@ -479,132 +468,65 @@ export const portfolioData: PortfolioData = {
         'pnpm Monorepo',
       ],
       summary:
-        'Next.js 15 + NestJS 11 + MongoDB 풀스택 pnpm 모노레포 아키텍처를 구축하고 Zustand 상태 관리와 Google Sheets API 연동으로 월간 이용자 5,000명 수준의 팬 커뮤니티 플랫폼을 독립 개발 및 운영 중입니다.',
+        'Next.js 16 + MUI 9 + NestJS 11 + MongoDB 풀스택 pnpm 모노레포 아키텍처를 구축하고 Zustand 상태 관리와 Google Sheets API, RAG/MCP, 웹 크롤링을 연동하여 월간 이용자 5,000명 수준의 팬 커뮤니티 종합 대시보드 플랫폼을 독립 개발 및 운영 중입니다.',
       features: [
         {
-          title: '월간 이용자 5,000명 수준 (MAU)',
-          description: '출시 후 실사용자 유입 및 지속적인 팬 커뮤니티 트래픽 수용.',
+          title: '월간 이용자 5,000명 수준 (MAU) & 종합 대시보드 허브',
+          description:
+            '출시 후 지속적인 트래픽을 수용하며 오늘의 인형, 과금 패키지 효율 랭킹, 실시간 이벤트 타임라인을 모듈식 카드로 통합한 반응형 대시보드 구축.',
         },
         {
-          title: 'Google Sheets를 활용한 서버리스 어드민 및 ISR',
+          title: '나무위키 임베딩 RAG 지능형 위키 (MYONG AI) & MCP 서버',
           description:
-            '별도의 어드민 시스템 구축 없이 Google Sheets를 활용하여 운영 리소스를 최소화. ISR과 결합해 데이터 변경 시 필요한 페이지만 즉각 갱신되도록 아키텍처 설계.',
+            '나무위키 문서를 벡터 임베딩하여 MongoDB에 저장하고 Gemini LLM과 연동한 캐릭터 페르소나 자연어 질의응답 구현. 외부 AI 에이전트 연동용 SSC MCP 서버 운영.',
         },
         {
-          title: 'RAG 기반 지능형 위키 AI',
+          title: '실시간 이벤트 & 픽업 캘린더 (자동 크롤링 파이프라인)',
           description:
-            '게임 내 방대한 데이터를 벡터화하여 MongoDB에 저장하고, Gemini LLM을 통해 자연어로 문답이 가능한 AI 위키 서비스 개발.',
+            '공식 카페 공지를 자동 크롤링하여 시즌 로드맵 간트 차트, Today 진행선, D-Day 카운트다운 및 다중 뷰(타임라인/목록/달력) 캘린더 제공.',
         },
         {
-          title: '풀스택 + API 문서화',
+          title: '인터랙티브 웹 도감 & 3D 텍스처 포토 카드',
           description:
-            'NestJS + Swagger 연동으로 API 문서 자동화 및 MongoDB/Google Sheets 데이터 파이프라인 수립.',
+            '실물 카드 질감 텍스처와 마우스 반응형 3D Transform 포토 카드, 링 바인더 스케치북 컨셉의 사브리나 창작 요리 레시피 조합기 도감 구현.',
         },
       ],
       galleryImages: [
         {
-          url: gf211,
-          title: '메인 페이지',
+          url: elmoDashboard,
+          title: '대시보드',
           caption:
-            'MYONG AI 챗봇, 계산기, 확률 시뮬레이터 등 6개 서브 서비스 통합 메인 화면',
+            '오늘의 인형, 과금 패키지 효율 랭킹, MYONG AI 퀵 검색, 이벤트·픽업 일정 타임라인을 한눈에 제공하는 종합 허브',
         },
         {
-          url: gf212,
-          title: '가챠 확률 시뮬레이터',
-          caption: '천장 시스템 및 픽업 캐릭터 모델링 기반 실시간 가챠 시뮬레이션 UI',
-        },
-        {
-          url: gf213,
-          title: '가챠 확률 및 효율 예측 통계',
+          url: elmoPhotocard,
+          title: '웹 포토 카드',
           caption:
-            'ECharts 기반 천장 확률 분포, 누적 가챠 기대값 및 파편 획득 예측 대시보드',
+            '실물 카드의 질감을 살린 텍스처 처리와 마우스 커서 호버 각도에 따라 입체적으로 반응하는 3D Transform 포토 카드 UI',
         },
         {
-          url: gf214,
-          title: '인게임 과금 효율 분석',
-          caption: 'MUI Data Grid 기반 인게임 패키지 가격 대비 효율 자동 계산 표',
+          url: elmoEventCalendar,
+          title: '이벤트 캘린더',
+          caption:
+            '공식 카페 공지 크롤링 데이터를 기반으로 시즌 로드맵 간트 차트, Today 진행선 및 다중 뷰(타임라인/목록/달력)를 제공하는 캘린더',
         },
         {
-          url: gf215,
-          title: '웹 포토 카드 갤러리',
-          caption: '인게임 캐릭터 모션 호버 연출 및 웹 포토 카드 컬렉션 UI',
+          url: elmoMyongAi,
+          title: 'MYONG AI 지능형 위키 (RAG & MCP)',
+          caption:
+            '나무위키 문서를 벡터 임베딩한 RAG 지식 검색과 Gemini LLM, SSC MCP 서버를 연동한 캐릭터 페르소나 지능형 질의응답 서비스',
         },
         {
-          url: gf216,
-          title: '웹 포토 카드 플립 모션 데모',
-          caption: 'CSS 3D Transform & 인터랙션 기반 실시간 포토 카드 플립 모션',
-        },
-        {
-          url: gf217,
-          title: 'MYONG AI 서비스',
-          caption: '소녀전선2 전술 위키 RAG 기반 자연어 지능형 Q&A 검색 서비스',
-        },
-        {
-          url: gf218,
-          title: '무기 세계 지도',
-          caption: '총기/무기 타입별 국가 분포 시각화 및 필터링 지도 UI',
+          url: elmoCookingNote,
+          title: '사브리나의 요리 노트',
+          caption:
+            '스케치북 바인더 컨셉의 비주얼 디자인과 레시피 조합기, 식재료 도감, 먹방 한줄평 및 버프 스펙을 제공하는 인터랙티브 요리 도감',
         },
       ],
     },
   ],
 
-  sideProjects: [
-    {
-      id: 'steam-grid',
-      title: '스팀 그리드 메이커',
-      category: 'Web Tool',
-      period: '2024',
-      role: '단독 개발 & 웹 에디터 구축',
-      description:
-        'Fabric.js로 Canvas를 직접 제어, GIF까지 편집 가능한 이미지 에디터. 클라이언트 사이드에서 모든 처리 완료.',
-      techStack: ['Next.js', 'Fabric.js', 'TypeScript'],
-      link: 'https://grid.blackolf.dev/?g=',
-      imageKey: 'images/03_grid/steam_01.gif',
-      galleryImages: [
-        {
-          url: steam01,
-          title: '스팀 그리드 메이커 에디터',
-          caption: 'Fabric.js 기반 GIF 지원 캔버스 에디터',
-        },
-      ],
-    },
-
-    {
-      id: 'lo-vote',
-      title: '라스트오리진 투표',
-      category: 'Web Community',
-      period: '2020',
-      role: '풀스택 커뮤니티 개발',
-      description:
-        'GraphQL + Redis 캐싱으로 실시간 투표 집계. 세션 기반 중복 투표 방지와 빠른 응답속도 구현.',
-      techStack: ['Next.js', 'GraphQL', 'Redis'],
-      link: 'https://github.com/pmw0310/last-origin-vote',
-      imageKey: 'images/07_lo/vote_01.png',
-      galleryImages: [
-        {
-          url: vote01,
-          title: '실시간 인기 투표 메인',
-          caption: 'GraphQL + Redis 기반 실시간 집계 투표 웹 서비스',
-        },
-        {
-          url: vote02,
-          title: '투표 결과 집계 그래프',
-          caption: '실시간 투표 결과 시각화 및 부문별 순위 차트',
-        },
-        {
-          url: vote03,
-          title: '세션 중복 방지 UI',
-          caption: '중복 투표 방지 및 안전한 세션 검증 프로세스',
-        },
-        {
-          url: vote04,
-          title: '결과 상세 분석 대시보드',
-          caption: '득표율 및 타임라인별 투표 참여 추이 분석',
-        },
-        { url: vote06, title: '모바일 반응형 뷰', caption: '모바일 반응형 투표 UI 화면' },
-      ],
-    },
-  ],
+  sideProjects: [],
 
   leadership: [
     {

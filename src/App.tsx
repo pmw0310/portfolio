@@ -48,7 +48,7 @@ export const App: React.FC = () => {
       {/* 8. 리더십 & 프로세스 개선 섹션 */}
       <LeadershipSection leadership={portfolioData.leadership} />
 
-      {/* 9. 사이드 프로젝트 컬렉션 & GF2 커뮤니티 플랫폼 섹션 */}
+      {/* 9. 사이드 프로젝트 컬렉션 & ElmoHub 커뮤니티 플랫폼 섹션 */}
       <SideProjectsSection
         gf2Project={gf2Project}
         sideProjects={portfolioData.sideProjects}

@@ -11,7 +11,7 @@
 - **실시간 대용량 시각화 대시보드**: WebSocket 스트리밍과 ECharts를 결합하여 30+ 종의 전력 모니터링 차트 및 자동 PDF 보고서 출력 시스템 구축
 - **3-Tier IoT 데이터 파이프라인**: 현장 계측 모듈(DS-125) → 전력품질미터(DS-CBN) → Cloud EMS로 이어지는 하드웨어-클라우드 웹 시각화 파이프라인 연동
 - **크로스플랫폼 모바일 앱 독립 구축**: Flutter로 iOS/Android 앱을 단독 개발하고 양대 마켓 인증서 관리 및 출시 파이프라인 주도
-- **지속적인 프로덕트 개발**: 일평균 다수의 유저가 이용하는 [소녀전선2 by BlackOlf](https://gf2.blackolf.dev) (ISR + Google Sheets API) 등 7개 이상의 사이드 프로젝트 직접 개발 및 서비스 운영
+- **지속적인 프로덕트 개발**: 일평균 다수의 유저가 이용하는 [ElmoHub](https://gf2.blackolf.dev) (ISR + Google Sheets API) 등 7개 이상의 사이드 프로젝트 직접 개발 및 서비스 운영
 
 ---
 
@@ -50,7 +50,7 @@
   - 현장 엔지니어를 위해 PC 중심 웹 UI를 모바일에 최적화된 UX로 재설계
   - iOS App Store & Google Play Store 배포 및 빌드/인증서 파이프라인 독립 구축
 
-### 4. 소녀전선2 by BlackOlf 커뮤니티 플랫폼 (2024 ~ 현재)
+### 4. ElmoHub 커뮤니티 플랫폼 (2024 ~ 현재)
 - **링크**: [gf2.blackolf.dev](https://gf2.blackolf.dev)
 - **기술**: Next.js, Google Sheets API, ISR, Framer Motion, Tailwind CSS
 - **핵심 성과**:

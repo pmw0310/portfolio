@@ -5,7 +5,7 @@ import { Cpu, X, Maximize2, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react';
 import { Gf2ArchitectureDiagram } from './Gf2ArchitectureDiagram';
 
 /**
- * GF2 시스템 아키텍처 다이어그램 대형 모달 및 Pan/Zoom(드래그 이동 & 휠 확대) 뷰어 컴포넌트
+ * ElmoHub 시스템 아키텍처 다이어그램 대형 모달 및 Pan/Zoom(드래그 이동 & 휠 확대) 뷰어 컴포넌트
  * @returns 모달 트리거 버튼 및 팝업 대화상자 엘리먼트
  */
 export const Gf2ArchitectureModal: React.FC = () => {
@@ -89,7 +89,7 @@ export const Gf2ArchitectureModal: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-white flex items-center gap-2">
-                          <span>소녀전선2 시스템 아키텍처</span>
+                          <span>ElmoHub 시스템 아키텍처</span>
                           <span className="text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono">
                             Full-Stack & CI/CD
                           </span>
