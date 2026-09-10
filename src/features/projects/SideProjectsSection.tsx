@@ -16,16 +16,13 @@ import { MyongAiWidget } from '@/components/MyongAiWidget';
 import elmoDashboard from '@/assets/images/02_gf2/elmo_dashboard.png';
 import elmoPhotocard from '@/assets/images/02_gf2/elmo_photocard.jpg';
 import elmoCookingNote from '@/assets/images/02_gf2/elmo_cooking_note.png';
-import elmoMyongWidget from '@/assets/images/02_gf2/elmo_myong_widget.png';
 
 export type SideProjectsSectionProps = {
   gf2Project?: MajorProject;
   sideProjects: SideProject[];
 };
 
-const sideImageMap: Record<string, string> = {
-  'images/02_gf2/elmo_myong_widget.png': elmoMyongWidget,
-};
+const sideImageMap: Record<string, string> = {};
 
 /**
  * 사이드 프로젝트 목록 섹션 컴포넌트 (갤러리/슬라이더 연동 포함)
