@@ -44,17 +44,27 @@
          }
 
          @media print {
-            body {
+            html, body {
                background: none;
-               padding: 0;
+               margin: 0 !important;
+               padding: 0 !important;
+               width: 210mm;
+               height: auto;
             }
             .a4-sheet {
-               margin: 0;
-               box-shadow: none;
+               margin: 0 !important;
+               box-shadow: none !important;
                page-break-after: always;
                break-after: page;
-               height: 297mm;
-               max-height: 297mm;
+               page-break-inside: avoid;
+               break-inside: avoid;
+               height: 296.5mm;
+               max-height: 296.5mm;
+            }
+            .a4-sheet:last-child,
+            .a4-sheet:last-of-type {
+               page-break-after: avoid !important;
+               break-after: avoid !important;
             }
             .no-print {
                display: none !important;
