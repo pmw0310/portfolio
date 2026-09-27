@@ -30,12 +30,11 @@ import ew29 from '@/assets/images/01_EnergyWatch/ew_29.jpg';
 
 // ElmoHub Images
 import elmoDashboard from '@/assets/images/02_gf2/elmo_dashboard.png';
+import elmoMmdViewer from '@/assets/images/02_gf2/elmo_mmd_viewer.png';
 import elmoPhotocard from '@/assets/images/02_gf2/elmo_photocard.jpg';
 import elmoEventCalendar from '@/assets/images/02_gf2/elmo_event_calendar.png';
 import elmoMyongAi from '@/assets/images/02_gf2/elmo_myong_ai.png';
 import elmoCookingNote from '@/assets/images/02_gf2/elmo_cooking_note.png';
-
-
 
 export type PortfolioData = {
   profile: PersonalInfo;
@@ -71,8 +70,8 @@ export const portfolioData: PortfolioData = {
         colorClass: 'text-amber-500 dark:text-amber-brand',
       },
       {
-        label: 'Side Project MAU',
-        value: '5,000+',
+        label: 'Live Service MAU',
+        value: '7,000+',
         colorClass: 'text-emerald-500 dark:text-emerald-400',
       },
     ],
@@ -190,6 +189,7 @@ export const portfolioData: PortfolioData = {
       category: 'Data Visualization & Libs',
       skills: [
         { name: 'ECharts', isPrimary: true },
+        { name: 'Three.js', isPrimary: true },
         { name: 'Motion', isPrimary: false },
         { name: 'Recharts', isPrimary: false },
       ],
@@ -454,11 +454,13 @@ export const portfolioData: PortfolioData = {
       id: 'gf2-blackolf',
       title: 'ElmoHub',
       subtitle: 'gf2.blackolf.dev',
-      badge: 'Live Service (라이브 서비스)',
+      badge: 'Live Service',
       period: '2025 ~ 현재',
       role: '풀스택 모노레포 설계 & 서비스 독립 운영',
       techStack: [
+        'TypeScript',
         'Next.js 16',
+        'Three.js',
         'MUI 9',
         'NestJS 11',
         'MongoDB',
@@ -468,27 +470,73 @@ export const portfolioData: PortfolioData = {
         'pnpm Monorepo',
       ],
       summary:
-        'Next.js 16 + MUI 9 + NestJS 11 + MongoDB 풀스택 pnpm 모노레포 아키텍처를 구축하고 Zustand 상태 관리와 Google Sheets API, RAG/MCP, 웹 크롤링을 연동하여 월간 이용자 5,000명 수준의 팬 커뮤니티 종합 대시보드 플랫폼을 독립 개발 및 운영 중입니다.',
+        'TypeScript 기반 Next.js 16 + MUI 9 + NestJS 11 + MongoDB 풀스택 pnpm 모노레포 아키텍처를 구축하고, Three.js 3D 뷰어 최적화, RAG 벡터 검색, Nginx 온디맨드 리사이징 및 자동 크롤링 파이프라인으로 사용자 문제를 해결하여 월간 이용자 7,000명 수준의 팬 커뮤니티 플랫폼을 독립 개발 및 운영 중입니다.',
       features: [
         {
-          title: '월간 이용자 5,000명 수준 (MAU) & 종합 대시보드 허브',
+          title: '문제',
+          bulletColor: 'emerald',
           description:
-            '출시 후 지속적인 트래픽을 수용하며 오늘의 인형, 과금 패키지 효율 랭킹, 실시간 이벤트 타임라인을 모듈식 카드로 통합한 반응형 대시보드 구축.',
+            '게임 내 흩어진 비정형 지식(공지·위키·DB)과 복잡한 계산 도구로 인한 유저 탐색 피로, 대용량 에셋(3D MMD·일러스트) 서빙 시 브라우저 렌더링 병목 및 단일 서버 장애 리스크',
         },
         {
-          title: '나무위키 임베딩 RAG 지능형 위키 (MYONG AI) & MCP 서버',
+          title: '판단',
+          bulletColor: 'amber',
           description:
-            '나무위키 문서를 벡터 임베딩하여 MongoDB에 저장하고 Gemini LLM과 연동한 캐릭터 페르소나 자연어 질의응답 구현. 외부 AI 에이전트 연동용 SSC MCP 서버 운영.',
+            '단순 위키 조회를 넘어선 TypeScript 모노레포 구축, LLM 환각을 방지하는 RAG 벡터 검색과 Nginx 온디맨드 쿼리 리사이징 분리, 백엔드 PM2 2-Cluster 고가용성 아키텍처 도입',
         },
         {
-          title: '실시간 이벤트 & 픽업 캘린더 (자동 크롤링 파이프라인)',
+          title: '변화',
+          bulletColor: 'emerald',
           description:
-            '공식 카페 공지를 자동 크롤링하여 시즌 로드맵 간트 차트, Today 진행선, D-Day 카운트다운 및 다중 뷰(타임라인/목록/달력) 캘린더 제공.',
+            '월 순방문자 7,800+(MAU 7,000+) 수용, 실시간 공지 자동 파싱 및 연간 이벤트 트래커 제공, 64kbps Wasm 오디오 압축(대역폭 84% 절감)과 Three.js 60fps 3D 뷰어로 종합 팬 플랫폼 정착',
+        },
+      ],
+      problemSolvingExperiences: [
+        {
+          category: 'RAG 지식 검색 파이프라인 및 데이터 보안',
+          items: [
+            {
+              title: '문제',
+              bulletColor: 'emerald',
+              description:
+                '게임 최신 지식에 대한 LLM 환각과 함께, 다중 엔티티 질의 시 무차별적인 청크 수집으로 검색 노이즈와 응답 지연이 심화되었고 음성 API 무단 호출 위험 상존',
+            },
+            {
+              title: '판단',
+              bulletColor: 'amber',
+              description:
+                'MongoDB Vector Search 기반 RAG에 레거시 청크 격리 가드와 Top-K 상한선 제어를 도입하고, 서버 검증 messageId 기반 폐쇄 루프로 비인가 API 호출 차단',
+            },
+            {
+              title: '변화',
+              bulletColor: 'emerald',
+              description:
+                '검색 노이즈와 토큰 낭비를 차단해 응답 속도와 캐릭터 페르소나 신뢰도를 극대화하고, 비인가 호출 방지 및 Wasm 64kbps 오디오 압축으로 음성 대역폭 84% 절감',
+            },
+          ],
         },
         {
-          title: '인터랙티브 웹 도감 & 3D 텍스처 포토 카드',
-          description:
-            '실물 카드 질감 텍스처와 마우스 반응형 3D Transform 포토 카드, 링 바인더 스케치북 컨셉의 사브리나 창작 요리 레시피 조합기 도감 구현.',
+          category: 'Nginx 온디맨드 리사이징 및 뷰포트 이미지 메모리 해제',
+          items: [
+            {
+              title: '문제',
+              bulletColor: 'emerald',
+              description:
+                '수백 장의 고화질 원본 일러스트 서빙 시 LCP 지연과 데이터 낭비가 발생했고, 긴 목록 스크롤 시 누적된 대용량 이미지로 인해 저사양 모바일 기기에서 탭 크래시와 프레임 드랍 유발',
+            },
+            {
+              title: '판단',
+              bulletColor: 'amber',
+              description:
+                'Nginx 이미지 서버에 URL 쿼리 기반 동적 리사이징 파이프라인을 구축해 전송 규격을 줄이고, 프론트엔드에서는 IntersectionObserver를 활용해 화면 밖으로 벗어난 이미지를 DOM과 메모리에서 즉시 언로드하도록 최적화',
+            },
+            {
+              title: '변화',
+              bulletColor: 'emerald',
+              description:
+                '디바이스별 최적 해상도 온디맨드 서빙으로 초기 LCP와 네트워크 트래픽을 크게 줄이고, 화면 밖 이미지 메모리 자동 해제로 장시간 탐색 시에도 메모리 누수 없이 부드러운 60fps 스크롤 달성',
+            },
+          ],
         },
       ],
       galleryImages: [
@@ -496,7 +544,13 @@ export const portfolioData: PortfolioData = {
           url: elmoDashboard,
           title: '대시보드',
           caption:
-            '오늘의 인형, 과금 패키지 효율 랭킹, MYONG AI 퀵 검색, 이벤트·픽업 일정 타임라인을 한눈에 제공하는 종합 허브',
+            '오늘의 케릭터, 최고 효율 패키지 랭킹, 케릭터 분포 통계 차트, MYONG AI 검색, 연간 이벤트 아카이브 트래커를 모듈식으로 집약한 종합 허브',
+        },
+        {
+          url: elmoMmdViewer,
+          title: 'Three.js 3D MMD 뷰어',
+          caption:
+            'Three.js WebGL 기반으로 3D 캐릭터 모델과 모션 데이터를 360도 자유 시점으로 실시간 렌더링하고 조작하는 인터랙티브 뷰어',
         },
         {
           url: elmoPhotocard,
@@ -512,9 +566,9 @@ export const portfolioData: PortfolioData = {
         },
         {
           url: elmoMyongAi,
-          title: 'MYONG AI 지능형 위키 (RAG & MCP)',
+          title: 'MYONG AI 지능형 위키 (RAG)',
           caption:
-            '나무위키 문서를 벡터 임베딩한 RAG 지식 검색과 Gemini LLM, SSC MCP 서버를 연동한 캐릭터 페르소나 지능형 질의응답 서비스',
+            '나무위키 문서를 벡터 임베딩한 RAG 지식 검색과 Gemini LLM을 연동한 캐릭터 페르소나 지능형 질의응답 서비스',
         },
         {
           url: elmoCookingNote,

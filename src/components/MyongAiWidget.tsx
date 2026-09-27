@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Send, Sparkles } from 'lucide-react';
 import myongAvatar from '@/assets/images/02_gf2/myong_avatar.png';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export type MyongAiWidgetProps = {
+  /** 추가 커스텀 클래스 */
   className?: string;
 };
 
@@ -17,7 +20,7 @@ const MAX_QUERY_LENGTH = 100;
 
 /**
  * ElmoHub 대시보드의 실시간 MYONG AI 지식 검색 & RAG 챗봇 위젯 컴포넌트
- * 원본 대시보드와 동일한 #0d1315 바탕화면, #12181a 카드 배경, 100자 글자 수 제한이 적용되어 있습니다.
+ * 사이트 디자인 시스템(시안/에메랄드/슬레이트)과 일관되게 라이트/다크 모드를 완벽 지원합니다.
  * @param props MyongAiWidgetProps
  * @returns MYONG AI 인터랙티브 위젯 JSX 엘리먼트
  */
@@ -50,15 +53,21 @@ export const MyongAiWidget: React.FC<MyongAiWidgetProps> = ({ className = '' }) 
   };
 
   return (
-    /* 위젯 본체 박스 (#12181a) + 테두리 (#242e34) */
+    /* 위젯 본체 박스 - 라이트/다크 테마 지원 */
     <div
-      className={`relative overflow-hidden rounded-2xl bg-[#12181a] border border-[#242e34] p-4 sm:p-6 shadow-xl space-y-4 text-white ${className}`}
+      className={cn(
+        'relative overflow-hidden rounded-2xl p-4 sm:p-6 transition-all space-y-4',
+        'bg-gradient-to-br from-slate-50/90 via-emerald-50/15 to-sky-50/25 dark:from-slate-950/80 dark:via-slate-900/60 dark:to-slate-950/80',
+        'border border-slate-200/80 dark:border-slate-800 shadow-sm dark:shadow-xl',
+        className
+      )}
     >
       {/* 상단 캐릭터 아바타 및 타이틀 문구 */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3.5">
           <div className="relative shrink-0 flex items-center justify-center">
-            {/* 원본 사진과 100% 일치하는 청록색(#115874) 배경 및 네온 스카이블루(#39bef9) 링 (overflow-hidden으로 외곽 돌출 방지) */}
-            <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-[#115874] border-2 border-[#39bef9] shadow-[0_0_12px_rgba(57,190,249,0.55)] flex items-center justify-center overflow-hidden">
+            {/* 수오미 아바타 링 - 라이트/다크 네온 펄스 효과 */}
+            <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-full bg-sky-100 dark:bg-[#115874] border-2 border-sky-400 dark:border-[#39bef9] shadow-[0_0_12px_rgba(56,189,248,0.35)] dark:shadow-[0_0_12px_rgba(57,190,249,0.55)] flex items-center justify-center overflow-hidden transition-colors">
               <img
                 src={myongAvatar}
                 alt="MYONG AI 수오미 아바타"
@@ -67,68 +76,102 @@ export const MyongAiWidget: React.FC<MyongAiWidgetProps> = ({ className = '' }) 
             </div>
           </div>
           <div className="space-y-0.5 text-left">
-            <h4 className="text-[#ed5e0c] font-bold text-base sm:text-lg tracking-tight">
-              RAG 서비스를 직접 사용해 보세요
-            </h4>
-            <p className="text-[#f46c1c] text-xs sm:text-sm font-medium">
+            <div className="flex items-center gap-2">
+              <h4 className="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white">
+                RAG 서비스를 직접 사용해 보세요
+              </h4>
+              <Badge variant="glow" className="text-[10px] px-2 py-0.5 font-bold hidden sm:inline-flex">
+                LIVE DEMO
+              </Badge>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
               질문을 입력하시면 실제 운영 중인 MYONG AI 지식 검색으로 연결됩니다
             </p>
           </div>
         </div>
 
-        {/* 질문 입력 인풋 필드 (최대 100자 제한 & 100자 카운터 탑재) */}
-        <form onSubmit={handleSubmit} className="relative pt-0.5">
-          <div className="relative flex items-center rounded-full bg-[#0a0e0f] border border-[#6a4128] focus-within:border-[#ed5e0c] focus-within:ring-2 focus-within:ring-[#ed5e0c]/25 transition-all">
-            <input
-              type="text"
-              value={query}
-              onChange={handleInputChange}
-              maxLength={MAX_QUERY_LENGTH}
-              placeholder="MYONG AI에게 질문하기..."
-              className="w-full bg-transparent px-5 py-2.5 sm:py-3 pr-28 text-sm sm:text-base text-slate-100 placeholder:text-[#5d6872] focus:outline-none"
-            />
-
-            {/* 우측 100자 카운터 및 전송 버튼 */}
-            <div className="absolute right-2 flex items-center gap-2">
-              <span
-                className={`text-xs font-mono font-medium transition-colors ${
-                  query.length >= MAX_QUERY_LENGTH
-                    ? 'text-[#ed5e0c] font-bold'
-                    : 'text-[#62707b]'
-                }`}
-                title="최대 100자 입력 가능"
-              >
-                {query.length}/{MAX_QUERY_LENGTH}
-              </span>
-              <button
-                type="submit"
-                title="MYONG AI 질의 전송"
-                aria-label="MYONG AI 질의 전송"
-                className="p-2 sm:p-2.5 rounded-full bg-[#ed5e0c] hover:bg-[#ff6815] text-white shadow-md hover:shadow-[#ed5e0c]/40 transition-all hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center"
-              >
-                <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 translate-x-0.5" />
-              </button>
-            </div>
-          </div>
-        </form>
-
-        {/* 추천 질의어 칩 (100자 이내 빠른 질의 지원) */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-          <span className="text-xs text-[#7e8e9c] flex items-center gap-1 mr-1">
-            <Sparkles className="w-3 h-3 text-[#f46c1c]" />
-            <span>추천 질문:</span>
-          </span>
-          {SUGGESTED_QUERIES.map((suggested, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => handleChipClick(suggested)}
-              className="text-xs px-2.5 py-1 rounded-full bg-[#0a0e0f] hover:bg-[#542e19]/40 text-[#c2cfdc] hover:text-[#f46c1c] border border-[#242e34] hover:border-[#6a4128] transition-colors cursor-pointer"
-            >
-              &quot;{suggested}&quot;
-            </button>
-          ))}
+        {/* 모바일 화면용 배지 */}
+        <div className="sm:hidden self-start pl-15">
+          <Badge variant="glow" className="text-[10px] px-2 py-0.5 font-bold">
+            LIVE DEMO
+          </Badge>
         </div>
       </div>
+
+      {/* 질문 입력 인풋 필드 (최대 100자 제한 & 100자 카운터 탑재) */}
+      <form onSubmit={handleSubmit} className="relative pt-0.5">
+        <div
+          className={cn(
+            'relative flex items-center rounded-full transition-all border shadow-xs',
+            'bg-white dark:bg-slate-900/90',
+            'border-slate-300 dark:border-slate-700/80',
+            'focus-within:border-emerald-500 dark:focus-within:border-cyan-brand',
+            'focus-within:ring-2 focus-within:ring-emerald-500/20 dark:focus-within:ring-cyan-brand/20'
+          )}
+        >
+          <input
+            type="text"
+            value={query}
+            onChange={handleInputChange}
+            maxLength={MAX_QUERY_LENGTH}
+            placeholder="MYONG AI에게 질문하기..."
+            className={cn(
+              'w-full bg-transparent px-5 py-2.5 sm:py-3 pr-28 text-sm sm:text-base focus:outline-none transition-colors',
+              'text-slate-900 dark:text-slate-100',
+              'placeholder:text-slate-400 dark:placeholder:text-slate-500'
+            )}
+          />
+
+          {/* 우측 100자 카운터 및 전송 버튼 */}
+          <div className="absolute right-2 flex items-center gap-2">
+            <span
+              className={cn(
+                'text-xs font-mono font-medium transition-colors',
+                query.length >= MAX_QUERY_LENGTH
+                  ? 'text-amber-600 dark:text-amber-brand font-bold'
+                  : 'text-slate-400 dark:text-slate-500'
+              )}
+              title="최대 100자 입력 가능"
+            >
+              {query.length}/{MAX_QUERY_LENGTH}
+            </span>
+            <button
+              type="submit"
+              title="MYONG AI 질의 전송"
+              aria-label="MYONG AI 질의 전송"
+              className={cn(
+                'p-2 sm:p-2.5 rounded-full shadow-md transition-all hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center',
+                'bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20',
+                'dark:bg-cyan-brand dark:hover:bg-cyan-400 dark:text-slate-950 dark:shadow-cyan-500/25'
+              )}
+            >
+              <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4 translate-x-0.5" />
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {/* 추천 질의어 칩 (100자 이내 빠른 질의 지원) */}
+      <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+        <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1 mr-1">
+          <Sparkles className="w-3.5 h-3.5 text-emerald-600 dark:text-cyan-brand shrink-0" />
+          <span className="font-medium">추천 질문:</span>
+        </span>
+        {SUGGESTED_QUERIES.map((suggested, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => handleChipClick(suggested)}
+            className={cn(
+              'text-xs px-2.5 py-1 rounded-full transition-all cursor-pointer border',
+              'bg-white hover:bg-emerald-50/70 text-slate-700 hover:text-emerald-700 border-slate-200 hover:border-emerald-300 shadow-2xs',
+              'dark:bg-slate-900/80 dark:hover:bg-slate-800 dark:text-slate-300 dark:hover:text-cyan-brand dark:border-slate-800 dark:hover:border-cyan-500/40'
+            )}
+          >
+            &quot;{suggested}&quot;
+          </button>
+        ))}
+      </div>
+    </div>
   );
 };

@@ -38,3 +38,6 @@
 - **데이터 분리**: 기존 `index.html` 내의 모든 텍스트, 경력, 프로젝트 정보는 `src/data/` 디렉토리 내의 TypeScript 객체 파일로 분리하여 관리합니다.
 - **Tailwind CSS 및 UI 디자인**: 기존 `index.html`에서 정의된 Custom Properties(`--navy`, `--cyan`, `--amber` 등)를 Tailwind CSS의 색상 테마 및 유틸리티 클래스로 매핑합니다.
 - **shadcn/ui 활용**: Button, Card, Badge, Dialog, Tooltip 등 UI 요소 및 재사용 컴포넌트 구성 시 **shadcn/ui** 기반 컴포넌트 패턴 및 라이브러리를 적극 도입·활용합니다.
+
+## 4. 에이전트 도구 사용 규칙 (Tool Rules)
+- **브라우저 에이전트(browser_subagent) 사용 절대 금지**: 웹 페이지 확인이나 인터랙션 테스트 시 브라우저 서브에이전트를 호출하지 마세요. 화면 및 UI 동작 검증은 사용자가 직접 로컬 브라우저에서 확인하며, 에이전트는 코드 정적 검사 및 빌드 검증(`npm run build`)으로 상태를 점검합니다.

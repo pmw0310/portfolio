@@ -43,6 +43,7 @@ import {
   SiSwagger,
   SiFramer,
   SiGooglegemini,
+  SiThreedotjs,
 } from 'react-icons/si';
 import {
   TbCode,
@@ -72,6 +73,7 @@ const techIconMap: Record<string, { icon: IconType; color?: string }> = {
   'Next.js 15': { icon: SiNextdotjs },
   'Next.js 16': { icon: SiNextdotjs },
   TypeScript: { icon: SiTypescript, color: '#3178C6' },
+  'Three.js': { icon: SiThreedotjs },
   JavaScript: { icon: SiJavascript, color: '#F7DF1E' },
   AngularJS: { icon: SiAngular, color: '#DD0031' },
   'Vue.js': { icon: SiVuedotjs, color: '#4FC08D' },

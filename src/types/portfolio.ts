@@ -82,6 +82,14 @@ export type MajorProject = {
     statLabel?: string;
     bulletColor?: 'emerald' | 'amber' | 'cyan';
   }[];
+  problemSolvingExperiences?: {
+    category: string;
+    items: {
+      title: string;
+      description: string;
+      bulletColor: 'emerald' | 'amber' | 'cyan';
+    }[];
+  }[];
   architecturePoints?: string[];
   outcomes?: string[];
   imageKey?: string;

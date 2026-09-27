@@ -88,37 +88,94 @@ export const SideProjectsSection: React.FC<SideProjectsSectionProps> = ({
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* 좌측 서브 특성 카드 목록 */}
+              {/* 좌측 2대 문제 해결 경험(문제-판단-변화) & 기술 스택 태그 */}
               <motion.div
                 initial={{ opacity: 0, x: -35 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, ease: 'easeOut' }}
-                className="lg:col-span-6 space-y-4"
+                className="lg:col-span-6 space-y-6"
               >
-                {gf2Project.features.map((feature, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: idx * 0.1,
-                      ease: 'easeOut',
-                    }}
-                    className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 space-y-1 shadow-xs"
-                  >
-                    <div className="font-bold text-slate-900 dark:text-white text-base">
-                      {feature.title}
-                    </div>
-                    <div className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-                      {feature.description}
-                    </div>
-                  </motion.div>
-                ))}
+                {gf2Project.problemSolvingExperiences &&
+                gf2Project.problemSolvingExperiences.length > 0 ? (
+                  <div className="space-y-6 pt-1">
+                    {gf2Project.problemSolvingExperiences.map((exp, expIdx) => (
+                      <div key={expIdx} className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <span className="w-1.5 h-4 rounded-full bg-emerald-600 dark:bg-cyan-brand" />
+                          <h4 className="font-bold text-slate-900 dark:text-white text-sm md:text-base tracking-tight">
+                            {exp.category}
+                          </h4>
+                        </div>
 
-                <div className="flex flex-wrap gap-2 pt-2">
+                        <div className="space-y-2.5 pl-2">
+                          {exp.items.map((item, idx) => {
+                            const isAmber = item.bulletColor === 'amber';
+                            return (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, x: -15 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                  duration: 0.3,
+                                  delay: idx * 0.08,
+                                }}
+                                className="flex items-start gap-2.5 text-xs md:text-sm leading-relaxed text-slate-700 dark:text-slate-300"
+                              >
+                                <span
+                                  className={`inline-block shrink-0 w-2 h-2 rounded-full mt-1.5 ${
+                                    isAmber
+                                      ? 'bg-amber-600 dark:bg-amber-500'
+                                      : 'bg-emerald-600 dark:bg-emerald-400'
+                                  }`}
+                                />
+                                <div>
+                                  <span className="font-bold text-slate-900 dark:text-slate-100 mr-1.5">
+                                    {item.title}:
+                                  </span>
+                                  <span>{item.description}</span>
+                                </div>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-4 pt-1">
+                    {gf2Project.features.map((feature, idx) => {
+                      const isAmber = feature.bulletColor === 'amber';
+                      return (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, x: -15 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: idx * 0.08 }}
+                          className="flex items-start gap-2.5 text-sm md:text-base leading-relaxed text-slate-700 dark:text-slate-300"
+                        >
+                          <span
+                            className={`inline-block shrink-0 w-2.5 h-2.5 rounded-full mt-2 ${
+                              isAmber
+                                ? 'bg-amber-600 dark:bg-amber-500'
+                                : 'bg-emerald-600 dark:bg-emerald-400'
+                            }`}
+                          />
+                          <div>
+                            <span className="font-bold text-slate-900 dark:text-slate-100 mr-1.5">
+                              {feature.title}:
+                            </span>
+                            <span>{feature.description}</span>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2 pt-2 border-t border-slate-200 dark:border-slate-800">
                   {gf2Project.techStack.map((tech, idx) => (
                     <TechTag key={idx} name={tech} isPrimary />
                   ))}

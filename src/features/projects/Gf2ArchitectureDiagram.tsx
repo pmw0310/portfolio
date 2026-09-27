@@ -7,7 +7,7 @@ graph TB
     GITHUB["🐙 GitHub (소스코드)"]
 
     subgraph FE ["☁️ FRONTEND (Vercel)"]
-        FE_APP["⚡ Next.js 16 (App Router)"]
+        FE_APP["⚡ Next.js 16 (App Router & Three.js)"]
     end
 
     subgraph CI ["🚀 BACKEND CI/CD"]
@@ -15,10 +15,21 @@ graph TB
         GHACTIONS["⚙️ GitHub Actions"] --> DOCKER["🐳 Docker Hub"]
     end
 
-    subgraph BE ["🏠 BACKEND (Synology NAS) - NestJS 11"]
-        BE_API["🤖 API 서버 (REST & RAG 서비스)"]
-        BE_MCP["🔌 SSC MCP"]
-        BE_ADMIN["📑 Swagger UI (API 문서)"]
+    subgraph NAS ["🏠 Synology NAS (On-Premises Infrastructure)"]
+        subgraph BE_CONTAINER ["⚡ 백엔드 (NestJS 11)"]
+            direction TB
+            PM2["🔄 PM2 (2-Cluster Mode)"]
+            BE_API["🤖 API 서버 (REST & RAG 서비스)"]
+            PM2 --> BE_API
+        end
+
+        subgraph IMG_SYS ["🖼️ 이미지 서버 (Nginx)"]
+            IMG_SRV["📐 동적 이미지 서빙 (URL 쿼리 리사이징)"]
+        end
+
+        subgraph MMD_SYS ["💃 MMD 서버"]
+            MMD_SRV["📦 3D 모델 & 모션 데이터 서빙"]
+        end
     end
 
     subgraph DATA_AI ["🌐 DATA & AI PIPELINE"]
@@ -30,10 +41,12 @@ graph TB
     %% Deploy Flows
     GITHUB == "Vercel 자동 빌드/배포" ==> FE
     GITHUB -. "백엔드 푸시" .-> GHACTIONS
-    DOCKER == "Watchtower를 이용한 자동 이미지 업데이트" ==> BE
+    DOCKER == "Watchtower 자동 배포" ==> BE_CONTAINER
 
-    %% FE to BE
-    FE_APP <--> BE_API
+    %% FE to NAS Flows
+    FE_APP <-->|"API 통신 & RAG 질의"| BE_API
+    FE_APP -->|"동적 리사이징 이미지 요청 (Query)"| IMG_SRV
+    FE_APP -->|"3D MMD 모델·모션 로드 (Three.js 렌더링)"| MMD_SRV
 
     %% BE internal & external
     BE_API <--> DB_MONGO
@@ -43,13 +56,17 @@ graph TB
     classDef devopsStyle fill:#1e1e2e,stroke:#fab387,stroke-width:2px,color:#cdd6f4;
     classDef feStyle fill:#1e1e2e,stroke:#a6e3a1,stroke-width:2px,color:#cdd6f4;
     classDef beStyle fill:#1e1e2e,stroke:#f38ba8,stroke-width:2px,color:#cdd6f4;
+    classDef imgStyle fill:#1e1e2e,stroke:#89dceb,stroke-width:2px,color:#cdd6f4;
+    classDef mmdStyle fill:#1e1e2e,stroke:#b4befe,stroke-width:2px,color:#cdd6f4;
     classDef dataStyle fill:#1e1e2e,stroke:#f9e2af,stroke-width:2px,color:#cdd6f4;
     classDef gitStyle fill:#1e1e2e,stroke:#cba6f7,stroke-width:2px,color:#cdd6f4;
 
     class GITHUB gitStyle;
     class GHACTIONS,DOCKER devopsStyle;
     class FE_APP feStyle;
-    class BE_API,BE_MCP,BE_ADMIN beStyle;
+    class PM2,BE_API beStyle;
+    class IMG_SRV imgStyle;
+    class MMD_SRV mmdStyle;
     class DB_MONGO,DB_GSHEET,GEMINI dataStyle;
 `;
 
